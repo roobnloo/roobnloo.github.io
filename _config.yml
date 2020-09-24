@@ -8,7 +8,8 @@ middle_name:
 last_name: Liu
 email:
 description:
-footer_text: 
+footer_text: >
+  r[underscore]liu['a' inside circle]ucsb[dot]edu
 
 url:  # the base hostname & protocol for your site
 baseurl: # /al-folio # the subpath of your site, e.g. /blog/

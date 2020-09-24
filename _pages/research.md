@@ -1,11 +1,13 @@
 ---
 layout: page
-permalink: /publications/
-title: publications
-description: coming soon :)
+permalink: /research/
+title: research 
+description:
 nav: true
 navorder: 1
 ---
+
+My current interests lie at the intersection of getting \`A's in my classes and passing quals.
 
 <!--
 <div class="publications">
