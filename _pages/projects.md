@@ -1,11 +1,11 @@
 ---
 layout: page
 title: projects
-permalink: /projects/
 description: A growing collection of your cool projects.
-nav: true
+nav: false 
 ---
 
+<!--
 <div class="projects grid">
 
   {% assign sorted_projects = site.projects | sort: "importance" %}
@@ -45,3 +45,4 @@ nav: true
 {% endfor %}
 
 </div>
+<-->
