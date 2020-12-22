@@ -7,6 +7,9 @@
     {{ site.footer_text }}
     {% if site.last_updated %}
     Last updated: {{ "now" | date: '%B %d, %Y' }}.
+    {% elsif site.show_social_icons %}
+      <!-- Social Icons -->
+      {% include social.html %}
     {% endif %}
   </div>
 </footer>
