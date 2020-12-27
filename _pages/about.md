@@ -13,7 +13,7 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: false  # includes social icons at the bottom of the page
 ---
 
-I am a first year PhD student at UC Santa Barbara in the department of Statistics and Applied Probability. Please check back when there's more stuff to show here :)
+I am a first year PhD student at UC Santa Barbara in the department of [Statistics and Applied Probability](https://www.pstat.ucsb.edu/){:target="\_blank"}. Please check back when there's more stuff to show here :)
 
 {::comment}
 Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com){:target="\_blank"}. You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
