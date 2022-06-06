@@ -2,11 +2,18 @@
 layout: page
 permalink: /teaching/
 title: teaching
-description: Materials for courses you taught. Replace this text with your description.
 nav: true
-nav_order: 5
+nav_order: 2
 ---
+**Instructor of Record**
+- PSTAT 10. Principles of Data Science with R 
+  - [Summer 2022 Session A](/pstat10/)
 
-For now, this page is assumed to be a static description of your courses. You can convert it to a collection similar to `_projects/` so that you can have a dedicated page for each course.
 
-Organize your courses by years, topics, or universities, however you like!
+**Teaching Assistant**
+- PSTAT 120B. Probability and Statistics II
+  - Spring 2022
+- PSTAT 10. Principles of Data Science with R (head TA)
+  - Winter 2021 thru Winter 2022
+- PSTAT 10. Principles of Data Science with R 
+  - Fall 2020
