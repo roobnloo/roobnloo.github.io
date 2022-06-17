@@ -10,6 +10,8 @@ nav: false
 I will post all course material on this page including slides, worksheets, homework, 
 worksheet and homework solutions.
 
+Worksheets and homework are released at the beginning of the week and are due the following Tuesday evening.
+Worksheet solutions are released the day *before* they are due.
 Assignments should be submitted on Gradescope.
 
 [Syllabus](/pstat10/syllabus.pdf)
@@ -45,12 +47,15 @@ Assignments should be submitted on Gradescope.
 
 ***
 
-### Recommended resources
-#### Official
-[Install R from CRAN](https://cran.r-project.org/) (I insist you install R 4.2.0)\
-[Install RStudio](https://www.rstudio.com/products/rstudio/download/#download)\
-[Official R Intro](https://cran.r-project.org/doc/manuals/R-intro.html)
+### **Install R and RStudio**
+R version at least 4.1.0 is required for this class. I insist you install R 4.2.0.
+If you cannot install R or RStudio for whatever reason, RStudio Cloud is available.
 
+[Install R from CRAN](https://cran.r-project.org/)\
+[Install RStudio](https://www.rstudio.com/products/rstudio/download/#download)\
+[RStudio Cloud](https://rstudio.cloud/)
+
+### **Recommended resources**
 #### Community
 [StackOverflow](https://stackoverflow.com/)\
 [R stats community on Twitter](https://twitter.com/hashtag/rstats)\
@@ -62,3 +67,8 @@ Assignments should be submitted on Gradescope.
 [Matloff - Probability and Statistics for Data Science](https://www.routledge.com/Probability-and-Statistics-for-Data-Science-Math--R--Data/Matloff/p/book/9781138393295) (for simulation)\
 [Wickham - R for Data Science](https://r4ds.had.co.nz/index.html) (for `tidyverse`/data science workflow)\
 [Wickham - Advanced R](https://adv-r.hadley.nz/) (if you want to know how R really works)
+
+#### General coding practice
+[Leetcode](https://leetcode.com/)\
+[Advent of Code](https://adventofcode.com/)\
+[algorithms.wtf](http://algorithms.wtf/)
