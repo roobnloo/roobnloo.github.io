@@ -19,13 +19,12 @@ Assignments should be submitted on Gradescope.
 
 ***
 
-<!--
 
-### Week 1
+### **Week 1**
 
 <div class="grid">
   <div class = "grid-item">
-  <a href="/pstat10/Lec1.html">
+  <a href="/pstat10/lectures/Lec1.html">
     <div class="card hoverable">
       <div class="row g-0">
         <div class="col-md-12">
@@ -39,11 +38,47 @@ Assignments should be submitted on Gradescope.
     </div>
   </a>
 </div>
+  <div class = "grid-item">
+  <a href="/pstat10/lectures/Lec2.html">
+    <div class="card hoverable">
+      <div class="row g-0">
+        <div class="col-md-12">
+          <div class="card-body">
+            <h2 class="card-title">Lecture 2</h2>
+            <p class="card-text">Vector Operations</p>
+            <div class="row ml-1 mr-1 p-0"></div>
+          </div>
+      </div>
+    </div>
+    </div>
+  </a>
+  </div>
+  <div class = "grid-item">
+  <a href="/pstat10/lectures/Lec3.html">
+    <div class="card hoverable">
+      <div class="row g-0">
+        <div class="col-md-12">
+          <div class="card-body">
+            <h2 class="card-title">Lecture 3</h2>
+            <p class="card-text">Functions</p>
+            <div class="row ml-1 mr-1 p-0"></div>
+          </div>
+      </div>
+    </div>
+    </div>
+  </a>
+  </div>
 </div>
 
-[Worksheet 1 | Solutions] [Worksheet 2 | Solutions] [Homework 1 | Solutions]
+\\
+[Files for this week](/pstat10/assignments/week1_files.zip)
 
--->
+[Worksheet 1](/pstat10/assignments/ws1.pdf) \| Solutions
+
+[Worksheet 2](/pstat10/assignments/ws2.pdf) \| Solutions
+
+[Homework 1](/pstat10/assignments/hw1.pdf) \| Solutions
+
 
 ***
 
