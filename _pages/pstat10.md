@@ -14,7 +14,8 @@ Worksheets and homework are released at the beginning of the week and are due th
 Worksheet solutions are released the day *before* they are due.
 Assignments should be submitted on Gradescope.
 
-[Syllabus](/pstat10/syllabus.pdf)
+[Syllabus](/pstat10/syllabus.pdf)\
+[Sample assignment template](/pstat10/assignment_template.Rmd)
 
 
 ***
