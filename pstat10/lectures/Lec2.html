@@ -4,7 +4,7 @@
     <title>Lecture 2: Vector and Matrix Operations</title>
     <meta charset="utf-8" />
     <meta name="author" content="Robin Liu" />
-    <meta name="date" content="2022-06-21" />
+    <meta name="date" content="2022-06-22" />
     <script src="libs/header-attrs-2.14/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
@@ -30,7 +30,7 @@ class: center, middle, inverse, title-slide
 ### UCSB
 ]
 .date[
-### 2022-06-21
+### 2022-06-22
 ]
 
 ---
@@ -49,7 +49,7 @@ x &lt;- 1:10
 subs &lt;- rep(c(F, T), each = 5)
 ```
 Quick quiz: what is the result of `x[subs]`?
-<div class="countdown" id="timer_62b286b9" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62b35104" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 --
@@ -106,7 +106,7 @@ Create a vector called `gas_bill`.
 1. Find the percentage of months where the gas bill exceeded $40.
 1. Find the total of how much I paid in gas over all months where the gas bill exceeded $40.
 
-<div class="countdown" id="timer_62b289f0" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62b35184" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 ---
@@ -181,7 +181,7 @@ $7 on even numbered months (February, April, …).
 1. Update `gas_bill` to reflect my true gas costs in 2021
 2. What is the difference between what I paid and what I actually owe?
 
-<div class="countdown" id="timer_62b2873f" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62b350a7" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 ---
@@ -238,7 +238,7 @@ log(x)
 1. Find the product of the natural log of every integer from 100 to 200.
 1. Find the sum of the integers between 1 and 100 whose square is between 300 and 500.
 
-<div class="countdown" id="timer_62b28922" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62b35106" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 ---
@@ -431,7 +431,7 @@ x[1, ]
 ```
 What is the result of `x[1:2, -3]`?
 
-<div class="countdown" id="timer_62b28a4e" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62b351de" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">01</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 ---
@@ -449,7 +449,7 @@ Print the matrix.
 ```
 3. Set all entries of `mx` greater than 10 to zero. Did filtering, recycling, or vectorization occur?
 
-<div class="countdown" id="timer_62b28746" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62b350b5" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -490,12 +490,12 @@ What is the output?
 scores[scores[,3] &gt; 5, ]
 ```
 ]
-<div class="countdown" id="timer_62b2880f" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62b3507c" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">00</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
 </div>
 
 ---
-# Image manipulation
+# Image manipulation demo
 
 
 ```r
@@ -518,7 +518,7 @@ str(mtrush1)
 ##   ..@ bbcent  : logi FALSE
 ```
 ---
-# Image manipulation
+# Image manipulation demo
 `mtrush1@grey` is a matrix containing pixel intensities.
 
 What is the intensity of the pixel at row 70, column 120?
@@ -624,8 +624,69 @@ hypercube
 .center[![](Lec2_files/channels.png)]
 
 ---
+# Lists
+### A **list** is also a vector, but is not atomic.
+Usually "vector" means "atomic vector".
+Recall that atomic vectors can only hold one data type.
+Lists are also vectors, but can hold many different data types.
+
+For the rest of the class,
+I will say "vector" to mean "atomic vector" and "list" to mean "list".
+But in the R literature, lists are vectors. 
+
+.center[![](Lec2_files/listhier.png)]
+
+---
+# Lists
+
+```r
+x &lt;- list(first = 1:10, second = "cat", third = c(T, F))
+```
+Single brackets `[ ]` return a list while double brackets `[[ ]]` return the element.
+
+--
+
+
+```r
+x[1]
+```
+
+```
+## $first
+##  [1]  1  2  3  4  5  6  7  8  9 10
+```
+
+```r
+x[[1]]
+```
+
+```
+##  [1]  1  2  3  4  5  6  7  8  9 10
+```
+
+--
+
+Getting an element by name:
+
+```r
+x$first
+```
+
+```
+##  [1]  1  2  3  4  5  6  7  8  9 10
+```
+
+---
+# Lists
+### Is it possible to create a vector of vectors?
+
+```r
+c(1:10, 66, 3:7)
+```
+---
 # Checking the structure
 - Is `x` an atomic vector? `is.atomic(x)`
+- Is `x` a list? `is.list(x)`
 - Is `x` a matrix? `is.matrix(x)`
 - Is `x` an array? `is.array(x)`
 
@@ -668,6 +729,9 @@ class(x)
 ## [1] "matrix" "array"
 ```
 ]
+---
+# AVOID is.vector
+`is.vector` does not do what you think it does.
 
 ---
 # Summary
