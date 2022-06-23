@@ -17,6 +17,10 @@ Assignments should be submitted on Gradescope.
 [Syllabus](/pstat10/syllabus.pdf)\
 [Sample assignment template](/pstat10/assignment_template.Rmd)
 
+#### Office hours
+- **Robin**: Friday 10am - 11am @ IV Starbucks, Monday 4pm - 5pm @ zoom link on Gauchospace
+- **Jeff**: Monday 1:30pm - 3:30pm @ zoom link on Gauchospace
+- **Olivier**: Tuesday 1:45pm - 3:45pm @ Building 434 Room 113
 
 ***
 
@@ -72,7 +76,7 @@ Assignments should be submitted on Gradescope.
 </div>
 
 \\
-Files for this week: [Worksheet files](/pstat10/assignments/week1_files.zip) \| [mtrush1.pgm](/pstat10/lectures/mtrush1.pgm)\
+Files for this week: [Worksheet files](/pstat10/assignments/week1_files.zip) \| [mtrush1.pgm](/pstat10/lectures/mtrush1.pgm) \| [Rushmore example](/pstat10/lectures/rushmore.html)\
 [Worksheet 1](/pstat10/assignments/ws1.pdf) \| Solutions\
 [Worksheet 2](/pstat10/assignments/ws2.pdf) \| Solutions\
 [Homework 1](/pstat10/assignments/hw1.pdf) \| Solutions
