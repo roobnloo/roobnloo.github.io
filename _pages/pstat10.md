@@ -29,7 +29,7 @@ Assignments should be submitted on Gradescope.
 
 <div class="grid">
   <div class = "grid-item">
-  <a href="/pstat10/lectures/Lec1.html">
+  <a href="/pstat10/lectures/Lec1.html" style="text-decoration: none">
     <div class="card hoverable">
       <div class="row g-0">
         <div class="col-md-12">
@@ -44,7 +44,7 @@ Assignments should be submitted on Gradescope.
   </a>
 </div>
   <div class = "grid-item">
-  <a href="/pstat10/lectures/Lec2.html">
+  <a href="/pstat10/lectures/Lec2.html" style="text-decoration: none">
     <div class="card hoverable">
       <div class="row g-0">
         <div class="col-md-12">
@@ -59,7 +59,7 @@ Assignments should be submitted on Gradescope.
   </a>
   </div>
   <div class = "grid-item">
-  <a href="/pstat10/lectures/Lec3.html">
+  <a href="/pstat10/lectures/Lec3.html" style="text-decoration: none">
     <div class="card hoverable">
       <div class="row g-0">
         <div class="col-md-12">
