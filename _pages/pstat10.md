@@ -76,7 +76,7 @@ Assignments should be submitted on Gradescope.
 </div>
 
 \\
-Files for this week: [Worksheet files](/pstat10/assignments/week1_files.zip) \| [Lecture examples](/pstat10/lectures/week1_ex.html) \| [mtrush1.pgm](/pstat10/lectures/mtrush1.pgm) \| [Rushmore example](/pstat10/lectures/rushmore.html)\
+Files for this week: [Worksheet files](/pstat10/assignments/week1_files.zip) \| [Lecture examples](/pstat10/lectures/week1_ex.html) \| [mtrush1.pgm](/pstat10/lectures/mtrush1.pgm) \| [Rushmore example](/pstat10/lectures/rushmore.html) \| [Why use seq?](/pstat10/lectures/why_use_seq.html) \
 [Worksheet 1](/pstat10/assignments/ws1.pdf) \| Solutions\
 [Worksheet 2](/pstat10/assignments/ws2.pdf) \| Solutions\
 [Homework 1](/pstat10/assignments/hw1.pdf) \| Solutions
