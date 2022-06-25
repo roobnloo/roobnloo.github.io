@@ -12,7 +12,7 @@
 
 <meta name="date" content="2022-06-24" />
 
-<title>Week 1 Lecture Examples</title>
+<title>Lecture 1 demo code</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -362,14 +362,12 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">Week 1 Lecture Examples</h1>
+<h1 class="title toc-ignore">Lecture 1 demo code</h1>
 <h4 class="date">2022-06-24</h4>
 
 </div>
 
 
-<div id="lecture-1" class="section level2">
-<h2><strong>Lecture 1</strong></h2>
 <div id="installing-cowsay" class="section level3">
 <h3>Installing cowsay</h3>
 <pre class="r"><code>install.packages(&quot;cowsay&quot;)</code></pre>
@@ -456,223 +454,6 @@ scores</code></pre>
 <pre class="r"><code>scores[-5]</code></pre>
 <pre><code>##   Bob Alice  Alex  Juan 
 ##     8     7     8    10</code></pre>
-</div>
-</div>
-<div id="lecture-2" class="section level2">
-<h2><strong>Lecture 2</strong></h2>
-<div id="filtering-slide-5" class="section level3">
-<h3>Filtering (slide 5)</h3>
-<ol style="list-style-type: decimal">
-<li></li>
-</ol>
-<pre class="r"><code>gas_bill &lt;- c(46, 33, 39, 37, 46, 30, 48, 32, 49, 35, 30, 48)
-length(gas_bill)</code></pre>
-<pre><code>## [1] 12</code></pre>
-<ol start="2" style="list-style-type: decimal">
-<li></li>
-</ol>
-<pre class="r"><code>sum(gas_bill &gt; 40)</code></pre>
-<pre><code>## [1] 5</code></pre>
-<p>The expression <code>gas_bill &gt; 40</code> is a logical vector.
-Summing this vector gives the number of TRUE elements.</p>
-<ol start="3" style="list-style-type: decimal">
-<li></li>
-</ol>
-<pre class="r"><code>mean(gas_bill &gt; 40) * 100</code></pre>
-<pre><code>## [1] 41.66667</code></pre>
-<p>The mean of a logical vector is the proportion of TRUE elements.</p>
-<ol start="4" style="list-style-type: decimal">
-<li></li>
-</ol>
-<pre class="r"><code>sum(gas_bill[gas_bill &gt; 40])</code></pre>
-<pre><code>## [1] 237</code></pre>
-</div>
-<div id="recycling-slide-8" class="section level3">
-<h3>Recycling (slide 8)</h3>
-<ol style="list-style-type: decimal">
-<li></li>
-</ol>
-<pre class="r"><code>gas_bill_update &lt;- gas_bill + c(-3, 7)</code></pre>
-<p>The shorter vector <code>c(-3, 7)</code> is recycled to match the
-length of <code>gas_bill</code>.</p>
-<ol start="2" style="list-style-type: decimal">
-<li></li>
-</ol>
-<pre class="r"><code>sum(gas_bill - gas_bill_update)</code></pre>
-<pre><code>## [1] -24</code></pre>
-<p>So I owe the company 24 dollars.</p>
-</div>
-<div id="vectorization-slide-11" class="section level3">
-<h3>Vectorization (slide 11)</h3>
-<ol style="list-style-type: decimal">
-<li></li>
-</ol>
-<pre class="r"><code>sum(sqrt(1:100))</code></pre>
-<pre><code>## [1] 671.4629</code></pre>
-<ol start="2" style="list-style-type: decimal">
-<li></li>
-</ol>
-<pre class="r"><code>prod(log(100:200))</code></pre>
-<pre><code>## [1] 3.034637e+70</code></pre>
-<ol start="3" style="list-style-type: decimal">
-<li></li>
-</ol>
-<pre class="r"><code>ints &lt;- 1:100
-ints_sq &lt;- ints^2
-sum(ints[ints_sq &gt; 300 &amp; ints_sq &lt; 500])</code></pre>
-<pre><code>## [1] 100</code></pre>
-<p>Pay special attention to the expression
-<code>ints_sq &gt; 300 &amp; ints_sq &lt; 500</code> above.</p>
-</div>
-<div id="matrices-slide-18" class="section level3">
-<h3>Matrices (slide 18)</h3>
-<ol style="list-style-type: decimal">
-<li></li>
-</ol>
-<pre class="r"><code>(mx &lt;- matrix(1:17, nrow = 4, ncol = 5))</code></pre>
-<pre><code>## Warning in matrix(1:17, nrow = 4, ncol = 5): data length [17] is not a sub-
-## multiple or multiple of the number of rows [4]</code></pre>
-<pre><code>##      [,1] [,2] [,3] [,4] [,5]
-## [1,]    1    5    9   13   17
-## [2,]    2    6   10   14    1
-## [3,]    3    7   11   15    2
-## [4,]    4    8   12   16    3</code></pre>
-<p>The first three entries of <code>1:17</code> were recycled. The
-warning tells us the recycling was not complete.</p>
-<ol start="2" style="list-style-type: decimal">
-<li></li>
-</ol>
-<pre class="r"><code>mx[c(1, 4), c(1, 2, 5)]</code></pre>
-<pre><code>##      [,1] [,2] [,3]
-## [1,]    1    5   17
-## [2,]    4    8    3</code></pre>
-<ol start="3" style="list-style-type: decimal">
-<li></li>
-</ol>
-<pre class="r"><code>mx[mx &gt; 10] &lt;- 0
-mx</code></pre>
-<pre><code>##      [,1] [,2] [,3] [,4] [,5]
-## [1,]    1    5    9    0    0
-## [2,]    2    6   10    0    1
-## [3,]    3    7    0    0    2
-## [4,]    4    8    0    0    3</code></pre>
-<p>First, <code>mx[mx &gt; 10]</code> filters for the entries larger
-than 10. Then, <code>0</code> is recycled to match the length of these
-entries. Finally, the entries are each assigned to 0.</p>
-</div>
-</div>
-<div id="lecture-3" class="section level2">
-<h2><strong>Lecture 3</strong></h2>
-<div id="functions-slide-7" class="section level3">
-<h3>Functions (slide 7)</h3>
-<ol style="list-style-type: decimal">
-<li></li>
-</ol>
-<pre class="r"><code>increment_power &lt;- function(x, pwr = 2) {
-  x &lt;- x + 1
-  return(x^pwr)
-}</code></pre>
-<ol start="2" style="list-style-type: decimal">
-<li></li>
-</ol>
-<pre class="r"><code>increment_power(1:4, pwr = 2)</code></pre>
-<pre><code>## [1]  4  9 16 25</code></pre>
-<p>The vector <code>2</code> was recycled to a length four vector. The
-vector <code>1</code> was recycled to a length four vector and each
-component of <code>1:4</code> is incremented. Then a vectorized power
-function was applied. The above is equivalent to</p>
-<pre class="r"><code>(2:5)^c(2, 2, 2, 2)</code></pre>
-<pre><code>## [1]  4  9 16 25</code></pre>
-<p>This is vectorized because <code>^</code> is a vectorized operator;
-the result is a vector where each component of the base is raised to the
-corresponding component of the exponent.</p>
-<pre class="r"><code>increment_power(2:5, pwr = c(2, 3))</code></pre>
-<pre><code>## [1]   9  64  25 216</code></pre>
-<p>Similar situation: the shorter vector <code>c(2, 3)</code> is
-recycled to be length 4. The above is equivalent to</p>
-<pre class="r"><code>(2:5)^c(2, 3, 2, 3)</code></pre>
-<pre><code>## [1]   4  27  16 125</code></pre>
-</div>
-<div id="branching-slide-13" class="section level3">
-<h3>Branching (slide 13)</h3>
-<pre class="r"><code>noise &lt;- function(animal) {
-  if (animal == &quot;cow&quot;) {
-    return(&quot;moo&quot;)
-  }
-  else if (animal == &quot;dog&quot;) {
-    return(&quot;woof&quot;)
-  }
-  else if (animal == &quot;pig&quot;) {
-    return(&quot;oink&quot;)
-  }
-  else if (animal == &quot;owl&quot;) {
-    return(&quot;hoot&quot;)
-  } else {
-    return(&quot;Animal not recognized!&quot;)
-  }
-}
-
-noise(&quot;pig&quot;)</code></pre>
-<pre><code>## [1] &quot;oink&quot;</code></pre>
-<pre class="r"><code>noise(&quot;hedgehog&quot;)</code></pre>
-<pre><code>## [1] &quot;Animal not recognized!&quot;</code></pre>
-<pre class="r"><code>noise(&quot;cow&quot;)</code></pre>
-<pre><code>## [1] &quot;moo&quot;</code></pre>
-</div>
-<div id="branching-slide-14" class="section level3">
-<h3>Branching (slide 14)</h3>
-<pre class="r"><code>parity &lt;- function(x) {
-  if (x %% 2 == 0) {
-    return(&quot;even&quot;)
-  } else if (x %% 2 == 1) {
-    return(&quot;odd&quot;)
-  } else {
-    return(&quot;Not an integer!&quot;)
-  }
-}
-parity(4)</code></pre>
-<pre><code>## [1] &quot;even&quot;</code></pre>
-<pre class="r"><code>parity(17)</code></pre>
-<pre><code>## [1] &quot;odd&quot;</code></pre>
-<pre class="r"><code>parity(12.43)</code></pre>
-<pre><code>## [1] &quot;Not an integer!&quot;</code></pre>
-</div>
-<div id="function-with-branch-slide-19" class="section level3">
-<h3>Function with branch (slide 19)</h3>
-<pre class="r"><code>parity_vec &lt;- function(x) {
-  result &lt;- vector(length = length(x)) # initialize result
-  for (i in seq_along(x)) {
-    result[i] &lt;- parity(x[i]) # call the previously defined function
-  }
-  result # last expression is automatically returned
-}
-
-parity_vec(c(12, 320, 598, 23))</code></pre>
-<pre><code>## [1] &quot;even&quot; &quot;even&quot; &quot;even&quot; &quot;odd&quot;</code></pre>
-<p>We used <code>seq_along(x)</code> so that we have an index
-<code>i</code> to use with <code>result</code>.</p>
-</div>
-<div id="vectorized-ifelse-slide-20" class="section level3">
-<h3>Vectorized ifelse (slide 20)</h3>
-<pre class="r"><code>parity_vec &lt;- function(x) {
-  ifelse(x %% 2, &quot;odd&quot;, &quot;even&quot;)
-}
-parity_vec(c(12, 320, 598, 23))</code></pre>
-<pre><code>## [1] &quot;even&quot; &quot;even&quot; &quot;even&quot; &quot;odd&quot;</code></pre>
-<p>This takes advantage of the fact that numeric <code>0</code> is
-logically FALSE and <code>1</code> is logically TRUE. Actually, all
-numeric values other than <code>0</code> are TRUE. In view of this, the
-above is actually incorrect; we need to account for the
-<code>&quot;Not an integer!&quot;</code> case.</p>
-<pre class="r"><code>parity_vec &lt;- function(x) {
-  result &lt;- ifelse(x %% 2, &quot;odd&quot;, &quot;even&quot;)
-  not_int &lt;- (x %% 1) != 0  # This is determines if x contains decimals (not int)
-  result[not_int] &lt;- &quot;Not an integer!&quot;
-  result
-}
-parity_vec(c(12, 320.5, 599, 23.88))</code></pre>
-<pre><code>## [1] &quot;even&quot;            &quot;Not an integer!&quot; &quot;odd&quot;             &quot;Not an integer!&quot;</code></pre>
-</div>
 </div>
 
 
