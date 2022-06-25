@@ -28,51 +28,9 @@ Assignments should be submitted on Gradescope.
 ### **Week 1**
 
 <div class="grid">
-  <div class = "grid-item">
-  <a href="/pstat10/lectures/Lec1.html" style="text-decoration: none">
-    <div class="card hoverable">
-      <div class="row g-0">
-        <div class="col-md-12">
-          <div class="card-body">
-            <h2 class="card-title">Lecture 1</h2>
-            <p class="card-text">Introduction</p>
-            <div class="row ml-1 mr-1 p-0"></div>
-          </div>
-      </div>
-    </div>
-    </div>
-  </a>
-</div>
-  <div class = "grid-item">
-  <a href="/pstat10/lectures/Lec2.html" style="text-decoration: none">
-    <div class="card hoverable">
-      <div class="row g-0">
-        <div class="col-md-12">
-          <div class="card-body">
-            <h2 class="card-title">Lecture 2</h2>
-            <p class="card-text">Vector Operations</p>
-            <div class="row ml-1 mr-1 p-0"></div>
-          </div>
-      </div>
-    </div>
-    </div>
-  </a>
-  </div>
-  <div class = "grid-item">
-  <a href="/pstat10/lectures/Lec3.html" style="text-decoration: none">
-    <div class="card hoverable">
-      <div class="row g-0">
-        <div class="col-md-12">
-          <div class="card-body">
-            <h2 class="card-title">Lecture 3</h2>
-            <p class="card-text">Functions</p>
-            <div class="row ml-1 mr-1 p-0"></div>
-          </div>
-      </div>
-    </div>
-    </div>
-  </a>
-  </div>
+  {% include lecturegrid.html lecnum='1' descr='Introduction' %}
+  {% include lecturegrid.html lecnum='2' descr='Vector Operations' %}
+  {% include lecturegrid.html lecnum='3' descr='Functions' %}
 </div>
 
 \\
