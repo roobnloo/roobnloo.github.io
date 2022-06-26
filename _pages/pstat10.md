@@ -42,6 +42,21 @@ Assignments should be submitted on Gradescope.
 
 ***
 
+### **Week 2**
+<div class="grid">
+  {% include lecturegrid.html lecnum='4' descr='Problem Solving' %}
+  {% include lecturegrid.html lecnum='5' descr='Data Frames/Tibbles' %}
+  {% include lecturegrid.html lecnum='6' descr='Working with Tibbles' %}
+  {% include lecturegrid.html lecnum='7' descr='Base R Plots' %}
+</div>
+
+\\
+[Worksheet 3](/pstat10/assignments/ws3.pdf) \| Solutions\
+[Worksheet 4](/pstat10/assignments/ws4.pdf) \| Solutions\
+[Homework 2](/pstat10/assignments/hw2.pdf) \| Solutions
+
+***
+
 ### **Install R and RStudio**
 R version at least 4.1.0 is required for this class. I insist you install R 4.2.0.
 If you cannot install R or RStudio for whatever reason, RStudio Cloud is available.
