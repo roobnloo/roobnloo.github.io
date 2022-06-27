@@ -7,9 +7,14 @@
             <h2 class="card-title">Lecture {{ include.lecnum }}</h2>
             <p class="card-text">{{ include.descr }}</p>
             <div class="row ml-1 mr-1 p-0">
-              <div class="icon" data-toggle="tooltip" title="Demo code">
-                <a href="/pstat10/lectures/lec{{ include.lecnum }}_demo.html"><i class="fab fa-brands fa-r-project"></i></a>
-              </div>
+              {% capture demopath %}/pstat10/lectures/lec{{ include.lecnum }}_demo.html{% endcapture %}
+              {%- for sf in site.static_files -%}
+                {%- if sf.path == demopath-%}
+                <div class="icon" data-toggle="tooltip" title="Demo code">
+                  <a href="/pstat10/lectures/lec{{ include.lecnum }}_demo.html"><i class="fab fa-brands fa-r-project"></i></a>
+                </div>
+                {%- endif %}
+              {%- endfor %}
             </div>
           </div>
         </div>
