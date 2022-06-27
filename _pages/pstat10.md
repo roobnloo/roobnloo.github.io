@@ -24,8 +24,7 @@ Assignments should be submitted on Gradescope.
 
 ***
 
-
-### **Week 1**
+### Week 1
 
 <div class="grid">
   {% include lecturegrid.html lecnum='1' descr='Introduction' %}
@@ -35,14 +34,13 @@ Assignments should be submitted on Gradescope.
 
 \\
 **Notes:** [Worksheet files](/pstat10/assignments/week1_files.zip) \| [mtrush1.pgm](/pstat10/lectures/mtrush1.pgm) \| [Rushmore example](/pstat10/lectures/rushmore.html) \| [Why use seq?](/pstat10/lectures/why_use_seq.html) \
-[Worksheet 1](/pstat10/assignments/ws1.pdf) \| Solutions\
-[Worksheet 2](/pstat10/assignments/ws2.pdf) \| Solutions\
+[Worksheet 1](/pstat10/assignments/ws1.pdf) \| [Solutions](/pstat10/assignments/ws1_sol.html)\
+[Worksheet 2](/pstat10/assignments/ws2.pdf) \| [Solutions](/pstat10/assignments/ws2_sol.html)\
 [Homework 1](/pstat10/assignments/hw1.pdf) \| Solutions
-
 
 ***
 
-### **Week 2**
+### Week 2
 <div class="grid">
   {% include lecturegrid.html lecnum='4' descr='Problem Solving' %}
   {% include lecturegrid.html lecnum='5' descr='Data Frames/Tibbles' %}
