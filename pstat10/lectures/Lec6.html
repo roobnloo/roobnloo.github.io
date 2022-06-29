@@ -4,7 +4,7 @@
     <title>Lecture 6: Working with data frames</title>
     <meta charset="utf-8" />
     <meta name="author" content="Robin Liu" />
-    <meta name="date" content="2022-06-25" />
+    <meta name="date" content="2022-06-29" />
     <script src="libs/header-attrs-2.14/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
@@ -30,7 +30,7 @@ class: center, middle, inverse, title-slide
 ### UCSB
 ]
 .date[
-### 2022-06-25
+### 2022-06-29
 ]
 
 ---
@@ -75,7 +75,7 @@ Retrieve the data for Afghanistan for years after 1979.
 ## 6 Afghanistan Asia       2007    43.8 31889923      975.
 ```
 
-<div class="countdown" id="timer_62b74e4b" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62bc8335" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 ---
@@ -125,7 +125,7 @@ head(gapminder)
 Select only `country`, `year`, `lifeExp`, and `pop` variables.
 
 
-<div class="countdown" id="timer_62b74f26" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62bc839a" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 ---
@@ -180,7 +180,7 @@ head(gapminder)
 
 Return the `country`, `year`, and `lifeExp` for Rwanda in years between 1960 and 1970.
 
-<div class="countdown" id="timer_62b74ceb" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62bc80ff" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -327,7 +327,7 @@ head(select(filter(gapminder, country == "Chile"), continent, year, lifeExp), 3)
 
 
 
-<div class="countdown" id="timer_62b74c5d" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62bc821e" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">03</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 ---
@@ -337,7 +337,11 @@ which is part of the `tidyverse`. You must call `library(dplyr)`
 or `library(tidyverse)` to use it.
 `library(tidyverse)` automatically loads `dplyr`; it is sometimes called a *meta-package*.
 
+--
+
 Interestingly `|&gt;` is a base R pipe.
+
+--
 
 `tidyverse` has its own pipe which looks like `%&gt;%`; you might see this
 in the wild. It became so popular that `|&gt;` was recently added to base R.
@@ -394,6 +398,24 @@ head(gapminder[gapminder$country == "Chile", c("continent", "year", "lifeExp")],
 ## 3 Americas   1962    57.9
 ```
 ---
+# Adding Variables
+Return a tibble containing `country`, `year`, and `gdpPercap`
+for countries with GDP per cap less than 300 for years before 2007.
+
+```
+## # A tibble: 3 x 3
+##   country           year gdpPercap
+##   &lt;fct&gt;            &lt;int&gt;     &lt;dbl&gt;
+## 1 Congo, Dem. Rep.  2002      241.
+## 2 Guinea-Bissau     1952      300.
+## 3 Lesotho           1952      299.
+```
+
+<div class="countdown" id="timer_62bc8142" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
 # Creating a tibble (or a data frame)
 
 ```r
@@ -426,7 +448,7 @@ is_rescue &lt;- c(F, F, T)
 ## 3 Capsule     1 TRUE
 ```
 ---
-# Creating a tibble (or a data frame)
+# Adding variables to an existing tibble
 
 ```r
 (dogs &lt;- tibble(name = c("Ralph", "Sully", "Capsule"),
@@ -457,7 +479,7 @@ dogs
 ## 3 Capsule     1 TRUE
 ```
 ---
-# Adding Variables
+# Adding variables to an existing tibble
 
 ```r
 head(gapminder, 1)
@@ -470,6 +492,9 @@ head(gapminder, 1)
 ## 1 Afghanistan Asia       1952    28.8 8425333      779.
 ```
 Return the *total* GDP for each row. This is `\(\text{pop}\times\text{gdpPercap}\)`.
+
+--
+
 
 ```r
 my_gap &lt;- gapminder # create a copy so we don't overwrite gapminder
@@ -485,25 +510,6 @@ head(my_gap, 2)
 ## 2 Afghanistan Asia       1957    30.3 9240934      821. 7585448670.
 ```
 Remember `my_gap$pop` and `my_gap$gdpPercap` are vectors.
----
-# Adding Variables
-Return a tibble containing `country`, `year`, and `gdpPercap`
-for countries with GDP per cap less than 300 for years before 2007.
-
-```
-## # A tibble: 3 x 3
-##   country           year gdpPercap
-##   &lt;fct&gt;            &lt;int&gt;     &lt;dbl&gt;
-## 1 Congo, Dem. Rep.  2002      241.
-## 2 Guinea-Bissau     1952      300.
-## 3 Lesotho           1952      299.
-```
-
-<div class="countdown" id="timer_62b74da3" style="right:0;bottom:0;" data-warnwhen="0">
-<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-
-*PLEASE try this before going to the next slide!*
 ---
 # dplyr::Mutate()
 
