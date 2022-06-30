@@ -4,7 +4,7 @@
     <title>Lecture 7: Base R Plots</title>
     <meta charset="utf-8" />
     <meta name="author" content="Robin Liu" />
-    <meta name="date" content="2022-06-11" />
+    <meta name="date" content="2022-06-30" />
     <script src="libs/header-attrs-2.14/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
@@ -27,7 +27,7 @@ class: center, middle, inverse, title-slide
 ### UCSB
 ]
 .date[
-### 2022-06-11
+### 2022-06-30
 ]
 
 ---
@@ -99,23 +99,23 @@ plot(airquality$Wind, airquality$Ozone, main="Ozone and Wind in NYC, 1973",
 
 &lt;img src="Lec7_files/figure-html/unnamed-chunk-3-1.png" width="50%" height="50%" /&gt;
 ---
-# Simplifying with with
+# Adding a trendline
 
 ```r
-with(airquality,
-     plot(Wind, Ozone, main="Ozone and Wind in NYC, 1973",
-       xlab="Wind (mph)", ylab="Ozone (ppb)")
-)
+plot(airquality$Wind, airquality$Ozone, main="Ozone and Wind in NYC, 1973",
+     xlab="Wind (mph)", ylab="Ozone (ppb)")
+air_trend &lt;- lm(airquality$Ozone ~ airquality$Wind)
+abline(air_trend, col = "red")
 ```
 
 &lt;img src="Lec7_files/figure-html/unnamed-chunk-4-1.png" width="50%" height="50%" /&gt;
 ---
 # Your turn
-Create a scatter plot of Ozone vs. Solar Radiation.
+Create a scatter plot of Ozone vs. Solar Radiation with a trendline.
 Add a meaningful title and axis labels to the plot.
 
 ![](Lec7_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
-<div class="countdown" id="timer_62a552c3" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62bdd93f" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 ---
@@ -169,6 +169,7 @@ class(y ~ x)
 ```
 ## [1] "formula"
 ```
+
 ---
 # Building plots
 It is common to first create a plot and then layer stuff on top.
@@ -246,43 +247,34 @@ abline(lmout, lty=2, lwd=2) # adds a line "fitting" the points
 ![:scale 75%](Lec7_files/col.png)
 ]
 ---
-# Building Plots
-It is common for complex plots to start with an *empty* plot
-and layer stuff on top.
+# Building plots
+We see a negative trend with wind and ozone.
+.pull-left[
 
 ```r
-with(airquality, plot(Wind, Ozone, main = "Ozone and Wind in New York City", type = "n"))
+plot(airquality$Wind, airquality$Ozone)
 ```
 
-&lt;img src="Lec7_files/figure-html/unnamed-chunk-20-1.png" width="50%" height="50%" /&gt;
+![](Lec7_files/figure-html/unnamed-chunk-20-1.png)&lt;!-- --&gt;
+]
 
+--
+
+.pull-right[
+A flat screen can only show two variables.
+
+unless...? 😳
+
+We can add another dimension of information by employing
+*shape* and *color*.
+]
 ---
-# Building Plots
+# Layering Plots Demo 1
 It is common for complex plots to start with an *empty* plot
 and layer stuff on top.
-
-```r
-with(airquality, plot(Wind, Ozone, main = "Ozone and Wind in New York City", type = "n"))
-with(filter(airquality, Month != 5), points(Wind, Ozone, col="red", pch=19))
-```
-
-&lt;img src="Lec7_files/figure-html/unnamed-chunk-21-1.png" width="50%" height="50%" /&gt;
+&lt;img src="Lec7_files/figure-html/unnamed-chunk-21-1.png" style="display: block; margin: auto;" /&gt;
 ---
-# Building Plots
-It is common for complex plots to start with an *empty* plot
-and layer stuff on top.
-
-```r
-with(airquality, plot(Wind, Ozone, main = "Ozone and Wind in New York City", type = "n"))
-with(filter(airquality, Month != 5), points(Wind, Ozone, col="red", pch=19))
-with(filter(airquality, Month == 5), points(Wind, Ozone, col="blue", pch=17))
-```
-
-&lt;img src="Lec7_files/figure-html/unnamed-chunk-22-1.png" width="50%" height="50%" /&gt;
----
-# Building Plots
-It is common for complex plots to start with an *empty* plot
-and layer stuff on top.
+# Layering Plots Demo 1
 
 ```r
 with(airquality, plot(Wind, Ozone, main = "Ozone and Wind in New York City", type = "n"))
@@ -292,7 +284,14 @@ legend("topright", pch = c(17, 19), col = c("blue", "red"),
        legend = c("May", "Other Months"))
 ```
 
-&lt;img src="Lec7_files/figure-html/unnamed-chunk-23-1.png" width="44%" height="44%" /&gt;
+![](Lec7_files/figure-html/unnamed-chunk-22-1.png)&lt;!-- --&gt;
+
+
+---
+# Layering Plots Demo 2
+How does *temperature* relate to ozone and wind?
+![](Lec7_files/figure-html/unnamed-chunk-23-1.png)&lt;!-- --&gt;
+
 ---
 
 # Plotting functions
@@ -349,7 +348,7 @@ Remember to check out `?par`.
 ![](Lec7_files/figure-html/unnamed-chunk-28-1.png)&lt;!-- --&gt;
 
 
-<div class="countdown" id="timer_62a54fbd" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62bdd803" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">06</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
     </textarea>
