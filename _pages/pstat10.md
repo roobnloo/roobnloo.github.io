@@ -55,6 +55,20 @@ Assignments should be submitted on Gradescope.
 
 ***
 
+### Week 3
+<div class="grid">
+  {% include lecturegrid.html lecnum='8' descr='Simulation' %}
+  {% include lecturegrid.html lecnum='9' descr='Discrete RVs' %}
+  {% include lecturegrid.html lecnum='10' descr='Continuous RVs' %}
+</div>
+
+\\
+[Worksheet 5](/pstat10/assignments/ws5.pdf) \| Solutions\
+[Worksheet 6](/pstat10/assignments/ws6.pdf) \| Solutions\
+[Homework 3](/pstat10/assignments/hw3.pdf) \| Solutions
+
+***
+
 ### **Install R and RStudio**
 R version at least 4.1.0 is required for this class. I insist you install R 4.2.0.
 If you cannot install R or RStudio for whatever reason, RStudio Cloud is available.
