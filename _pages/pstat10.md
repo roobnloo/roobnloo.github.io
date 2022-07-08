@@ -51,7 +51,7 @@ Assignments should be submitted on Gradescope.
 \\
 [Worksheet 3](/pstat10/assignments/ws3.pdf) \| [Solutions](/pstat10/assignments/ws3_sol.html)\
 [Worksheet 4](/pstat10/assignments/ws4.pdf) \| [Solutions](/pstat10/assignments/ws4_sol.html)\
-[Homework 2](/pstat10/assignments/hw2.pdf) \| Solutions
+[Homework 2](/pstat10/assignments/hw2.pdf) \| [Solutions](/pstat10/assignments/hw2_sol.html)
 
 ***
 
