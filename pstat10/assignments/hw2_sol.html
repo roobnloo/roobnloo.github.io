@@ -432,22 +432,22 @@ that departed before 1030. Return only the columns <code>month</code>,
 <code>carrier</code>. How many flights fit these criteria?</p></li>
 </ol>
 <pre class="r"><code>flights |&gt;
-  filter(dest == &quot;LAX&quot;, carrier == &quot;AA&quot;, dep_time &lt; 1000) |&gt;
+  filter(dest == &quot;LAX&quot;, carrier == &quot;AA&quot;, dep_time &lt; 1030) |&gt;
   select(month, day, dep_time, dest, carrier)</code></pre>
-<pre><code>## # A tibble: 700 x 5
+<pre><code>## # A tibble: 977 x 5
 ##    month   day dep_time dest  carrier
 ##    &lt;int&gt; &lt;int&gt;    &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  
 ##  1     1     1      743 LAX   AA     
 ##  2     1     1      856 LAX   AA     
-##  3     1     2      732 LAX   AA     
-##  4     1     2      855 LAX   AA     
-##  5     1     3      730 LAX   AA     
-##  6     1     3      855 LAX   AA     
-##  7     1     4      728 LAX   AA     
-##  8     1     4      858 LAX   AA     
-##  9     1     5      851 LAX   AA     
-## 10     1     6      730 LAX   AA     
-## # ... with 690 more rows</code></pre>
+##  3     1     1     1026 LAX   AA     
+##  4     1     2      732 LAX   AA     
+##  5     1     2      855 LAX   AA     
+##  6     1     3      730 LAX   AA     
+##  7     1     3      855 LAX   AA     
+##  8     1     3     1024 LAX   AA     
+##  9     1     4      728 LAX   AA     
+## 10     1     4      858 LAX   AA     
+## # ... with 967 more rows</code></pre>
 <p><strong>We see 700 rows. Hence 700 flights fit these
 criteria</strong></p>
 <ol start="3" style="list-style-type: decimal">
