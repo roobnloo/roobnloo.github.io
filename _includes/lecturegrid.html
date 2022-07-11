@@ -13,13 +13,19 @@
             <p class="card-text">{{ include.descr }}</p>
             <div class="row ml-1 mr-1 p-0">
               {% capture demopath %}/pstat10/lectures/lec{{ include.lecnum }}_demo.html{% endcapture %}
+              {% assign ctr = 0 %}
               {%- for sf in site.static_files -%}
                 {%- if sf.path == demopath-%}
+                  {% assign ctr = ctr | plus: 1 %}
+                {%- endif %}
+              {%- endfor %}
+              {% if ctr == 0 %}
+                <p style="margin-bottom: 8px;"></p>
+              {% else %}
                 <div class="icon" data-toggle="tooltip" title="Demo code">
                   <a href="/pstat10/lectures/lec{{ include.lecnum }}_demo.html"><i class="fab fa-brands fa-r-project"></i></a>
                 </div>
-                {%- endif %}
-              {%- endfor %}
+              {% endif %}
             </div>
           </div>
         </div>
