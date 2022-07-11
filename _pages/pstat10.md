@@ -74,6 +74,9 @@ Assignments should be submitted on Gradescope.
   {% include lecturegrid.html lecnum='11' descr='Simulation Examples' %}
 </div>
 
+\\
+**Files:** [hibbs.dat](/pstat10/lectures/hibbs.dat)
+
 ***
 
 ### **Install R and RStudio**
