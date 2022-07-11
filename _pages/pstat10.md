@@ -75,7 +75,7 @@ Assignments should be submitted on Gradescope.
 </div>
 
 \\
-**Files:** [hibbs.dat](/pstat10/lectures/hibbs.dat)
+**Files:** [hibbs.dat](/pstat10/lectures/Lec11_files/hibbs.dat)
 
 ***
 
