@@ -71,10 +71,10 @@ Assignments should be submitted on Gradescope.
 
 ### Week 4
 <div class="grid">
-  {% include lecturegrid.html lecnum='11' descr='Simulation Examples' %}
-  {% include lecturegrid.html lecnum='12' descr='Relational Databases' %}
+  {% include lecturegrid.html lecnum='11' descr='More Simulation' %}
+  {% include lecturegrid.html lecnum='12' descr='Relational DBs' %}
   {% include lecturegrid.html lecnum='13' descr='SQL Queries' %}
-  {% include lecturegrid.html lecnum='14' descr='Aggregation and Joins' %}
+  {% include lecturegrid.html lecnum='14' descr='Aggregation/Joins' %}
 </div>
 
 \\
