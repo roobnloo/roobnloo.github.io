@@ -69,6 +69,13 @@ Assignments should be submitted on Gradescope.
 
 ***
 
+### Week 4
+<div class="grid">
+  {% include lecturegrid.html lecnum='11' descr='Simulation Examples' %}
+</div>
+
+***
+
 ### **Install R and RStudio**
 R version at least 4.1.0 is required for this class. I insist you install R 4.2.0.
 If you cannot install R or RStudio for whatever reason, RStudio Cloud is available.
