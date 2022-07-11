@@ -4,7 +4,7 @@
     <title>Lecture 11: Applications of Simulation</title>
     <meta charset="utf-8" />
     <meta name="author" content="Robin Liu" />
-    <meta name="date" content="2022-07-10" />
+    <meta name="date" content="2022-07-11" />
     <script src="libs/header-attrs-2.14/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
@@ -25,7 +25,7 @@ class: center, middle, inverse, title-slide
 ### UCSB
 ]
 .date[
-### 2022-07-10
+### 2022-07-11
 ]
 
 ---
@@ -141,14 +141,12 @@ This yields
 
 ```r
 set.seed(100)
-buffon &lt;- function() {
-  s &lt;- runif(1, 0, 1/2)
-  theta &lt;- runif(1, 0, pi)
-  s &lt; sin(theta) / 2
-}
 
 nrep &lt;- 1000
-r &lt;- replicate(nrep, buffon())
+s &lt;- runif(nrep, 0, 1/2)
+theta &lt;- runif(nrep, 0, pi)
+r &lt;- s &lt; sin(theta) / 2
+
 plot(1:nrep, cumsum(r)/1:nrep, type = "l")
 abline(h = 2/pi, col = "red")
 ```
