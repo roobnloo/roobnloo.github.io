@@ -4,7 +4,7 @@
     <title>Lecture 14: Aggregation and Joins</title>
     <meta charset="utf-8" />
     <meta name="author" content="Robin Liu" />
-    <meta name="date" content="2022-07-11" />
+    <meta name="date" content="2022-07-14" />
     <script src="libs/header-attrs-2.14/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
@@ -27,7 +27,7 @@ class: center, middle, inverse, title-slide
 ### UCSB
 ]
 .date[
-### 2022-07-11
+### 2022-07-14
 ]
 
 ---
@@ -242,12 +242,12 @@ dbGetQuery(chinook_db,
 
 ---
 # Aggregation
-Select the GenreId and size of the longest track in MB for each
+Select the GenreId and size of the largest track in MB for each
 Genre with GenreId between 1 and 10 inclusive:
 
 
 ```
-##    GenreId        MB
+##    GenreId LargestMB
 ## 1        1 50.058893
 ## 2        2 28.054029
 ## 3        3 24.763794
@@ -260,7 +260,7 @@ Genre with GenreId between 1 and 10 inclusive:
 ## 10      10 12.138298
 ```
 
-<div class="countdown" id="timer_62cc532d" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62d045e7" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -356,6 +356,32 @@ dbGetQuery(chinook_db, "select TrackId, Name, Track.AlbumId, Title from Track
 Why specify `Track.AlbumId`?
 Since both Track and Album tables have an AlbumId field,
 we need to clarify to SQL which table we mean.
+---
+# Joins
+In a single query, return the track id, track name, album id, mediatype id, and mediatype name
+of all tracks with AlbumId = 10.
+
+```
+##    TrackId                     Name AlbumId MediaTypeId            Name
+## 1       85                  Cochise      10           1 MPEG audio file
+## 2       86      Show Me How to Live      10           1 MPEG audio file
+## 3       87                 Gasoline      10           1 MPEG audio file
+## 4       88             What You Are      10           1 MPEG audio file
+## 5       89             Like a Stone      10           1 MPEG audio file
+## 6       90               Set It Off      10           1 MPEG audio file
+## 7       91        Shadow on the Sun      10           1 MPEG audio file
+## 8       92         I am the Highway      10           1 MPEG audio file
+## 9       93                 Exploder      10           1 MPEG audio file
+## 10      94                Hypnotize      10           1 MPEG audio file
+## 11      95      Bring'em Back Alive      10           1 MPEG audio file
+## 12      96             Light My Way      10           1 MPEG audio file
+## 13      97              Getaway Car      10           1 MPEG audio file
+## 14      98 The Last Remaining Light      10           1 MPEG audio file
+```
+<div class="countdown" id="timer_62d04317" style="right:0;bottom:0;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
 ---
 # A Three-way Join
 
@@ -460,12 +486,13 @@ Produce the following relation with a three-way join.
 ## 5    3182         Halloween     250 The Office, Season 2  TV Shows
 ```
 
-<div class="countdown" id="timer_62cc53c0" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62d04412" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 ---
 # Aggregation with Join
-Retrieve the average track size in MB for all tracks in each genre
+Retrieve the average track size in MB for all tracks in each genre,
+along with the name of the genre.
 
 ```
 ##     AvgSizeMB GenreId          GenreName
@@ -496,7 +523,7 @@ Retrieve the average track size in MB for all tracks in each genre
 ## 25   2.728909      25              Opera
 ```
 
-<div class="countdown" id="timer_62cc51a3" style="right:0;bottom:0;" data-warnwhen="0">
+<div class="countdown" id="timer_62d04272" style="right:0;bottom:0;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 ---
@@ -569,6 +596,8 @@ dbGetQuery(chinook_db, "select al.title, al.artistid, ar.artistid, ar.name
 ## 3                     Restless and Wild        2        2 Accept
 ```
 
+--
+
 However, these people are wrong. Always specify the join explicitly.
 
 ---
@@ -605,6 +634,8 @@ dbGetQuery(chinook_db, "select TrackId, Name, GenreId from track natural join ge
 ## [1] TrackId Name    GenreId
 ## &lt;0 rows&gt; (or 0-length row.names)
 ```
+
+--
 
 ### Opinion:
 **Avoid** natural joins. Don't be lazy; specify your keys explicitly.
@@ -649,6 +680,8 @@ dbGetQuery(chinook_db, "select c.CustomerId, FirstName, i.InvoiceId, i.InvoiceDa
 ## &lt;0 rows&gt; (or 0-length row.names)
 ```
 Empty as expected, since there are no invoices assigned to me.
+
+--
 
 However, we may want to see this customer anyway. This is done with a **left join**.
 
