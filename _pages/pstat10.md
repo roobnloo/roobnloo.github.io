@@ -79,8 +79,8 @@ Assignments should be submitted on Gradescope.
 
 \\
 **Files:** [hibbs.dat](/pstat10/lectures/Lec11_files/hibbs.dat) \| [Chinook_Sqlite.sqlite](/pstat10/lectures/Chinook_Sqlite.sqlite) \
-[Worksheet 7](/pstat10/assignments/ws7.pdf) \| Solutions\
-[Worksheet 8](/pstat10/assignments/ws8.pdf) \| Solutions\
+[Worksheet 7](/pstat10/assignments/ws7.pdf) \| [Solutions](/pstat10/assignments/ws7_sol.html)\
+[Worksheet 8](/pstat10/assignments/ws8.pdf) \| [Solutions](/pstat10/assignments/ws8_sol.html)\
 [Homework 4](/pstat10/assignments/hw4.pdf) \| Solutions
 
 ***
