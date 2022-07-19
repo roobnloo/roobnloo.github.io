@@ -88,7 +88,15 @@ Assignments should be submitted on Gradescope.
 ### Week 5
 <div class="grid">
   {% include lecturegrid.html lecnum='15' descr='More DBs' %}
+  {% include lecturegrid.html lecnum='16' descr='Intro ggplot' %}
+  {% include lecturegrid.html lecnum='17' descr='More ggplot' %}
+  {% include lecturegrid.html lecnum='18' descr='Tidy data' %}
 </div>
+
+\\
+[Worksheet 9](/pstat10/assignments/ws9.pdf) \| Solutions\
+[Worksheet 10](/pstat10/assignments/ws10.pdf) \| Solutions\
+[Homework 5](/pstat10/assignments/hw5.pdf) \| Solutions
 
 ***
 
