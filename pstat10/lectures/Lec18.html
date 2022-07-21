@@ -4,7 +4,7 @@
     <title>Lecture 18: Tidy Data</title>
     <meta charset="utf-8" />
     <meta name="author" content="Robin Liu" />
-    <meta name="date" content="2022-07-16" />
+    <meta name="date" content="2022-07-21" />
     <script src="libs/header-attrs-2.14/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
@@ -25,7 +25,7 @@ class: center, middle, inverse, title-slide
 ### UCSB
 ]
 .date[
-### 2022-07-16
+### 2022-07-21
 ]
 
 ---
@@ -182,6 +182,10 @@ Each row is a case. Each column is a variable.
 
 "a" and "b" are levels of the treatment variable.
 
+--
+
+Sometimes called *long format*.
+
 ---
 # Tidy Data
 .pull-left[
@@ -206,6 +210,7 @@ Each row is a case. Each column is a variable.
 
 --
 
+
 Tidy data is more amenable to data analysis, especially in R.
 
 "Untidy" data is more compact. It is not necessarily bad.
@@ -227,7 +232,11 @@ is called **data munging** or **data wrangling**.
 
 --
 
-Some say it comprises at least 90% of data science.
+Some say it comprises up to 90% of data science.
+
+---
+class: inverse, middle, center
+# Data Wrangling
 
 ---
 # Data Wrangling
@@ -631,7 +640,7 @@ Let's put them in a single column `key`.
 
 ---
 # Case Study
-We must look at the *data dictionary* or *codebook* to figure out the values.
+We must look at the [*data dictionary*](https://www.who.int/teams/global-tuberculosis-programme/data) or *codebook* to figure out the values.
 
 First three letters
 - `new` or `old` cases of TB. We only have new cases in this dataset.
@@ -779,6 +788,40 @@ Tidy :)
 
 
 &lt;img src="Lec18_files/figure-html/unnamed-chunk-34-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# Remarks
+Real data is a [mess](https://data.cityofnewyork.us/Health/DOHMH-Dog-Bite-Data/rsgh-akpg).
+
+--
+
+Work with as much *raw*, unclean data as possible.
+
+https://github.com/rfordatascience/tidytuesday
+
+--
+
+The `tidyverse` workflow from raw data to tidy data to `ggplot` is excellent.
+Underappreciated in the PSTAT department.
+
+https://www.tidyverse.org/
+
+--
+
+Amazingly, we haven't done any *statistics*.
+These visualization tools really shine when combined with statistical modeling.
+
+---
+# Remarks
+This concludes the main content of the course.
+
+--
+
+## Next week
+- Monday: Lecture on a special topic in advanced R.
+- Tuesday: Practice exam administered in class under time constraint.
+- Wednesday: Go over practice exam in section. **No lecture.**
+- Thursday: Final exam. Bring pencil and one sheet/two sides of notes.
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
