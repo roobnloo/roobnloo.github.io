@@ -100,6 +100,14 @@ Assignments should be submitted on Gradescope.
 
 ***
 
+### Final Week
+- **No lectures this week**. Office hours and sections are as usual.
+- A practice final will be administered during Tuesday's lecture. Use it to practice writing code with a pencil.
+- Go over practice final during Wednesday sections.
+- Thursday: Final exam during regular lecture time. One sheet/two sides of handwritten notes is allowed. Scratch paper will be provided.
+
+***
+
 ### **Install R and RStudio**
 R version at least 4.1.0 is required for this class. I insist you install R 4.2.0.
 If you cannot install R or RStudio for whatever reason, RStudio Cloud is available.
