@@ -101,10 +101,12 @@ Assignments should be submitted on Gradescope.
 ***
 
 ### Final Week
+[Practice exam](/pstat10/assignments/final_practice.pdf) \| [Solutions](/pstat10/assignments/final_practice_solutions.pdf) \| [tinyclothes DB](/pstat10/assignments/tc_clean.sqlite)
 - **No lectures this week**. Office hours and sections are as usual.
 - A practice final will be administered during Tuesday's lecture. Use it to practice writing code with a pencil.
 - Go over practice final during Wednesday sections.
 - Thursday: Final exam during regular lecture time. One sheet/two sides of handwritten notes is allowed. Scratch paper will be provided.
+
 
 ***
 
