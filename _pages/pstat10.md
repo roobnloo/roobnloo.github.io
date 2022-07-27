@@ -96,7 +96,7 @@ Assignments should be submitted on Gradescope.
 \\
 [Worksheet 9](/pstat10/assignments/ws9.pdf) \| [Solutions](/pstat10/assignments/ws9_sol.html)\
 [Worksheet 10](/pstat10/assignments/ws10.pdf) \| [Solutions](/pstat10/assignments/ws10_sol.html)\
-[Homework 5](/pstat10/assignments/hw5.pdf) \| Solutions
+[Homework 5](/pstat10/assignments/hw5.pdf) \| [Solutions](/pstat10/assignments/hw5_sol.html)
 
 ***
 
