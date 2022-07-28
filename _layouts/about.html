@@ -13,7 +13,7 @@ layout: default
 
         <article>
           {% if page.profile -%}
-          <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
+          <div class="profile">
             {%- if page.profile.image %}
               {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
 
@@ -33,6 +33,9 @@ layout: default
               {{ page.profile.address }}
             </div>
             {%- endif %}
+            <div class="photocred">
+              Photo credit: <a href="https://bexphotography.smugmug.com/">Bex Photography</a>
+            </div> 
           </div>
           {%- endif %}
 

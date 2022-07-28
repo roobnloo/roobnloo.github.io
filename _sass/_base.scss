@@ -104,6 +104,16 @@ blockquote {
       margin: 0;
     }
   }
+
+  .photocred {
+    margin-bottom: 2rem;
+    font-family: monospace;
+    font-size: 0.875rem;
+    p {
+      display: inline-block;
+      margin: 0;
+    }
+  }
 }
 .profile.float-right{
   margin-left: 1rem;
@@ -114,7 +124,7 @@ blockquote {
 
 @media (min-width: 576px) {
   .profile {
-    width: 30%;
+    width: 90%;
     .address {
       p { display: block; }
     }
