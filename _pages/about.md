@@ -5,10 +5,9 @@ permalink: /
 nav_order: 0
 
 profile:
-  align: right
-  image: me.jpg
-  image_circular: false # crops the image to make it circular
-  address: <i>Office</i> <p>South Hall 5431 P</p> <p>UCSB</p>
+  align: center
+  image_circular: false
+  image: 1Z9A0279.jpg
 
 news: false  # includes a list of news items
 latest_posts: false  # includes a list of the newest posts
