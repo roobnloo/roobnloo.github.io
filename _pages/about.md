@@ -7,7 +7,7 @@ nav_order: 0
 profile:
   align: center
   image_circular: false
-  image: 1Z9A0279.jpg
+  image: prof_pic.jpg
 
 news: false  # includes a list of news items
 latest_posts: false  # includes a list of the newest posts
