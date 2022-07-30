@@ -9,7 +9,7 @@ last_name: Liu
 email:
 description: Profile
 footer_text: >
-  r_liu['at']ucsb[dot]edu
+  Email: r_liu<span style="color:red">&#64;</span>ucsb<span style="color:red">&#8226;</span>edu
 
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: favicon.png
