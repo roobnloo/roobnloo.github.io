@@ -22,9 +22,10 @@ Assignments should be submitted on Gradescope.
 - **Jeff**: Monday 1:30pm - 3:30pm @ zoom link on Gauchospace
 - **Olivier**: Tuesday 1:45pm - 3:45pm @ Building 434 Room 113
 
-***
-
-### Week 1
+<h3 class="week">Week 1</h3>
+[Worksheet 1](/pstat10/assignments/ws1.pdf) \| [Solutions](/pstat10/assignments/ws1_sol.html) \|
+[Worksheet 2](/pstat10/assignments/ws2.pdf) \| [Solutions](/pstat10/assignments/ws2_sol.html) \|
+[Homework 1](/pstat10/assignments/hw1.pdf) \| [Solutions](/pstat10/assignments/hw1_sol.html)
 
 <div class="grid">
   {% include lecturegrid.html lecnum='1' descr='Introduction' %}
@@ -33,14 +34,12 @@ Assignments should be submitted on Gradescope.
 </div>
 
 \\
-**Notes:** [Worksheet files](/pstat10/assignments/week1_files.zip) \| [mtrush1.pgm](/pstat10/lectures/mtrush1.pgm) \| [Rushmore example](/pstat10/lectures/rushmore.html) \| [Why use seq?](/pstat10/lectures/why_use_seq.html) \
-[Worksheet 1](/pstat10/assignments/ws1.pdf) \| [Solutions](/pstat10/assignments/ws1_sol.html)\
-[Worksheet 2](/pstat10/assignments/ws2.pdf) \| [Solutions](/pstat10/assignments/ws2_sol.html)\
-[Homework 1](/pstat10/assignments/hw1.pdf) \| [Solutions](/pstat10/assignments/hw1_sol.html)
+**Notes:** [Worksheet files](/pstat10/assignments/week1_files.zip) \| [mtrush1.pgm](/pstat10/lectures/mtrush1.pgm) \| [Rushmore example](/pstat10/lectures/rushmore.html) \| [Why use seq?](/pstat10/lectures/why_use_seq.html)
 
-***
-
-### Week 2
+<h3 class="week">Week 2</h3>
+[Worksheet 3](/pstat10/assignments/ws3.pdf) \| [Solutions](/pstat10/assignments/ws3_sol.html) \|
+[Worksheet 4](/pstat10/assignments/ws4.pdf) \| [Solutions](/pstat10/assignments/ws4_sol.html) \|
+[Homework 2](/pstat10/assignments/hw2.pdf) \| [Solutions](/pstat10/assignments/hw2_sol.html)
 <div class="grid">
   {% include lecturegrid.html lecnum='4' descr='Problem Solving' %}
   {% include lecturegrid.html lecnum='5' descr='Data Frames/Tibbles' %}
@@ -48,28 +47,20 @@ Assignments should be submitted on Gradescope.
   {% include lecturegrid.html lecnum='7' descr='Base R Plots' %}
 </div>
 
-\\
-[Worksheet 3](/pstat10/assignments/ws3.pdf) \| [Solutions](/pstat10/assignments/ws3_sol.html)\
-[Worksheet 4](/pstat10/assignments/ws4.pdf) \| [Solutions](/pstat10/assignments/ws4_sol.html)\
-[Homework 2](/pstat10/assignments/hw2.pdf) \| [Solutions](/pstat10/assignments/hw2_sol.html)
-
-***
-
-### Week 3
+<h3 class="week">Week 3</h3>
+[Worksheet 5](/pstat10/assignments/ws5.pdf) \| [Solutions](/pstat10/assignments/ws5_sol.html) \|
+[Worksheet 6](/pstat10/assignments/ws6.pdf) \| [Solutions](/pstat10/assignments/ws6_sol.html) \|
+[Homework 3](/pstat10/assignments/hw3.pdf) \| [Solutions](/pstat10/assignments/hw3_sol.html)
 <div class="grid">
   {% include lecturegrid.html lecnum='8' descr='Simulation' %}
   {% include lecturegrid.html lecnum='9' descr='Discrete RVs' %}
   {% include lecturegrid.html lecnum='10' descr='Continuous RVs' %}
 </div>
 
-\\
-[Worksheet 5](/pstat10/assignments/ws5.pdf) \| [Solutions](/pstat10/assignments/ws5_sol.html)\
-[Worksheet 6](/pstat10/assignments/ws6.pdf) \| [Solutions](/pstat10/assignments/ws6_sol.html)\
-[Homework 3](/pstat10/assignments/hw3.pdf) \| [Solutions](/pstat10/assignments/hw3_sol.html)
-
-***
-
-### Week 4
+<h3 class="week">Week 4</h3>
+[Worksheet 7](/pstat10/assignments/ws7.pdf) \| [Solutions](/pstat10/assignments/ws7_sol.html) \|
+[Worksheet 8](/pstat10/assignments/ws8.pdf) \| [Solutions](/pstat10/assignments/ws8_sol.html) \|
+[Homework 4](/pstat10/assignments/hw4.pdf) \| [Solutions](/pstat10/assignments/hw4_sol.html)
 <div class="grid">
   {% include lecturegrid.html lecnum='11' descr='More Simulation' %}
   {% include lecturegrid.html lecnum='12' descr='Relational DBs' %}
@@ -78,14 +69,12 @@ Assignments should be submitted on Gradescope.
 </div>
 
 \\
-**Files:** [hibbs.dat](/pstat10/lectures/Lec11_files/hibbs.dat) \| [Chinook_Sqlite.sqlite](/pstat10/lectures/Chinook_Sqlite.sqlite) \
-[Worksheet 7](/pstat10/assignments/ws7.pdf) \| [Solutions](/pstat10/assignments/ws7_sol.html)\
-[Worksheet 8](/pstat10/assignments/ws8.pdf) \| [Solutions](/pstat10/assignments/ws8_sol.html)\
-[Homework 4](/pstat10/assignments/hw4.pdf) \| [Solutions](/pstat10/assignments/hw4_sol.html)
+**Files:** [hibbs.dat](/pstat10/lectures/Lec11_files/hibbs.dat) \| [Chinook_Sqlite.sqlite](/pstat10/lectures/Chinook_Sqlite.sqlite)
 
-***
-
-### Week 5
+<h3 class="week">Week 5</h3>
+[Worksheet 9](/pstat10/assignments/ws9.pdf) \| [Solutions](/pstat10/assignments/ws9_sol.html) \|
+[Worksheet 10](/pstat10/assignments/ws10.pdf) \| [Solutions](/pstat10/assignments/ws10_sol.html) \|
+[Homework 5](/pstat10/assignments/hw5.pdf) \| [Solutions](/pstat10/assignments/hw5_sol.html)
 <div class="grid">
   {% include lecturegrid.html lecnum='15' descr='More DBs' %}
   {% include lecturegrid.html lecnum='16' descr='Intro ggplot' %}
@@ -93,23 +82,17 @@ Assignments should be submitted on Gradescope.
   {% include lecturegrid.html lecnum='18' descr='Tidy data' %}
 </div>
 
-\\
-[Worksheet 9](/pstat10/assignments/ws9.pdf) \| [Solutions](/pstat10/assignments/ws9_sol.html)\
-[Worksheet 10](/pstat10/assignments/ws10.pdf) \| [Solutions](/pstat10/assignments/ws10_sol.html)\
-[Homework 5](/pstat10/assignments/hw5.pdf) \| [Solutions](/pstat10/assignments/hw5_sol.html)
+<h3 class="week">Final Week</h3>
+[Practice exam](/pstat10/assignments/final_practice.pdf) \| [Solutions](/pstat10/assignments/final_practice_solutions.pdf) \| [tinyclothes DB](/pstat10/assignments/tc_clean.sqlite)\
+[Final exam](/pstat10/assignments/final.pdf) \| [Solutions](/pstat10/assignments/final_solutions.pdf)
 
-***
+[Grade distribution](/pstat10/assignments/grades.html)
 
-### Final Week
 - **No lectures this week**. Office hours and sections are as usual.
 - A practice final will be administered during Tuesday's lecture. Use it to practice writing code with a pencil.
 - Go over practice final during Wednesday sections.
 - Thursday: Final exam during regular lecture time. One sheet/two sides of handwritten notes is allowed. Scratch paper will be provided.
 
-[Practice exam](/pstat10/assignments/final_practice.pdf) \| [Solutions](/pstat10/assignments/final_practice_solutions.pdf) \| [tinyclothes DB](/pstat10/assignments/tc_clean.sqlite)\
-[Final exam](/pstat10/assignments/final.pdf) \| [Solutions](/pstat10/assignments/final_solutions.pdf)
-
-[Grade distribution](/pstat10/assignments/grades.html)
 
 ***
 
