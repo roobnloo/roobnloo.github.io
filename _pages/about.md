@@ -14,7 +14,11 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: false  # includes social icons at the bottom of the page
 ---
 
-I am a second year PhD student at UC Santa Barbara in the department of [Statistics and Applied Probability](https://www.pstat.ucsb.edu/){:target="\_blank"}. Please check back when there's more stuff to show here :)
+I am a third year PhD student at UC Santa Barbara in the department of [Statistics and Applied Probability](https://www.pstat.ucsb.edu/){:target="\_blank"}.
+
+Before joining UCSB in Fall 2020, I worked as a software developer in financial services
+where I encountered optimization problems for econometric data.
+Before that, I got my Bachelor's degrees from the University of Michigan where I double-majored in computer science and honors mathematics ([295-396 series](https://lsa.umich.edu/math/undergraduates/undergraduate-math-courses/200-level-math-courses.html)).
 
 My legal name is spelled with a "u" as in "Ruobin", but it is still pronounced "Robin".
 

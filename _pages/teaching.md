@@ -11,6 +11,8 @@ nav_order: 2
 
 
 **Teaching Assistant**
+- PSTAT 134. Statistical Data Science
+  - Fall 2022
 - PSTAT 120B. Probability and Statistics II
   - Spring 2022
 - PSTAT 10. Principles of Data Science with R (head TA)
