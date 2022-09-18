@@ -2,7 +2,7 @@
 layout: page
 title: CMA-ES
 description: Comparing the performance of two blackbox or "derivative-free" optimization methods.
-img: assets/img/cmaes/michalewicz_compare.png
+img: assets/img/cmaes/cmaescard.png
 importance: 1
 category: work
 github: https://github.com/roobnloo/blackboxopt
