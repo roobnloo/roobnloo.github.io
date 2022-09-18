@@ -7,14 +7,14 @@ importance: 2
 category: work
 ---
 
-<iframe height="780" width="100%" frameborder="no" src="https://50o9d1-robin-liu.shinyapps.io/vizlasso/"> </iframe>
+<iframe height="780" width="100%" frameborder="no" src=" https://roobnloo.shinyapps.io/vizlasso/"> </iframe>
 
-Let $$\mathbf{Y} \in \mathbb{R}^n$$ be a response vector and $$\mathbf{X}\in \mathbb{R}^{n\times p}$$
+Let $$\mathbf{y} \in \mathbb{R}^n$$ be a response vector and $$\mathbf{X}\in \mathbb{R}^{n\times p}$$
 the observed data matrix. LASSO regression looks for the minimizer $$\hat\beta\in\mathbb{R}^p$$
 of the following penalized objective function:
 
 $$
-L(\beta) = \frac{1}{2n}\lVert \mathbf{Y} - \mathbf{X}\beta\rVert_2^2 + \lambda \lVert\beta\rVert_1
+L(\beta) = \frac{1}{2n}\lVert \mathbf{y} - \mathbf{X}\beta\rVert_2^2 + \lambda \lVert\beta\rVert_1
 $$
 
 where $$\lVert\beta\rVert_1 = \sum_{i=1}^p \lvert\beta_i\rvert$$ is the $$\ell_1$$ penalty.
