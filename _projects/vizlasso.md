@@ -13,7 +13,7 @@ $$
 Q(\beta) = \frac{1}{2}\beta^2 + (\operatorname{sign}(\beta)\lambda - y)\beta.
 $$
 
-The minimizer of $$Q$$ has a closed form given by the *soft-threshodling operator* $$S(y, \lambda)$$:
+The minimizer of $$Q$$ has a closed form given by the *soft-thresholding operator* $$S(y, \lambda)$$:
 
 $$
 \hat\beta = S(y,\lambda) = \operatorname{sign}(y)(y-\lambda)_+
@@ -44,10 +44,10 @@ $$
 Since the final term does not contain $$\beta$$, it suffices to solve
 
 $$
-\hat\beta = \operatorname*{argmin}_{\beta \in \mathbb{R}} \frac{1}{2}\beta^2 + (\operatorname{sign}(\beta)\lambda - y)\beta.
+\hat\beta = \operatorname*{argmin}_{\beta \in \mathbb{R}} \frac{1}{2}\beta^2 + (\operatorname{sign}(\beta)\lambda - y)\beta = \operatorname*{argmin}_{\beta \in \mathbb{R}} Q(\beta).
 $$
 
 
 The relationship between $$\hat\beta$$ and the soft-thresholding operator is visualized above.
-By adjusting the value of $$\lambda$$, you can see the soft-thresholding operator shrinks the minimizer towards zero.
+By adjusting the value of $$\lambda$$, you can see the soft-thresholding operator shrinks the minimizer towards zero by the amount $$\lambda$$.
 
