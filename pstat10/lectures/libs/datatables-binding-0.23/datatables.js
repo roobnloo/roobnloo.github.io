@@ -1,1 +1,1511 @@
-!function(){function e(){l||(l=!0,$.fn.dataTable.ext.afnFiltering.push(function(e,t,n){var r=e.nTable.ctfilter;if(r&&!r[n])return!1;var a=e.nTable.ctselect;return!(a&&!a[n])}))}var t={},n=function(e,t,n,r,a,l){if(x=l?e.toPrecision(t):e.toFixed(t),!/^-?[\d.]+$/.test(x))return x;var i=x.split(".");return i.length>2?x:(i[0]=i[0].replace(new RegExp("\\B(?=(\\d{"+n+"})+(?!\\d))","g"),r),i.join(a))};t.formatCurrency=function(e,t,r,a,l,i,o,s){var c=parseFloat(e);if(isNaN(c))return"";if(null!==s&&0===c)return s;var d=n(c,r,a,l,i);return d=o?/^-/.test(d)?"-"+t+d.replace(/^-/,""):t+d:d+t},t.formatString=function(e,t,n){return null===e?"":t+e+n},t.formatPercentage=function(e,t,r,a,l,i){var o=parseFloat(e);return isNaN(o)?"":null!==i&&0===o?i:n(100*o,t,r,a,l)+"%"},t.formatRound=function(e,t,r,a,l,i){var o=parseFloat(e);return isNaN(o)?"":null!==i&&0===o?i:n(o,t,r,a,l)},t.formatSignif=function(e,t,r,a,l,i){var o=parseFloat(e);return isNaN(o)?"":null!==i&&0===o?i:n(o,t,r,a,l,!0)},t.formatDate=function(e,t,n){var r=e;return null===r?"":("toDateString"!==t&&"toLocaleDateString"!==t||!/^\d{4,}\D\d{2}\D\d{2}$/.test(r)?r=new Date(r):(r=r.split(/\D/),r=new Date(r[0],r[1]-1,r[2])),r[t].apply(r,n))},window.DTWidget=t;var r=function(e,t){var n=$(e).find("input").first(),r=n.data("searchable");n.prop("disabled",!r||t.disabled);var a=e.getAttribute("data-type");if(["factor","logical"].includes(a)){var l=t.params.options.map(function(e){return{text:e,value:e}}),i=$(e).find(".selectized").eq(0)[0].selectize,o=i.getValue();i.clearOptions(),i.addOption(l),i.setValue(o)}else if(["number","integer","date","time"].includes(a)){var s=$(e).find(".noUi-target").eq(0),c=Math.pow(10,Math.max(0,+s.data("scale")||0)),d=(l=[t.params.min*c,t.params.max*c]).slice(),u=(o=s.val().map(Number),s.noUiSlider("options").range);u=[u.min,u.max],o[0]!=u[0]&&(l[0]=Math.max(o[0],l[0])),o[1]!=u[1]&&(l[1]=Math.min(o[1],l[1])),s.noUiSlider({start:l,range:{min:d[0],max:d[1]}},!0)}},a=function(e){return 0===e.length?e:HTMLWidgets.transposeArray2D(e)},l=!1;HTMLWidgets.widget({name:"datatables",type:"output",renderOnNullValue:!0,initialize:function(e){return $.valHooks.number={get:function(e){return 1*e.value}},$(e).html("&nbsp;"),{data:null,ctfilterHandle:new crosstalk.FilterHandle,ctfilterSubscription:null,ctselectHandle:new crosstalk.SelectionHandle,ctselectSubscription:null}},renderValue:function(t,n,l){if(0!==t.offsetWidth&&0!==t.offsetHeight){l.data=null;var i=$(t);if(i.empty(),null!==n){var o=n.crosstalkOptions;o||(o={key:null,group:null}),o.group&&(e(),l.ctfilterHandle.setGroup(o.group),l.ctselectHandle.setGroup(o.group)),window.HTMLWidgets.viewerMode&&(n.hasOwnProperty("fillContainer")||(n.fillContainer=!0),n.hasOwnProperty("autoHideNavigation")||(n.autoHideNavigation=!0)),l.fillContainer=n.fillContainer;var s=n.data;s instanceof Array&&(s=a(s)),i.append(n.container);var c,d=i.find("table");switch(n["class"]&&d.addClass(n["class"]),n.caption&&d.prepend(n.caption),n.selection||(n.selection={mode:"none",selected:null,target:"row",selectable:null}),HTMLWidgets.shinyMode&&"none"!==n.selection.mode&&"row+column"===n.selection.target&&0===d.children("tfoot").length&&(d.append($("<tfoot>")),d.find("thead tr").clone().appendTo(d.find("tfoot"))),n.filter){case"top":d.children("thead").append(n.filterHTML),c=d.find("thead tr:last td");break;case"bottom":0===d.children("tfoot").length&&d.append($("<tfoot>")),d.children("tfoot").prepend(n.filterHTML),c=d.find("tfoot tr:first td")}var u={searchDelay:1e3};null!==s&&$.extend(u,{data:s});var f="undefined"!=typeof $.fn.popover;l.fillContainer&&(u.scrollX=!0,u.scrollY="100px",!1===n.options.paging&&(f&&(u.dom="<'row'<'col-sm-4'i><'col-sm-8'f>><'row'<'col-sm-12'tr>>"),u.fnInfoCallback=function(e,t,n,r,a){return Number(a).toLocaleString()+" records"})),!0===n.autoHideNavigation&&!1!==n.options.paging&&(s instanceof Array&&n.options.pageLength>=s.length?u.dom=f?"<'row'<'col-sm-12'tr>>":"t":f&&window.FlexDashboard&&window.FlexDashboard.isMobilePhone()&&(u.dom="<'row'<'col-sm-12'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-12'p>>")),$.extend(!0,u,n.options||{});var h=u.searchCols;h&&(h=h.map(function(e){return null===e?"":e.search}),delete u.searchCols);var p=!0===u.serverSide,v=[],g=[];p&&HTMLWidgets.shinyMode&&"object"==typeof u.ajax&&/^session\/[\da-z]+\/dataobj/.test(u.ajax.url)&&!u.ajax.dataSrc&&(u.ajax.dataSrc=function(e){v=$.makeArray(e.DT_rows_all),g=$.makeArray(e.DT_rows_current);var t=e.data;if(!w())return t;var n,r,a,l=d.DataTable().colReorder.order(),i=!0;for(n=0;n<l.length;++n)l[n]!==n&&(i=!1);if(i)return t;for(n=0;n<t.length;++n)for(a=t[n].slice(),r=0;r<l.length;++r)t[n][r]=a[l[r]];return t});var m=this;l.fillContainer&&d.on("init.dt",function(){m.fillAvailableHeight(t,$(t).innerHeight())});var w=function(){return"colReorder"in u},b=d.DataTable(u);if(i.data("datatable",b),l.ctfilterSubscription&&(l.ctfilterHandle.off("change",l.ctfilterSubscription),l.ctfilterSubscription=null),l.ctselectSubscription&&(l.ctselectHandle.off("change",l.ctselectSubscription),l.ctselectSubscription=null),o.group){var y=o.key;function x(e){if(e){for(var t={},n=0;n<e.length;n++)t[e[n]]=!0;for(var r={},a=0;a<y.length;a++)t[y[a]]&&(r[a]=!0);return r}return null}function C(e){d[0].ctfilter=x(e.value),b.draw()}function k(e){if(e.sender!==l.ctselectHandle&&(b.rows("."+V,{search:"applied"}).nodes().to$().removeClass(V),X&&D("rows_selected",X(),void 0,!0)),e.sender!==l.ctselectHandle&&e.value&&e.value.length){var t=x(e.value);if(!0===(crosstalk["var"]("plotlyCrosstalkOpts").get()||{}).persistent)t=$.extend(t,d[0].ctselect);d[0].ctselect=t,b.draw()}else d[0].ctselect&&(d[0].ctselect=null,b.draw())}l.ctfilterSubscription=l.ctfilterHandle.on("change",C),C({value:l.ctfilterHandle.filteredKeys}),l.ctselectSubscription=l.ctselectHandle.on("change",k),k({value:l.ctselectHandle.value})}else d[0].ctfilter=null,d[0].ctselect=null;var H=function(e,t){return $.inArray(e,$.makeArray(t))>-1},S=function(e,t){var n=!1,r=!0;return u.search&&(n=u.search.regex,r=!1!==u.search.caseInsensitive),b.column(e).search(t,n,!n,r)};"none"!==n.filter&&c.each(function(e,r){var a,l,i=$(r),o=i.data("type"),s=i.children("div").first().children("input"),c=s.prop("disabled"),d=b.settings()[0].aoColumns[e].bSearchable;s.prop("disabled",!d||c),s.data("searchable",d),s.on("input blur",function(){s.next("span").toggle(Boolean(s.val()))}),s.next("span").css("pointer-events","auto").hide().click(function(){$(this).hide().prev("input").val("").trigger("input").focus()}),h&&h[e]&&(l=h[e],s.val(l).trigger("input"));var f=i.children("div").last(),v=$(t).find(".dataTables_scrollHead,.dataTables_scrollFoot"),g=v.css("overflow"),m=$(t).find(".dataTables_scrollBody"),y=m.css("overflow"),x=$(t).find(".dataTables_scroll"),C=x.css("overflow");if("hidden"===g&&(f.on("show hide",function(e){"show"===e.type?(v.css("overflow","visible"),m.css("overflow","visible"),x.css("overflow-x","scroll")):(v.css("overflow",g),m.css("overflow",y),x.css("overflow-x",C))}),f.css("z-index",25)),H(o,["factor","logical"])){s.on({click:function(){s.parent().hide(),f.show().trigger("show"),a[0].selectize.focus()},input:function(){""===s.val()&&a[0].selectize.setValue([])}});var k=f.children("select");a=k.selectize({options:k.data("options").map(function(e){return{text:e,value:e}}),plugins:["remove_button"],hideSelected:!0,onChange:function(t){null===t&&(t=[]),s.val(t.length?JSON.stringify(t):""),t.length&&s.trigger("input"),s.attr("title",s.val()),p?b.column(e).search(t.length?JSON.stringify(t):"").draw():(i.data("filter",t.length>0),b.draw())}}),l&&a[0].selectize.setValue(JSON.parse(l)),a[0].selectize.on("blur",function(){f.hide().trigger("hide"),s.parent().show(),s.trigger("blur")}),a.next("div").css("margin-bottom","auto")}else if("character"===o){var _=function(){S(e,s.val()).draw()};p&&(_=$.fn.dataTable.util.throttle(_,u.searchDelay)),s.on("input",_)}else if(H(o,["number","integer","date","time"])){var T=f;f=T.children("div").first(),T.css({"background-color":"#fff",border:"1px #ddd solid","border-radius":"4px",padding:n.vertical?"35px 20px":"20px 20px 10px 20px"});var M=T.children("span").css({"margin-top":n.vertical?"0":"10px","white-space":"nowrap"}),D=M.first(),A=M.last(),N=+f.data("min"),W=+f.data("max"),F=Math.pow(10,Math.max(0,+f.data("scale")||0));N=Math.round(N*F),W=Math.round(W*F);var O=function(e,t){if(1===t)return e;var n=Math.round(Math.log(t)/Math.log(10));return(e/t).toFixed(n)},I=function(){return a.noUiSlider("options").range.min},L=function(){return a.noUiSlider("options").range.max};s.on({focus:function(){T.show().trigger("show"),T.width(Math.max(160,D.outerWidth()+A.outerWidth()+20)),(T.outerWidth()<s.outerWidth()||n.vertical)&&T.outerWidth(s.outerWidth()),$(window).width()<T.offset().left+T.width()&&T.offset({left:s.offset().left+s.outerWidth()-T.outerWidth()})},blur:function(){T.hide().trigger("hide")},input:function(){""===s.val()&&a.val([I(),L()])},change:function(){var e=s.val().replace(/\s/g,"");if(""!==e)if(2===(e=e.split("...")).length){""===e[0]&&(e[0]=I()),""===e[1]&&(e[1]=L()),s.parent().removeClass("has-error");var t=function(e){var t=new Date(e+("date"===o?"T00:00:00Z":"")).getTime();return"date"===o?t+36e5:t};H(o,["date","time"])&&(e[0]=t(e[0]),e[1]=t(e[1])),e[0]!=I()&&(e[0]*=F),e[1]!=L()&&(e[1]*=F),a.val(e)}else s.parent().addClass("has-error")}});var z=function(t,r){if(t=O(t,F),"number"===o)return t;if("integer"===o)return parseInt(t);var a=new Date(+t),l="filterDateFmt"in n?n.filterDateFmt[e]:undefined;if(l!==undefined&&!1===r)return a[l.method].apply(a,l.params);if("date"===o){var i=function(e){return("0"+e).substr(-2,2)};return a.getUTCFullYear()+"-"+i(1+a.getUTCMonth())+"-"+i(a.getUTCDate())}return a.toISOString()},j="date"===o?{step:36e5}:"integer"===o?{step:1}:{};j.orientation=n.vertical?"vertical":"horizontal",j.direction=n.vertical?"rtl":"ltr",a=f.noUiSlider($.extend({start:[N,W],range:{min:N,max:W},connect:!0},j)),F>1&&function(){for(var e=N,t=W,n=a.val();n[0]>N||n[1]<W;)n[0]>N&&(e-=n[0]-N),n[1]<W&&(t+=W-n[1]),n=(a=f.noUiSlider($.extend({start:[e,t],range:{min:e,max:t},connect:!0},j),!0)).val();N=e,W=t}();var R=function(e,t){D.text(z(e,!1)),A.text(z(t,!1))};R(N,W);var U=function(t){var n=a.val();i.data("filter",n[0]>I()||n[1]<L());var r,l=z(n[0]),o=z(n[1]);i.data("filter")?(r=l+" ... "+o,s.attr("title",r).val(r).trigger("input")):s.attr("title","").val(""),R(n[0],n[1]),"slide"!==t.type&&(p?b.column(e).search(i.data("filter")?r:"").draw():b.draw())};a.on({set:U,slide:U})}if(p)l&&S(e,l).draw();else{var V=function(t,n){if(b.settings()[0]!==t)return!0;if(void 0===a||!i.data("filter"))return!0;var r,l,s,c=a.val();if(r=n[function(e){if(!w())return e;var t,n=b.colReorder.order();for(t=0;t<n.length;++t)if(n[t]===e)return t;return e}(e)],"number"===o||"integer"===o){if(r=parseFloat(r),isNaN(r))return!1;if(l=parseFloat(O(c[0],F)),s=parseFloat(O(c[1],F)),r>=l&&r<=s)return!0}else if("date"===o||"time"===o){if(r=new Date(r),l=new Date(c[0]/F),s=new Date(c[1]/F),r>=l&&r<=s)return!0}else if("factor"===o){if(0===c.length||H(r,c))return!0}else if("logical"===o){if(0===c.length)return!0;if(H(""===r?"na":r,c))return!0}return!1};$.fn.dataTable.ext.search.push(V),l&&(H(o,["factor","logical"])?a[0].selectize.setValue(JSON.parse(l)):"character"===o?s.trigger("input"):H(o,["number","integer","date","time"])&&s.trigger("change"))}});var _=function(){var e=$(b.table().body());e.unhighlight(),0!==b.rows({filter:"applied"}).data().length&&(e.highlight($.trim(b.search()).split(/\s+/)),c&&c.each(function(e,t){var n=$(t),r=n.data("type");if("character"===r){var a=n.children("div").first().children("input"),l=b.column(e).nodes().to$(),i=$.trim(a.val());"character"===r&&""!==i&&l.highlight(i.split(/\s+/))}}))};if(u.searchHighlight&&(b.on("draw.dt.dth column-visibility.dt.dth column-reorder.dt.dth",_).on("destroy",function(){b.off("draw.dt.dth column-visibility.dt.dth column-reorder.dt.dth")}),jQuery.fn.highlight.options.escapeRegex=!u.search||!u.search.regex,_()),"function"==typeof n.callback&&n.callback(b),n.editable&&b.on("dblclick.dt","tbody td",function(e){if(e.target===this){var t=[],r=!1;switch(n.editable.target){case"cell":t=[this],r=!0;break;case"row":t=b.cells(b.cell(this).index().row,"*").nodes();break;case"column":t=b.cells("*",b.cell(this).index().column).nodes();break;case"all":t=b.cells().nodes();break;default:throw'The editable parameter must be "cell", "row", "column", or "all"'}for(var a=n.editable.disable?n.editable.disable.columns:null,l=n.editable.numeric,i=n.editable.area,o=0;o<t.length;o++)!function(e,n){var o,s=$(e),c=s.html(),d=b.cell(e),u=d.data(),f=d.index().column;o=H(f,l)?$('<input type="number">'):H(f,i)?$("<textarea></textarea>"):$('<input type="text">'),r||(s.data("input",o).data("html",c),o.attr("title","Hit Ctrl+Enter to finish editing, or Esc to cancel")),o.val(u),H(f,a)&&o.attr("readonly","").css("filter","invert(25%)"),s.empty().append(o),e===n&&o.focus(),o.css("width","100%"),r&&o.on("blur",function(){var t=o.val();t!=u?(d.data(t),HTMLWidgets.shinyMode&&D("cell_edit",[ue(e)],"DT.cellInfo",null,{priority:"event"}),p||b.draw(!1)):s.html(c)}).on("keyup",function(e){27===e.keyCode&&o.trigger("blur")}),r||o.on("keyup",function(e){var n=function(e,t){e.data("input").remove(),t&&e.html(e.data("html"))};if(27===e.keyCode)for(var r=0;r<t.length;r++)n($(t[r]),!0);else if(13===e.keyCode&&e.ctrlKey){var a,l,i=[];for(r=0;r<t.length;r++)a=t[r],l=$(a),b.cell(a).data(l.data("input").val()),HTMLWidgets.shinyMode&&i.push(ue(a)),n(l,!1);HTMLWidgets.shinyMode&&D("cell_edit",i,"DT.cellInfo",null,{priority:"event"}),p||b.draw(!1)}})}(t[o],this)}}),HTMLWidgets.shinyMode||o.group){var T={},M={};T.updateCaption=function(e){e&&d.children("caption").replaceWith(e)},l.clearInputs={};var D=function(e,n,r,a,i){var s=e;if(e=t.id+"_"+e,r&&(e=e+":"+r),("cell_edit"===s||/_clicked$/.test(s)||!M.hasOwnProperty(e)||M[e]!==JSON.stringify(n))&&(M[e]=JSON.stringify(n),HTMLWidgets.shinyMode&&Shiny.setInputValue&&(Shiny.setInputValue(e,n,i),l.clearInputs[e]||(l.clearInputs[e]=function(){Shiny.setInputValue(e,null)})),"rows_selected"===s&&!a&&o.group)){var c=o.key,d=null;if(n){d=[];for(var u=0;u<n.length;u++)d.push(c[n[u]-1])}l.ctselectHandle.set(d)}},A=function(e){return e.map(function(e){return 1+e})},N=function(e){var t=[];return $.each(e,function(e,n){-1===$.inArray(n,t)&&t.push(n)}),t},W=function(e){var t=e.index();return t===undefined?{row:null,col:null}:(p?t.row=g[t.row]:t.row+=1,{row:t.row,col:t.column})};(function(){D("rows_selected",[]),D("columns_selected",[]),D("cells_selected",a([]),"shiny.matrix")})();var F=b.settings()[0]._select!==undefined;if("none"===n.selection.mode&&!p&&F){var O=function(){var e=b.rows({selected:!0}),t=[];$.each(e.indexes().toArray(),function(e,n){t.push(n+1)}),D("rows_selected",t)},I=function(){var e=b.columns({selected:!0});D("columns_selected",e.indexes().toArray())},L=function(){var e=b.cells({selected:!0}),t=[];e.every(function(){var e=this.index().row,n=this.index().column;t=t.concat([[e+1,n]])}),D("cells_selected",a(t),"shiny.matrix")};b.on("select deselect",function(){O(),I(),L()})}var z=n.selection.mode,j=n.selection.target,R=!1===n.selection.selectable;if(H(z,["single","multiple"])){var U,V=H(n.style,["bootstrap","bootstrap4"])?"active":"selected",P=function(e){return null===e||"boolean"==typeof e||"cell"===j?{rows:[],cols:[]}:"row"===j?{rows:$.makeArray(e),cols:[]}:"column"===j?{rows:[],cols:$.makeArray(e)}:"row+column"===j?{rows:$.makeArray(e.rows),cols:$.makeArray(e.cols)}:void 0},J=n.selection.selected,B=P(J).rows,E=P(J).cols,K=n.selection.selectable,q=P(K).rows,G=P(K).cols,Y=function(e,t){var n=p?v:b.rows({search:"applied"}).indexes().toArray();if((e=n.indexOf(e))>(t=n.indexOf(t))){var r=t;t=e,e=r}return n.slice(e,t+1)},Q=function(e){return p?g[e]:e+1};if(H(j,["row","row+column"])){var X=function(){var e=b.rows("."+V).indexes().toArray();return p?(e=e.map(function(e){return g[e]}),B="multiple"===z?N(B.concat(e)):e):B=A(e)},Z=function(){if(R)B=[];else if(0!==q.length){var e=q[0]<=0;B=e?$(B).not(q.map(function(e){return-e})).get():$(B).filter(q).get()}},ee=function(e){if(e||Z(),b.$("tr."+V).removeClass(V),0!==B.length)if(p)b.rows({page:"current"}).every(function(){H(g[this.index()],B)&&$(this.node()).addClass(V)});else{var t=B.map(function(e){return e-1});$(b.rows(t).nodes()).addClass(V)}};b.on("mousedown.dt","tbody tr",function(e){var t=$(this),n=b.row(this);if("multiple"===z)if(e.shiftKey&&U!==undefined){var r=!t.hasClass(V),a=Q(n.index());if(p){var l=Y(U,a);l.map(function(e){var t=g.indexOf(e);if(t>=0){var n=b.row(t).nodes().to$(),a=!n.hasClass(V);r===a&&n.toggleClass(V)}}),B=r?N(B.concat(l)):B.filter(function(e){return!H(e,l)})}else Y(U-1,a-1).map(function(e){var t=b.row(e).nodes().to$(),n=!t.hasClass(V);r===n&&t.toggleClass(V)});e.preventDefault()}else t.toggleClass(V);else t.hasClass(V)?t.removeClass(V):(b.$("tr."+V).removeClass(V),t.addClass(V));if(p&&!t.hasClass(V)){var i=g[n.index()];H(i,B)&&B.splice($.inArray(i,B),1)}X(),ee(!1),D("rows_selected",B),D("row_last_clicked",Q(n.index()),null,null,{priority:"event"}),U=Q(n.index())}),ee(!1),D("rows_selected",B),p&&b.on("draw.dt",function(){ee(!1)}),T.selectRows=function(e,t){B=$.makeArray(e),ee(t),D("rows_selected",B)}}if(H(j,["column","row+column"])){"row+column"===j&&$(b.columns().footer()).css("cursor","pointer");var te=function(){if(R)E=[];else if(0!==G.length){var e=G[0]<=0;E=e?$(E).not(G.map(function(e){return-e})).get():$(E).filter(G).get()}},ne=function(e){e||te(),E=$(E).filter(b.columns().indexes()).get(),b.columns().nodes().flatten().to$().removeClass(V),E.length>0&&b.columns(E).nodes().flatten().to$().addClass(V)},re=function(){var e="column"===j?b.cell(this).index().column:$.inArray(this,b.columns().footer()),t=$(b.column(e).nodes());-1!==e&&(t.hasClass(V)?(t.removeClass(V),E.splice($.inArray(e,E),1)):("single"===z&&$(b.cells().nodes()).removeClass(V),t.addClass(V),E="single"===z?[e]:N(E.concat([e]))),ne(!1),D("columns_selected",E))};"column"===j?$(b.table().body()).on("click.dt","td",re):$(b.table().footer()).on("click.dt","tr th",re),ne(!1),D("columns_selected",E),p&&b.on("draw.dt",function(){ne(!1)}),T.selectColumns=function(e,t){E=$.makeArray(e),ne(t),D("columns_selected",E)}}if("cell"===j){var ae=[],le=[];null!==J&&(ae=J),null!==K&&"boolean"!=typeof K&&(le=K);var ie=function(e,t){for(var n=0;n<t.length;n++)if(e[0]===t[n][0]&&e[1]===t[n][1])return n;return-1},oe=function(){if(R)ae=[];else if(0!==le.length){var e=le[0][0]<=0,t=[];e?ae.map(function(e){-1===ie([-e[0],-e[1]],le)&&t.push(e)}):ae.map(function(e){ie(e,le)>-1&&t.push(e)}),ae=t}},se=function(e){e||oe(),b.$("td."+V).removeClass(V),0!==ae.length&&(p?b.cells({page:"current"}).every(function(){var e=W(this);ie([e.row,e.col],ae)>-1&&$(this.node()).addClass(V)}):ae.map(function(e){$(b.cell(e[0]-1,e[1]).node()).addClass(V)}))};b.on("click.dt","tbody td",function(){var e=$(this),t=W(b.cell(this));e.hasClass(V)?(e.removeClass(V),ae.splice(ie([t.row,t.col],ae),1)):("single"===z&&$(b.cells().nodes()).removeClass(V),e.addClass(V),ae="single"===z?[[t.row,t.col]]:N(ae.concat([[t.row,t.col]]))),se(!1),D("cells_selected",a(ae),"shiny.matrix")}),se(!1),D("cells_selected",a(ae),"shiny.matrix"),p&&b.on("draw.dt",function(){se(!1)}),T.selectCells=function(e,t){ae=e||[],se(t),D("cells_selected",a(ae),"shiny.matrix")}}}var ce=function(){var e=function(e,t){var n;if(p)n="current"===t.page?g:v;else{var r=b.rows($.extend({search:"applied",page:"all"},t));n=A(r.indexes().toArray())}D("rows_"+e,n)};e("current",{page:"current"}),e("all",{})};b.on("draw.dt",ce),ce(),b.on("draw.dt column-visibility.dt",function(){D("state",b.state())}),D("state",b.state());var de=function(){D("search",b.search()),c&&D("search_columns",c.toArray().map(function(e){return $(e).find("input").first().val()}))};b.on("draw.dt",de),de();var ue=function(e){var t=W(b.cell(e));return t.value=b.cell(e).data(),t};b.on("click.dt","tbody td",function(){D("cell_clicked",ue(this),null,null,{priority:"event"})}),D("cell_clicked",{}),b.on("click.dt","tbody td a",function(e){""===this.className&&e.stopPropagation()}),T.addRow=function(e,t,n){var r=b.columns().indexes().length,a=r-e.length;if(1===a)e=t.concat(e);else if(0!==a)throw console.log(e),console.log(b.columns().indexes()),"New data must be of the same length as current data ("+r+")";b.row.add(e).draw(n)},T.updateSearch=function(e){null!==e.global&&$(b.table().container()).find("input[type=search]").first().val(e.global).trigger("input");var t=e.columns;c&&null!==t&&(c.toArray().map(function(e,n){var r="string"==typeof t?t:t[n];void 0!==r?($(e).find("input").first().val(r),S(n,r)):console.log("The search keyword for column "+n+" is undefined")}),b.draw())},T.hideCols=function(e,t){t&&b.columns().visible(!0,!1),b.columns(e).visible(!1)},T.showCols=function(e,t){t&&b.columns().visible(!1,!1),b.columns(e).visible(!0)},T.colReorder=function(e,t){b.colReorder.order(e,t)},T.selectPage=function(e){if(b.page.info().pages<e||e<1)throw"Selected page is out of range";b.page(e-1).draw(!1)},T.reloadData=function(e,t){T.selectRows&&H("row",t)&&T.selectRows([]),T.selectColumns&&H("column",t)&&T.selectColumns([]),T.selectCells&&H("cell",t)&&T.selectCells([]),b.ajax.reload(null,e)},T.updateFilters=function(e){c.each(function(t,n){var a=t;if(c.length>e.length){if(0===t)return;a=t-1}e[a]&&r(n,e[a])})},b.shinyMethods=T}}else{for(var fe in i.append("&nbsp;"),l.clearInputs)l.clearInputs[fe]();l.clearInputs={}}}else l.data=n},resize:function(e,t,n,r){r.data&&this.renderValue(e,r.data,r),r.fillContainer&&this.fillAvailableHeight(e,n),this.adjustWidth(e)},fillAvailableHeight:function(e,t){var n=$(e).find("div.dataTables_wrapper"),r=$(e).find($("div.dataTables_scrollBody")),a=t-(n.innerHeight()-r.innerHeight());r.css("max-height","none"),r.height(a+"px")},adjustWidth:function(e){var t=$(e),n=t.data("datatable");n&&n.columns.adjust(),t.find(".dataTables_scrollHeadInner").css("width","").children("table").css("margin-left","")}}),HTMLWidgets.shinyMode&&Shiny.addCustomMessageHandler("datatable-calls",function(e){var t=e.id,n=document.getElementById(t),r=n?$(n).data("datatable"):null;if(r){var a=r.shinyMethods,l=e.call;a[l.method]?a[l.method].apply(r,l.args):console.log("Unknown method "+l.method)}else console.log("Couldn't find table with id "+t)})}();
+(function() {
+
+// some helper functions: using a global object DTWidget so that it can be used
+// in JS() code, e.g. datatable(options = list(foo = JS('code'))); unlike R's
+// dynamic scoping, when 'code' is eval()'ed, JavaScript does not know objects
+// from the "parent frame", e.g. JS('DTWidget') will not work unless it was made
+// a global object
+var DTWidget = {};
+
+// 123456666.7890 -> 123,456,666.7890
+var markInterval = function(d, digits, interval, mark, decMark, precision) {
+  x = precision ? d.toPrecision(digits) : d.toFixed(digits);
+  if (!/^-?[\d.]+$/.test(x)) return x;
+  var xv = x.split('.');
+  if (xv.length > 2) return x;  // should have at most one decimal point
+  xv[0] = xv[0].replace(new RegExp('\\B(?=(\\d{' + interval + '})+(?!\\d))', 'g'), mark);
+  return xv.join(decMark);
+};
+
+DTWidget.formatCurrency = function(data, currency, digits, interval, mark, decMark, before, zeroPrint) {
+  var d = parseFloat(data);
+  if (isNaN(d)) return '';
+  if (zeroPrint !== null && d === 0.0) return zeroPrint;
+  var res = markInterval(d, digits, interval, mark, decMark);
+  res = before ? (/^-/.test(res) ? '-' + currency + res.replace(/^-/, '') : currency + res) :
+    res + currency;
+  return res;
+};
+
+DTWidget.formatString = function(data, prefix, suffix) {
+  var d = data;
+  if (d === null) return '';
+  return prefix + d + suffix;
+};
+
+DTWidget.formatPercentage = function(data, digits, interval, mark, decMark, zeroPrint) {
+  var d = parseFloat(data);
+  if (isNaN(d)) return '';
+  if (zeroPrint !== null && d === 0.0) return zeroPrint;
+  return markInterval(d * 100, digits, interval, mark, decMark) + '%';
+};
+
+DTWidget.formatRound = function(data, digits, interval, mark, decMark, zeroPrint) {
+  var d = parseFloat(data);
+  if (isNaN(d)) return '';
+  if (zeroPrint !== null && d === 0.0) return zeroPrint;
+  return markInterval(d, digits, interval, mark, decMark);
+};
+
+DTWidget.formatSignif = function(data, digits, interval, mark, decMark, zeroPrint) {
+  var d = parseFloat(data);
+  if (isNaN(d)) return '';
+  if (zeroPrint !== null && d === 0.0) return zeroPrint;
+  return markInterval(d, digits, interval, mark, decMark, true);
+};
+
+DTWidget.formatDate = function(data, method, params) {
+  var d = data;
+  if (d === null) return '';
+  // (new Date('2015-10-28')).toDateString() may return 2015-10-27 because the
+  // actual time created could be like 'Tue Oct 27 2015 19:00:00 GMT-0500 (CDT)',
+  // i.e. the date-only string is treated as UTC time instead of local time
+  if ((method === 'toDateString' || method === 'toLocaleDateString') && /^\d{4,}\D\d{2}\D\d{2}$/.test(d)) {
+    d = d.split(/\D/);
+    d = new Date(d[0], d[1] - 1, d[2]);
+  } else {
+    d = new Date(d);
+  }
+  return d[method].apply(d, params);
+};
+
+window.DTWidget = DTWidget;
+
+// A helper function to update the properties of existing filters
+var setFilterProps = function(td, props) {
+  // Update enabled/disabled state
+  var $input = $(td).find('input').first();
+  var searchable = $input.data('searchable');
+  $input.prop('disabled', !searchable || props.disabled);
+
+  // Based on the filter type, set its new values
+  var type = td.getAttribute('data-type');
+  if (['factor', 'logical'].includes(type)) {
+    // Reformat the new dropdown options for use with selectize
+    var new_vals = props.params.options.map(function(item) {
+      return { text: item, value: item };
+    });
+
+    // Find the selectize object
+    var dropdown = $(td).find('.selectized').eq(0)[0].selectize;
+
+    // Note the current values
+    var old_vals = dropdown.getValue();
+
+    // Remove the existing values
+    dropdown.clearOptions();
+
+    // Add the new options
+    dropdown.addOption(new_vals);
+
+    // Preserve the existing values
+    dropdown.setValue(old_vals);
+
+  } else if (['number', 'integer', 'date', 'time'].includes(type)) {
+    // Apply internal scaling to new limits. Updating scale not yet implemented.
+    var slider = $(td).find('.noUi-target').eq(0);
+    var scale = Math.pow(10, Math.max(0, +slider.data('scale') || 0));
+    var new_vals = [props.params.min * scale, props.params.max * scale];
+
+    // Note what the new limits will be just for this filter
+    var new_lims = new_vals.slice();
+
+    // Determine the current values and limits
+    var old_vals = slider.val().map(Number);
+    var old_lims = slider.noUiSlider('options').range;
+    old_lims = [old_lims.min, old_lims.max];
+
+    // Preserve the current values if filters have been applied; otherwise, apply no filtering
+    if (old_vals[0] != old_lims[0]) {
+      new_vals[0] = Math.max(old_vals[0], new_vals[0]);
+    }
+
+    if (old_vals[1] != old_lims[1]) {
+      new_vals[1] = Math.min(old_vals[1], new_vals[1]);
+    }
+
+    // Update the endpoints of the slider
+    slider.noUiSlider({
+      start: new_vals,
+      range: {'min': new_lims[0], 'max': new_lims[1]}
+    }, true);
+  }
+};
+
+var transposeArray2D = function(a) {
+  return a.length === 0 ? a : HTMLWidgets.transposeArray2D(a);
+};
+
+var crosstalkPluginsInstalled = false;
+
+function maybeInstallCrosstalkPlugins() {
+  if (crosstalkPluginsInstalled)
+    return;
+  crosstalkPluginsInstalled = true;
+
+  $.fn.dataTable.ext.afnFiltering.push(
+    function(oSettings, aData, iDataIndex) {
+      var ctfilter = oSettings.nTable.ctfilter;
+      if (ctfilter && !ctfilter[iDataIndex])
+        return false;
+
+      var ctselect = oSettings.nTable.ctselect;
+      if (ctselect && !ctselect[iDataIndex])
+        return false;
+
+      return true;
+    }
+  );
+}
+
+HTMLWidgets.widget({
+  name: "datatables",
+  type: "output",
+  renderOnNullValue: true,
+  initialize: function(el, width, height) {
+    // in order that the type=number inputs return a number
+    $.valHooks.number = {
+      get: function(el) {
+        return el.value * 1;
+      }
+    };
+    $(el).html('&nbsp;');
+    return {
+      data: null,
+      ctfilterHandle: new crosstalk.FilterHandle(),
+      ctfilterSubscription: null,
+      ctselectHandle: new crosstalk.SelectionHandle(),
+      ctselectSubscription: null
+    };
+  },
+  renderValue: function(el, data, instance) {
+    if (el.offsetWidth === 0 || el.offsetHeight === 0) {
+      instance.data = data;
+      return;
+    }
+    instance.data = null;
+    var $el = $(el);
+    $el.empty();
+
+    if (data === null) {
+      $el.append('&nbsp;');
+      // clear previous Shiny inputs (if any)
+      for (var i in instance.clearInputs) instance.clearInputs[i]();
+      instance.clearInputs = {};
+      return;
+    }
+
+    var crosstalkOptions = data.crosstalkOptions;
+    if (!crosstalkOptions) crosstalkOptions = {
+      'key': null, 'group': null
+    };
+    if (crosstalkOptions.group) {
+      maybeInstallCrosstalkPlugins();
+      instance.ctfilterHandle.setGroup(crosstalkOptions.group);
+      instance.ctselectHandle.setGroup(crosstalkOptions.group);
+    }
+
+    // if we are in the viewer then we always want to fillContainer and
+    // and autoHideNavigation (unless the user has explicitly set these)
+    if (window.HTMLWidgets.viewerMode) {
+      if (!data.hasOwnProperty("fillContainer"))
+        data.fillContainer = true;
+      if (!data.hasOwnProperty("autoHideNavigation"))
+        data.autoHideNavigation = true;
+    }
+
+    // propagate fillContainer to instance (so we have it in resize)
+    instance.fillContainer = data.fillContainer;
+
+    var cells = data.data;
+
+    if (cells instanceof Array) cells = transposeArray2D(cells);
+
+    $el.append(data.container);
+    var $table = $el.find('table');
+    if (data.class) $table.addClass(data.class);
+    if (data.caption) $table.prepend(data.caption);
+
+    if (!data.selection) data.selection = {
+      mode: 'none', selected: null, target: 'row', selectable: null
+    };
+    if (HTMLWidgets.shinyMode && data.selection.mode !== 'none' &&
+        data.selection.target === 'row+column') {
+      if ($table.children('tfoot').length === 0) {
+        $table.append($('<tfoot>'));
+        $table.find('thead tr').clone().appendTo($table.find('tfoot'));
+      }
+    }
+
+    // column filters
+    var filterRow;
+    switch (data.filter) {
+      case 'top':
+        $table.children('thead').append(data.filterHTML);
+        filterRow = $table.find('thead tr:last td');
+        break;
+      case 'bottom':
+        if ($table.children('tfoot').length === 0) {
+          $table.append($('<tfoot>'));
+        }
+        $table.children('tfoot').prepend(data.filterHTML);
+        filterRow = $table.find('tfoot tr:first td');
+        break;
+    }
+
+    var options = { searchDelay: 1000 };
+    if (cells !== null) $.extend(options, {
+      data: cells
+    });
+
+    // options for fillContainer
+    var bootstrapActive = typeof($.fn.popover) != 'undefined';
+    if (instance.fillContainer) {
+
+      // force scrollX/scrollY and turn off autoWidth
+      options.scrollX = true;
+      options.scrollY = "100px"; // can be any value, we'll adjust below
+
+      // if we aren't paginating then move around the info/filter controls
+      // to save space at the bottom and rephrase the info callback
+      if (data.options.paging === false) {
+
+        // we know how to do this cleanly for bootstrap, not so much
+        // for other themes/layouts
+        if (bootstrapActive) {
+          options.dom = "<'row'<'col-sm-4'i><'col-sm-8'f>>" +
+                        "<'row'<'col-sm-12'tr>>";
+        }
+
+        options.fnInfoCallback = function(oSettings, iStart, iEnd,
+                                           iMax, iTotal, sPre) {
+          return Number(iTotal).toLocaleString() + " records";
+        };
+      }
+    }
+
+    // auto hide navigation if requested
+    // Note, this only works on client-side processing mode as on server-side,
+    // cells (data.data) is null; In addition, we require the pageLength option
+    // being provided explicitly to enable this. Despite we may be able to deduce
+    // the default value of pageLength, it may complicate things so we'd rather
+    // put this responsiblity to users and warn them on the R side.
+    if (data.autoHideNavigation === true && data.options.paging !== false) {
+      // strip all nav if length >= cells
+      if ((cells instanceof Array) && data.options.pageLength >= cells.length)
+        options.dom = bootstrapActive ? "<'row'<'col-sm-12'tr>>" : "t";
+      // alternatively lean things out for flexdashboard mobile portrait
+      else if (bootstrapActive && window.FlexDashboard && window.FlexDashboard.isMobilePhone())
+        options.dom = "<'row'<'col-sm-12'f>>" +
+                      "<'row'<'col-sm-12'tr>>"  +
+                      "<'row'<'col-sm-12'p>>";
+    }
+
+    $.extend(true, options, data.options || {});
+
+    var searchCols = options.searchCols;
+    if (searchCols) {
+      searchCols = searchCols.map(function(x) {
+        return x === null ? '' : x.search;
+      });
+      // FIXME: this means I don't respect the escapeRegex setting
+      delete options.searchCols;
+    }
+
+    // server-side processing?
+    var server = options.serverSide === true;
+
+    // use the dataSrc function to pre-process JSON data returned from R
+    var DT_rows_all = [], DT_rows_current = [];
+    if (server && HTMLWidgets.shinyMode && typeof options.ajax === 'object' &&
+        /^session\/[\da-z]+\/dataobj/.test(options.ajax.url) && !options.ajax.dataSrc) {
+      options.ajax.dataSrc = function(json) {
+        DT_rows_all = $.makeArray(json.DT_rows_all);
+        DT_rows_current = $.makeArray(json.DT_rows_current);
+        var data = json.data;
+        if (!colReorderEnabled()) return data;
+        var table = $table.DataTable(), order = table.colReorder.order(), flag = true, i, j, row;
+        for (i = 0; i < order.length; ++i) if (order[i] !== i) flag = false;
+        if (flag) return data;
+        for (i = 0; i < data.length; ++i) {
+          row = data[i].slice();
+          for (j = 0; j < order.length; ++j) data[i][j] = row[order[j]];
+        }
+        return data;
+      };
+    }
+
+    var thiz = this;
+    if (instance.fillContainer) $table.on('init.dt', function(e) {
+      thiz.fillAvailableHeight(el, $(el).innerHeight());
+    });
+    // If the page contains serveral datatables and one of which enables colReorder,
+    // the table.colReorder.order() function will exist but throws error when called.
+    // So it seems like the only way to know if colReorder is enabled or not is to
+    // check the options.
+    var colReorderEnabled = function() { return "colReorder" in options; };
+    var table = $table.DataTable(options);
+    $el.data('datatable', table);
+
+    // Unregister previous Crosstalk event subscriptions, if they exist
+    if (instance.ctfilterSubscription) {
+      instance.ctfilterHandle.off("change", instance.ctfilterSubscription);
+      instance.ctfilterSubscription = null;
+    }
+    if (instance.ctselectSubscription) {
+      instance.ctselectHandle.off("change", instance.ctselectSubscription);
+      instance.ctselectSubscription = null;
+    }
+
+    if (!crosstalkOptions.group) {
+      $table[0].ctfilter = null;
+      $table[0].ctselect = null;
+    } else {
+      var key = crosstalkOptions.key;
+      function keysToMatches(keys) {
+        if (!keys) {
+          return null;
+        } else {
+          var selectedKeys = {};
+          for (var i = 0; i < keys.length; i++) {
+            selectedKeys[keys[i]] = true;
+          }
+          var matches = {};
+          for (var j = 0; j < key.length; j++) {
+            if (selectedKeys[key[j]])
+              matches[j] = true;
+          }
+          return matches;
+        }
+      }
+
+      function applyCrosstalkFilter(e) {
+        $table[0].ctfilter = keysToMatches(e.value);
+        table.draw();
+      }
+      instance.ctfilterSubscription = instance.ctfilterHandle.on("change", applyCrosstalkFilter);
+      applyCrosstalkFilter({value: instance.ctfilterHandle.filteredKeys});
+
+      function applyCrosstalkSelection(e) {
+        if (e.sender !== instance.ctselectHandle) {
+          table
+            .rows('.' + selClass, {search: 'applied'})
+            .nodes()
+            .to$()
+            .removeClass(selClass);
+          if (selectedRows)
+            changeInput('rows_selected', selectedRows(), void 0, true);
+        }
+
+        if (e.sender !== instance.ctselectHandle && e.value && e.value.length) {
+          var matches = keysToMatches(e.value);
+
+          // persistent selection with plotly (& leaflet)
+          var ctOpts = crosstalk.var("plotlyCrosstalkOpts").get() || {};
+          if (ctOpts.persistent === true) {
+            var matches = $.extend(matches, $table[0].ctselect);
+          }
+
+          $table[0].ctselect = matches;
+          table.draw();
+        } else {
+          if ($table[0].ctselect) {
+            $table[0].ctselect = null;
+            table.draw();
+          }
+        }
+      }
+      instance.ctselectSubscription = instance.ctselectHandle.on("change", applyCrosstalkSelection);
+      // TODO: This next line doesn't seem to work when renderDataTable is used
+      applyCrosstalkSelection({value: instance.ctselectHandle.value});
+    }
+
+    var inArray = function(val, array) {
+      return $.inArray(val, $.makeArray(array)) > -1;
+    };
+
+    // search the i-th column
+    var searchColumn = function(i, value) {
+      var regex = false, ci = true;
+      if (options.search) {
+        regex = options.search.regex,
+        ci = options.search.caseInsensitive !== false;
+      }
+      return table.column(i).search(value, regex, !regex, ci);
+    };
+
+    if (data.filter !== 'none') {
+
+      filterRow.each(function(i, td) {
+
+        var $td = $(td), type = $td.data('type'), filter;
+        var $input = $td.children('div').first().children('input');
+        var disabled = $input.prop('disabled');
+        var searchable = table.settings()[0].aoColumns[i].bSearchable;
+        $input.prop('disabled', !searchable || disabled);
+        $input.data('searchable', searchable); // for updating later
+        $input.on('input blur', function() {
+          $input.next('span').toggle(Boolean($input.val()));
+        });
+        // Bootstrap sets pointer-events to none and we won't be able to click
+        // the clear button
+        $input.next('span').css('pointer-events', 'auto').hide().click(function() {
+          $(this).hide().prev('input').val('').trigger('input').focus();
+        });
+        var searchCol;  // search string for this column
+        if (searchCols && searchCols[i]) {
+          searchCol = searchCols[i];
+          $input.val(searchCol).trigger('input');
+        }
+        var $x = $td.children('div').last();
+
+        // remove the overflow: hidden attribute of the scrollHead
+        // (otherwise the scrolling table body obscures the filters)
+        // The workaround and the discussion from
+        // https://github.com/rstudio/DT/issues/554#issuecomment-518007347
+        // Otherwise the filter selection will not be anchored to the values
+        // when the columns number is many and scrollX is enabled.
+        var scrollHead = $(el).find('.dataTables_scrollHead,.dataTables_scrollFoot');
+        var cssOverflowHead = scrollHead.css('overflow');
+        var scrollBody = $(el).find('.dataTables_scrollBody');
+        var cssOverflowBody = scrollBody.css('overflow');
+        var scrollTable = $(el).find('.dataTables_scroll');
+        var cssOverflowTable = scrollTable.css('overflow');
+        if (cssOverflowHead === 'hidden') {
+          $x.on('show hide', function(e) {
+            if (e.type === 'show') {
+              scrollHead.css('overflow', 'visible');
+              scrollBody.css('overflow', 'visible');
+              scrollTable.css('overflow-x', 'scroll');
+            } else {
+              scrollHead.css('overflow', cssOverflowHead);
+              scrollBody.css('overflow', cssOverflowBody);
+              scrollTable.css('overflow-x', cssOverflowTable);
+            }
+          });
+          $x.css('z-index', 25);
+        }
+
+        if (inArray(type, ['factor', 'logical'])) {
+          $input.on({
+            click: function() {
+              $input.parent().hide(); $x.show().trigger('show'); filter[0].selectize.focus();
+            },
+            input: function() {
+              if ($input.val() === '') filter[0].selectize.setValue([]);
+            }
+          });
+          var $input2 = $x.children('select');
+          filter = $input2.selectize({
+            options: $input2.data('options').map(function(v, i) {
+              return ({text: v, value: v});
+            }),
+            plugins: ['remove_button'],
+            hideSelected: true,
+            onChange: function(value) {
+              if (value === null) value = []; // compatibility with jQuery 3.0
+              $input.val(value.length ? JSON.stringify(value) : '');
+              if (value.length) $input.trigger('input');
+              $input.attr('title', $input.val());
+              if (server) {
+                table.column(i).search(value.length ? JSON.stringify(value) : '').draw();
+                return;
+              }
+              // turn off filter if nothing selected
+              $td.data('filter', value.length > 0);
+              table.draw();  // redraw table, and filters will be applied
+            }
+          });
+          if (searchCol) filter[0].selectize.setValue(JSON.parse(searchCol));
+          filter[0].selectize.on('blur', function() {
+            $x.hide().trigger('hide'); $input.parent().show(); $input.trigger('blur');
+          });
+          filter.next('div').css('margin-bottom', 'auto');
+        } else if (type === 'character') {
+          var fun = function() {
+            searchColumn(i, $input.val()).draw();
+          };
+          if (server) {
+            fun = $.fn.dataTable.util.throttle(fun, options.searchDelay);
+          }
+          $input.on('input', fun);
+        } else if (inArray(type, ['number', 'integer', 'date', 'time'])) {
+          var $x0 = $x;
+          $x = $x0.children('div').first();
+          $x0.css({
+            'background-color': '#fff',
+            'border': '1px #ddd solid',
+            'border-radius': '4px',
+            'padding': data.vertical ? '35px 20px': '20px 20px 10px 20px'
+          });
+          var $spans = $x0.children('span').css({
+            'margin-top': data.vertical ? '0' : '10px',
+            'white-space': 'nowrap'
+          });
+          var $span1 = $spans.first(), $span2 = $spans.last();
+          var r1 = +$x.data('min'), r2 = +$x.data('max');
+          // when the numbers are too small or have many decimal places, the
+          // slider may have numeric precision problems (#150)
+          var scale = Math.pow(10, Math.max(0, +$x.data('scale') || 0));
+          r1 = Math.round(r1 * scale); r2 = Math.round(r2 * scale);
+          var scaleBack = function(x, scale) {
+            if (scale === 1) return x;
+            var d = Math.round(Math.log(scale) / Math.log(10));
+            // to avoid problems like 3.423/100 -> 0.034230000000000003
+            return (x / scale).toFixed(d);
+          };
+          var slider_min = function() {
+            return filter.noUiSlider('options').range.min;
+          };
+          var slider_max = function() {
+            return filter.noUiSlider('options').range.max;
+          };
+          $input.on({
+            focus: function() {
+              $x0.show().trigger('show');
+              // first, make sure the slider div leaves at least 20px between
+              // the two (slider value) span's
+              $x0.width(Math.max(160, $span1.outerWidth() + $span2.outerWidth() + 20));
+              // then, if the input is really wide or slider is vertical,
+              // make the slider the same width as the input
+              if ($x0.outerWidth() < $input.outerWidth() || data.vertical) {
+                $x0.outerWidth($input.outerWidth());
+              }
+              // make sure the slider div does not reach beyond the right margin
+              if ($(window).width() < $x0.offset().left + $x0.width()) {
+                $x0.offset({
+                  'left': $input.offset().left + $input.outerWidth() - $x0.outerWidth()
+                });
+              }
+            },
+            blur: function() {
+              $x0.hide().trigger('hide');
+            },
+            input: function() {
+              if ($input.val() === '') filter.val([slider_min(), slider_max()]);
+            },
+            change: function() {
+              var v = $input.val().replace(/\s/g, '');
+              if (v === '') return;
+              v = v.split('...');
+              if (v.length !== 2) {
+                $input.parent().addClass('has-error');
+                return;
+              }
+              if (v[0] === '') v[0] = slider_min();
+              if (v[1] === '') v[1] = slider_max();
+              $input.parent().removeClass('has-error');
+              // treat date as UTC time at midnight
+              var strTime = function(x) {
+                var s = type === 'date' ? 'T00:00:00Z' : '';
+                var t = new Date(x + s).getTime();
+                // add 10 minutes to date since it does not hurt the date, and
+                // it helps avoid the tricky floating point arithmetic problems,
+                // e.g. sometimes the date may be a few milliseconds earlier
+                // than the midnight due to precision problems in noUiSlider
+                return type === 'date' ? t + 3600000 : t;
+              };
+              if (inArray(type, ['date', 'time'])) {
+                v[0] = strTime(v[0]);
+                v[1] = strTime(v[1]);
+              }
+              if (v[0] != slider_min()) v[0] *= scale;
+              if (v[1] != slider_max()) v[1] *= scale;
+              filter.val(v);
+            }
+          });
+          var formatDate = function(d, isoFmt) {
+            d = scaleBack(d, scale);
+            if (type === 'number') return d;
+            if (type === 'integer') return parseInt(d);
+            var x = new Date(+d);
+            var fmt = ('filterDateFmt' in data) ? data.filterDateFmt[i] : undefined;
+            if (fmt !== undefined && isoFmt === false) return x[fmt.method].apply(x, fmt.params);
+            if (type === 'date') {
+              var pad0 = function(x) {
+                return ('0' + x).substr(-2, 2);
+              };
+              return x.getUTCFullYear() + '-' + pad0(1 + x.getUTCMonth())
+                      + '-' + pad0(x.getUTCDate());
+            } else {
+              return x.toISOString();
+            }
+          };
+          var opts = type === 'date' ? { step: 60 * 60 * 1000 } :
+                     type === 'integer' ? { step: 1 } : {};
+
+          opts.orientation = data.vertical ? 'vertical': 'horizontal';
+          opts.direction = data.vertical ? 'rtl': 'ltr';
+
+          filter = $x.noUiSlider($.extend({
+            start: [r1, r2],
+            range: {min: r1, max: r2},
+            connect: true
+          }, opts));
+          if (scale > 1) (function() {
+            var t1 = r1, t2 = r2;
+            var val = filter.val();
+            while (val[0] > r1 || val[1] < r2) {
+              if (val[0] > r1) {
+                t1 -= val[0] - r1;
+              }
+              if (val[1] < r2) {
+                t2 += r2 - val[1];
+              }
+              filter = $x.noUiSlider($.extend({
+                start: [t1, t2],
+                range: {min: t1, max: t2},
+                connect: true
+              }, opts), true);
+              val = filter.val();
+            }
+            r1  = t1; r2 = t2;
+          })();
+          var updateSliderText = function(v1, v2) {
+            $span1.text(formatDate(v1, false)); $span2.text(formatDate(v2, false));
+          };
+          updateSliderText(r1, r2);
+          var updateSlider = function(e) {
+            var val = filter.val();
+            // turn off filter if in full range
+            $td.data('filter', val[0] > slider_min() || val[1] < slider_max());
+            var v1 = formatDate(val[0]), v2 = formatDate(val[1]), ival;
+            if ($td.data('filter')) {
+              ival = v1 + ' ... ' + v2;
+              $input.attr('title', ival).val(ival).trigger('input');
+            } else {
+              $input.attr('title', '').val('');
+            }
+            updateSliderText(val[0], val[1]);
+            if (e.type === 'slide') return;  // no searching when sliding only
+            if (server) {
+              table.column(i).search($td.data('filter') ? ival : '').draw();
+              return;
+            }
+            table.draw();
+          };
+          filter.on({
+            set: updateSlider,
+            slide: updateSlider
+          });
+        }
+
+        // server-side processing will be handled by R (or whatever server
+        // language you use); the following code is only needed for client-side
+        // processing
+        if (server) {
+          // if a search string has been pre-set, search now
+          if (searchCol) searchColumn(i, searchCol).draw();
+          return;
+        }
+
+        var customFilter = function(settings, data, dataIndex) {
+          // there is no way to attach a search function to a specific table,
+          // and we need to make sure a global search function is not applied to
+          // all tables (i.e. a range filter in a previous table should not be
+          // applied to the current table); we use the settings object to
+          // determine if we want to perform searching on the current table,
+          // since settings.sTableId will be different to different tables
+          if (table.settings()[0] !== settings) return true;
+          // no filter on this column or no need to filter this column
+          if (typeof filter === 'undefined' || !$td.data('filter')) return true;
+
+          var r = filter.val(), v, r0, r1;
+          var i_data = function(i) {
+            if (!colReorderEnabled()) return i;
+            var order = table.colReorder.order(), k;
+            for (k = 0; k < order.length; ++k) if (order[k] === i) return k;
+            return i; // in theory it will never be here...
+          }
+          v = data[i_data(i)];
+          if (type === 'number' || type === 'integer') {
+            v = parseFloat(v);
+            // how to handle NaN? currently exclude these rows
+            if (isNaN(v)) return(false);
+            r0 = parseFloat(scaleBack(r[0], scale))
+            r1 = parseFloat(scaleBack(r[1], scale));
+            if (v >= r0 && v <= r1) return true;
+          } else if (type === 'date' || type === 'time') {
+            v = new Date(v);
+            r0 = new Date(r[0] / scale); r1 = new Date(r[1] / scale);
+            if (v >= r0 && v <= r1) return true;
+          } else if (type === 'factor') {
+            if (r.length === 0 || inArray(v, r)) return true;
+          } else if (type === 'logical') {
+            if (r.length === 0) return true;
+            if (inArray(v === '' ? 'na' : v, r)) return true;
+          }
+          return false;
+        };
+
+        $.fn.dataTable.ext.search.push(customFilter);
+
+        // search for the preset search strings if it is non-empty
+        if (searchCol) {
+          if (inArray(type, ['factor', 'logical'])) {
+            filter[0].selectize.setValue(JSON.parse(searchCol));
+          } else if (type === 'character') {
+            $input.trigger('input');
+          } else if (inArray(type, ['number', 'integer', 'date', 'time'])) {
+            $input.trigger('change');
+          }
+        }
+
+      });
+
+    }
+
+    // highlight search keywords
+    var highlight = function() {
+      var body = $(table.table().body());
+      // removing the old highlighting first
+      body.unhighlight();
+
+      // don't highlight the "not found" row, so we get the rows using the api
+      if (table.rows({ filter: 'applied' }).data().length === 0) return;
+      // highlight global search keywords
+      body.highlight($.trim(table.search()).split(/\s+/));
+      // then highlight keywords from individual column filters
+      if (filterRow) filterRow.each(function(i, td) {
+        var $td = $(td), type = $td.data('type');
+        if (type !== 'character') return;
+        var $input = $td.children('div').first().children('input');
+        var column = table.column(i).nodes().to$(),
+            val = $.trim($input.val());
+        if (type !== 'character' || val === '') return;
+        column.highlight(val.split(/\s+/));
+      });
+    };
+
+    if (options.searchHighlight) {
+      table
+      .on('draw.dt.dth column-visibility.dt.dth column-reorder.dt.dth', highlight)
+      .on('destroy', function() {
+        // remove event handler
+        table.off('draw.dt.dth column-visibility.dt.dth column-reorder.dt.dth');
+      });
+
+      // Set the option for escaping regex characters in our search string.  This will be used
+      // for all future matching.
+      jQuery.fn.highlight.options.escapeRegex = (!options.search || !options.search.regex);
+
+      // initial highlight for state saved conditions and initial states
+      highlight();
+    }
+
+    // run the callback function on the table instance
+    if (typeof data.callback === 'function') data.callback(table);
+
+    // double click to edit the cell, row, column, or all cells
+    if (data.editable) table.on('dblclick.dt', 'tbody td', function(e) {
+      // only bring up the editor when the cell itself is dbclicked, and ignore
+      // other dbclick events bubbled up (e.g. from the <input>)
+      if (e.target !== this) return;
+      var target = [], immediate = false;
+      switch (data.editable.target) {
+        case 'cell':
+          target = [this];
+          immediate = true;  // edit will take effect immediately
+          break;
+        case 'row':
+          target = table.cells(table.cell(this).index().row, '*').nodes();
+          break;
+        case 'column':
+          target = table.cells('*', table.cell(this).index().column).nodes();
+          break;
+        case 'all':
+          target = table.cells().nodes();
+          break;
+        default:
+          throw 'The editable parameter must be "cell", "row", "column", or "all"';
+      }
+      var disableCols = data.editable.disable ? data.editable.disable.columns : null;
+      var numericCols = data.editable.numeric;
+      var areaCols = data.editable.area;
+      for (var i = 0; i < target.length; i++) {
+        (function(cell, current) {
+          var $cell = $(cell), html = $cell.html();
+          var _cell = table.cell(cell), value = _cell.data(), index = _cell.index().column;
+          var $input;
+          if (inArray(index, numericCols)) {
+            $input = $('<input type="number">');
+          } else if (inArray(index, areaCols)) {
+            $input = $('<textarea></textarea>');
+          } else {
+            $input = $('<input type="text">');
+          }
+          if (!immediate) {
+            $cell.data('input', $input).data('html', html);
+            $input.attr('title', 'Hit Ctrl+Enter to finish editing, or Esc to cancel');
+          }
+          $input.val(value);
+          if (inArray(index, disableCols)) {
+            $input.attr('readonly', '').css('filter', 'invert(25%)');
+          }
+          $cell.empty().append($input);
+          if (cell === current) $input.focus();
+          $input.css('width', '100%');
+
+          if (immediate) $input.on('blur', function(e) {
+            var valueNew = $input.val();
+            if (valueNew != value) {
+              _cell.data(valueNew);
+              if (HTMLWidgets.shinyMode) {
+                changeInput('cell_edit', [cellInfo(cell)], 'DT.cellInfo', null, {priority: 'event'});
+              }
+              // for server-side processing, users have to call replaceData() to update the table
+              if (!server) table.draw(false);
+            } else {
+              $cell.html(html);
+            }
+          }).on('keyup', function(e) {
+            // hit Escape to cancel editing
+            if (e.keyCode === 27) $input.trigger('blur');
+          });
+
+          // bulk edit (row, column, or all)
+          if (!immediate) $input.on('keyup', function(e) {
+            var removeInput = function($cell, restore) {
+              $cell.data('input').remove();
+              if (restore) $cell.html($cell.data('html'));
+            }
+            if (e.keyCode === 27) {
+              for (var i = 0; i < target.length; i++) {
+                removeInput($(target[i]), true);
+              }
+            } else if (e.keyCode === 13 && e.ctrlKey) {
+              // Ctrl + Enter
+              var cell, $cell, _cell, cellData = [];
+              for (var i = 0; i < target.length; i++) {
+                cell = target[i]; $cell = $(cell); _cell = table.cell(cell);
+                _cell.data($cell.data('input').val());
+                HTMLWidgets.shinyMode && cellData.push(cellInfo(cell));
+                removeInput($cell, false);
+              }
+              if (HTMLWidgets.shinyMode) {
+                changeInput('cell_edit', cellData, 'DT.cellInfo', null, {priority: "event"});
+              }
+              if (!server) table.draw(false);
+            }
+          });
+        })(target[i], this);
+      }
+    });
+
+    // interaction with shiny
+    if (!HTMLWidgets.shinyMode && !crosstalkOptions.group) return;
+
+    var methods = {};
+    var shinyData = {};
+
+    methods.updateCaption = function(caption) {
+      if (!caption) return;
+      $table.children('caption').replaceWith(caption);
+    }
+
+    // register clear functions to remove input values when the table is removed
+    instance.clearInputs = {};
+
+    var changeInput = function(id, value, type, noCrosstalk, opts) {
+      var event = id;
+      id = el.id + '_' + id;
+      if (type) id = id + ':' + type;
+      // do not update if the new value is the same as old value
+      if (event !== 'cell_edit' && !/_clicked$/.test(event) && shinyData.hasOwnProperty(id) && shinyData[id] === JSON.stringify(value))
+        return;
+      shinyData[id] = JSON.stringify(value);
+      if (HTMLWidgets.shinyMode && Shiny.setInputValue) {
+        Shiny.setInputValue(id, value, opts);
+        if (!instance.clearInputs[id]) instance.clearInputs[id] = function() {
+          Shiny.setInputValue(id, null);
+        }
+      }
+
+      // HACK
+      if (event === "rows_selected" && !noCrosstalk) {
+        if (crosstalkOptions.group) {
+          var keys = crosstalkOptions.key;
+          var selectedKeys = null;
+          if (value) {
+            selectedKeys = [];
+            for (var i = 0; i < value.length; i++) {
+              // The value array's contents use 1-based row numbers, so we must
+              // convert to 0-based before indexing into the keys array.
+              selectedKeys.push(keys[value[i] - 1]);
+            }
+          }
+          instance.ctselectHandle.set(selectedKeys);
+        }
+      }
+    };
+
+    var addOne = function(x) {
+      return x.map(function(i) { return 1 + i; });
+    };
+
+    var unique = function(x) {
+      var ux = [];
+      $.each(x, function(i, el){
+        if ($.inArray(el, ux) === -1) ux.push(el);
+      });
+      return ux;
+    }
+
+    // change the row index of a cell
+    var tweakCellIndex = function(cell) {
+      var info = cell.index();
+      // some cell may not be valid. e.g, #759
+      // when using the RowGroup extension, datatables will
+      // generate the row label and the cells are not part of
+      // the data thus contain no row/col info
+      if (info === undefined)
+        return {row: null, col: null};
+      if (server) {
+        info.row = DT_rows_current[info.row];
+      } else {
+        info.row += 1;
+      }
+      return {row: info.row, col: info.column};
+    }
+
+    var cleanSelectedValues = function() {
+      changeInput('rows_selected', []);
+      changeInput('columns_selected', []);
+      changeInput('cells_selected', transposeArray2D([]), 'shiny.matrix');
+    }
+    // #828 we should clean the selection on the server-side when the table reloads
+    cleanSelectedValues();
+
+    // a flag to indicates if select extension is initialized or not
+    var flagSelectExt = table.settings()[0]._select !== undefined;
+    // the Select extension should only be used in the client mode and
+    // when the selection.mode is set to none
+    if (data.selection.mode === 'none' && !server && flagSelectExt) {
+      var updateRowsSelected = function() {
+        var rows = table.rows({selected: true});
+        var selected = [];
+        $.each(rows.indexes().toArray(), function(i, v) {
+          selected.push(v + 1);
+        });
+        changeInput('rows_selected', selected);
+      }
+      var updateColsSelected = function() {
+        var columns = table.columns({selected: true});
+        changeInput('columns_selected', columns.indexes().toArray());
+      }
+      var updateCellsSelected = function() {
+        var cells = table.cells({selected: true});
+        var selected = [];
+        cells.every(function() {
+          var row = this.index().row;
+          var col = this.index().column;
+          selected = selected.concat([[row + 1, col]]);
+        });
+        changeInput('cells_selected', transposeArray2D(selected), 'shiny.matrix');
+      }
+      table.on('select deselect', function(e, dt, type, indexes) {
+        updateRowsSelected();
+        updateColsSelected();
+        updateCellsSelected();
+      })
+    }
+
+    var selMode = data.selection.mode, selTarget = data.selection.target;
+    var selDisable = data.selection.selectable === false;
+    if (inArray(selMode, ['single', 'multiple'])) {
+      var selClass = inArray(data.style, ['bootstrap', 'bootstrap4']) ? 'active' : 'selected';
+      // selected1: row indices; selected2: column indices
+      var initSel = function(x) {
+        if (x === null || typeof x === 'boolean' || selTarget === 'cell') {
+          return {rows: [], cols: []};
+        } else if (selTarget === 'row') {
+          return {rows: $.makeArray(x), cols: []};
+        } else if (selTarget === 'column') {
+          return {rows: [], cols: $.makeArray(x)};
+        } else if (selTarget === 'row+column') {
+          return {rows: $.makeArray(x.rows), cols: $.makeArray(x.cols)};
+        }
+      }
+      var selected = data.selection.selected;
+      var selected1 = initSel(selected).rows, selected2 = initSel(selected).cols;
+      // selectable should contain either all positive or all non-positive values, not both
+      // positive values indicate "selectable" while non-positive values means "nonselectable"
+      // the assertion is performed on R side. (only column indicides could be zero which indicates
+      // the row name)
+      var selectable = data.selection.selectable;
+      var selectable1 = initSel(selectable).rows, selectable2 = initSel(selectable).cols;
+
+      // After users reorder the rows or filter the table, we cannot use the table index
+      // directly. Instead, we need this function to find out the rows between the two clicks.
+      // If user filter the table again between the start click and the end click, the behavior
+      // would be undefined, but it should not be a problem.
+      var shiftSelRowsIndex = function(start, end) {
+        var indexes = server ? DT_rows_all : table.rows({ search: 'applied' }).indexes().toArray();
+        start = indexes.indexOf(start); end = indexes.indexOf(end);
+        // if start is larger than end, we need to swap
+        if (start > end) {
+          var tmp = end; end = start; start = tmp;
+        }
+        return indexes.slice(start, end + 1);
+      }
+
+      var serverRowIndex = function(clientRowIndex) {
+        return server ? DT_rows_current[clientRowIndex] : clientRowIndex + 1;
+      }
+
+      // row, column, or cell selection
+      var lastClickedRow;
+      if (inArray(selTarget, ['row', 'row+column'])) {
+        // Get the current selected rows. It will also
+        // update the selected1's value based on the current row selection state
+        // Note we can't put this function inside selectRows() directly,
+        // the reason is method.selectRows() will override selected1's value but this
+        // function will add rows to selected1 (keep the existing selection), which is
+        // inconsistent with column and cell selection.
+        var selectedRows = function() {
+          var rows = table.rows('.' + selClass);
+          var idx = rows.indexes().toArray();
+          if (!server) {
+            selected1 = addOne(idx);
+            return selected1;
+          }
+          idx = idx.map(function(i) {
+            return DT_rows_current[i];
+          });
+          selected1 = selMode === 'multiple' ? unique(selected1.concat(idx)) : idx;
+          return selected1;
+        }
+        // Change selected1's value based on selectable1, then refresh the row state
+        var onlyKeepSelectableRows = function() {
+          if (selDisable) { // users can't select; useful when only want backend select
+            selected1 = [];
+            return;
+          }
+          if (selectable1.length === 0) return;
+          var nonselectable = selectable1[0] <= 0;
+          if (nonselectable) {
+            // should make selectable1 positive
+            selected1 = $(selected1).not(selectable1.map(function(i) { return -i; })).get();
+          } else {
+            selected1 = $(selected1).filter(selectable1).get();
+          }
+        }
+        // Change selected1's value based on selectable1, then
+        // refresh the row selection state according to values in selected1
+        var selectRows = function(ignoreSelectable) {
+          if (!ignoreSelectable) onlyKeepSelectableRows();
+          table.$('tr.' + selClass).removeClass(selClass);
+          if (selected1.length === 0) return;
+          if (server) {
+            table.rows({page: 'current'}).every(function() {
+              if (inArray(DT_rows_current[this.index()], selected1)) {
+                $(this.node()).addClass(selClass);
+              }
+            });
+          } else {
+            var selected0 = selected1.map(function(i) { return i - 1; });
+            $(table.rows(selected0).nodes()).addClass(selClass);
+          }
+        }
+        table.on('mousedown.dt', 'tbody tr', function(e) {
+          var $this = $(this), thisRow = table.row(this);
+          if (selMode === 'multiple') {
+            if (e.shiftKey && lastClickedRow !== undefined) {
+              // select or de-select depends on the last clicked row's status
+              var flagSel = !$this.hasClass(selClass);
+              var crtClickedRow = serverRowIndex(thisRow.index());
+              if (server) {
+                var rowsIndex = shiftSelRowsIndex(lastClickedRow, crtClickedRow);
+                // update current page's selClass
+                rowsIndex.map(function(i) {
+                  var rowIndex = DT_rows_current.indexOf(i);
+                  if (rowIndex >= 0) {
+                    var row = table.row(rowIndex).nodes().to$();
+                    var flagRowSel = !row.hasClass(selClass);
+                    if (flagSel === flagRowSel) row.toggleClass(selClass);
+                  }
+                });
+                // update selected1
+                if (flagSel) {
+                  selected1 = unique(selected1.concat(rowsIndex));
+                } else {
+                  selected1 = selected1.filter(function(index) {
+                    return !inArray(index, rowsIndex);
+                  });
+                }
+              } else {
+                // js starts from 0
+                shiftSelRowsIndex(lastClickedRow - 1, crtClickedRow - 1).map(function(value) {
+                  var row = table.row(value).nodes().to$();
+                  var flagRowSel = !row.hasClass(selClass);
+                  if (flagSel === flagRowSel) row.toggleClass(selClass);
+                });
+              }
+              e.preventDefault();
+            } else {
+              $this.toggleClass(selClass);
+            }
+          } else {
+            if ($this.hasClass(selClass)) {
+              $this.removeClass(selClass);
+            } else {
+              table.$('tr.' + selClass).removeClass(selClass);
+              $this.addClass(selClass);
+            }
+          }
+          if (server && !$this.hasClass(selClass)) {
+            var id = DT_rows_current[thisRow.index()];
+            // remove id from selected1 since its class .selected has been removed
+            if (inArray(id, selected1)) selected1.splice($.inArray(id, selected1), 1);
+          }
+          selectedRows(); // update selected1's value based on selClass
+          selectRows(false); // only keep the selectable rows
+          changeInput('rows_selected', selected1);
+          changeInput('row_last_clicked', serverRowIndex(thisRow.index()), null, null, {priority: 'event'});
+          lastClickedRow = serverRowIndex(thisRow.index());
+        });
+        selectRows(false);  // in case users have specified pre-selected rows
+        // restore selected rows after the table is redrawn (e.g. sort/search/page);
+        // client-side tables will preserve the selections automatically; for
+        // server-side tables, we have to *real* row indices are in `selected1`
+        changeInput('rows_selected', selected1);
+        if (server) table.on('draw.dt', function(e) { selectRows(false); });
+        methods.selectRows = function(selected, ignoreSelectable) {
+          selected1 = $.makeArray(selected);
+          selectRows(ignoreSelectable);
+          changeInput('rows_selected', selected1);
+        }
+      }
+
+      if (inArray(selTarget, ['column', 'row+column'])) {
+        if (selTarget === 'row+column') {
+          $(table.columns().footer()).css('cursor', 'pointer');
+        }
+        // update selected2's value based on selectable2
+        var onlyKeepSelectableCols = function() {
+          if (selDisable) { // users can't select; useful when only want backend select
+            selected2 = [];
+            return;
+          }
+          if (selectable2.length === 0) return;
+          var nonselectable = selectable2[0] <= 0;
+          if (nonselectable) {
+            // need to make selectable2 positive
+            selected2 = $(selected2).not(selectable2.map(function(i) { return -i; })).get();
+          } else {
+            selected2 = $(selected2).filter(selectable2).get();
+          }
+        }
+        // update selected2 and then
+        // refresh the col selection state according to values in selected2
+        var selectCols = function(ignoreSelectable) {
+          if (!ignoreSelectable) onlyKeepSelectableCols();
+          // if selected2 is not a valide index (e.g., larger than the column number)
+          // table.columns(selected2) will fail and result in a blank table
+          // this is different from the table.rows(), where the out-of-range indexes
+          // doesn't affect at all
+          selected2 = $(selected2).filter(table.columns().indexes()).get();
+          table.columns().nodes().flatten().to$().removeClass(selClass);
+          if (selected2.length > 0)
+            table.columns(selected2).nodes().flatten().to$().addClass(selClass);
+        }
+        var callback = function() {
+          var colIdx = selTarget === 'column' ? table.cell(this).index().column :
+              $.inArray(this, table.columns().footer()),
+              thisCol = $(table.column(colIdx).nodes());
+          if (colIdx === -1) return;
+          if (thisCol.hasClass(selClass)) {
+            thisCol.removeClass(selClass);
+            selected2.splice($.inArray(colIdx, selected2), 1);
+          } else {
+            if (selMode === 'single') $(table.cells().nodes()).removeClass(selClass);
+            thisCol.addClass(selClass);
+            selected2 = selMode === 'single' ? [colIdx] : unique(selected2.concat([colIdx]));
+          }
+          selectCols(false); // update selected2 based on selectable
+          changeInput('columns_selected', selected2);
+        }
+        if (selTarget === 'column') {
+          $(table.table().body()).on('click.dt', 'td', callback);
+        } else {
+          $(table.table().footer()).on('click.dt', 'tr th', callback);
+        }
+        selectCols(false);  // in case users have specified pre-selected columns
+        changeInput('columns_selected', selected2);
+        if (server) table.on('draw.dt', function(e) { selectCols(false); });
+        methods.selectColumns = function(selected, ignoreSelectable) {
+          selected2 = $.makeArray(selected);
+          selectCols(ignoreSelectable);
+          changeInput('columns_selected', selected2);
+        }
+      }
+
+      if (selTarget === 'cell') {
+        var selected3 = [], selectable3 = [];
+        if (selected !== null) selected3 = selected;
+        if (selectable !== null && typeof selectable !== 'boolean') selectable3 = selectable;
+        var findIndex = function(ij, sel) {
+          for (var i = 0; i < sel.length; i++) {
+            if (ij[0] === sel[i][0] && ij[1] === sel[i][1]) return i;
+          }
+          return -1;
+        }
+         // Change selected3's value based on selectable3, then refresh the cell state
+        var onlyKeepSelectableCells = function() {
+          if (selDisable) { // users can't select; useful when only want backend select
+            selected3 = [];
+            return;
+          }
+          if (selectable3.length === 0) return;
+          var nonselectable = selectable3[0][0] <= 0;
+          var out = [];
+          if (nonselectable) {
+            selected3.map(function(ij) {
+              // should make selectable3 positive
+              if (findIndex([-ij[0], -ij[1]], selectable3) === -1) { out.push(ij); }
+            });
+          } else {
+            selected3.map(function(ij) {
+              if (findIndex(ij, selectable3) > -1) { out.push(ij); }
+            });
+          }
+          selected3 = out;
+        }
+        // Change selected3's value based on selectable3, then
+        // refresh the cell selection state according to values in selected3
+        var selectCells = function(ignoreSelectable) {
+          if (!ignoreSelectable) onlyKeepSelectableCells();
+          table.$('td.' + selClass).removeClass(selClass);
+          if (selected3.length === 0) return;
+          if (server) {
+            table.cells({page: 'current'}).every(function() {
+              var info = tweakCellIndex(this);
+              if (findIndex([info.row, info.col], selected3) > -1)
+                $(this.node()).addClass(selClass);
+            });
+          } else {
+            selected3.map(function(ij) {
+              $(table.cell(ij[0] - 1, ij[1]).node()).addClass(selClass);
+            });
+          }
+        };
+        table.on('click.dt', 'tbody td', function() {
+          var $this = $(this), info = tweakCellIndex(table.cell(this));
+          if ($this.hasClass(selClass)) {
+            $this.removeClass(selClass);
+            selected3.splice(findIndex([info.row, info.col], selected3), 1);
+          } else {
+            if (selMode === 'single') $(table.cells().nodes()).removeClass(selClass);
+            $this.addClass(selClass);
+            selected3 = selMode === 'single' ? [[info.row, info.col]] :
+              unique(selected3.concat([[info.row, info.col]]));
+          }
+          selectCells(false); // must call this to update selected3 based on selectable3
+          changeInput('cells_selected', transposeArray2D(selected3), 'shiny.matrix');
+        });
+        selectCells(false);  // in case users have specified pre-selected columns
+        changeInput('cells_selected', transposeArray2D(selected3), 'shiny.matrix');
+
+        if (server) table.on('draw.dt', function(e) { selectCells(false); });
+        methods.selectCells = function(selected, ignoreSelectable) {
+          selected3 = selected ? selected : [];
+          selectCells(ignoreSelectable);
+          changeInput('cells_selected', transposeArray2D(selected3), 'shiny.matrix');
+        }
+      }
+    }
+
+    // expose some table info to Shiny
+    var updateTableInfo = function(e, settings) {
+      // TODO: is anyone interested in the page info?
+      // changeInput('page_info', table.page.info());
+      var updateRowInfo = function(id, modifier) {
+        var idx;
+        if (server) {
+          idx = modifier.page === 'current' ? DT_rows_current : DT_rows_all;
+        } else {
+          var rows = table.rows($.extend({
+            search: 'applied',
+            page: 'all'
+          }, modifier));
+          idx = addOne(rows.indexes().toArray());
+        }
+        changeInput('rows' + '_' + id, idx);
+      };
+      updateRowInfo('current', {page: 'current'});
+      updateRowInfo('all', {});
+    }
+    table.on('draw.dt', updateTableInfo);
+    updateTableInfo();
+
+    // state info
+    table.on('draw.dt column-visibility.dt', function() {
+      changeInput('state', table.state());
+    });
+    changeInput('state', table.state());
+
+    // search info
+    var updateSearchInfo = function() {
+      changeInput('search', table.search());
+      if (filterRow) changeInput('search_columns', filterRow.toArray().map(function(td) {
+        return $(td).find('input').first().val();
+      }));
+    }
+    table.on('draw.dt', updateSearchInfo);
+    updateSearchInfo();
+
+    var cellInfo = function(thiz) {
+      var info = tweakCellIndex(table.cell(thiz));
+      info.value = table.cell(thiz).data();
+      return info;
+    }
+    // the current cell clicked on
+    table.on('click.dt', 'tbody td', function() {
+      changeInput('cell_clicked', cellInfo(this), null, null, {priority: 'event'});
+    })
+    changeInput('cell_clicked', {});
+
+    // do not trigger table selection when clicking on links unless they have classes
+    table.on('click.dt', 'tbody td a', function(e) {
+      if (this.className === '') e.stopPropagation();
+    });
+
+    methods.addRow = function(data, rowname, resetPaging) {
+      var n = table.columns().indexes().length, d = n - data.length;
+      if (d === 1) {
+        data = rowname.concat(data)
+      } else if (d !== 0) {
+        console.log(data);
+        console.log(table.columns().indexes());
+        throw 'New data must be of the same length as current data (' + n + ')';
+      };
+      table.row.add(data).draw(resetPaging);
+    }
+
+    methods.updateSearch = function(keywords) {
+      if (keywords.global !== null)
+        $(table.table().container()).find('input[type=search]').first()
+             .val(keywords.global).trigger('input');
+      var columns = keywords.columns;
+      if (!filterRow || columns === null) return;
+      filterRow.toArray().map(function(td, i) {
+        var v = typeof columns === 'string' ? columns : columns[i];
+        if (typeof v === 'undefined') {
+          console.log('The search keyword for column ' + i + ' is undefined')
+          return;
+        }
+        $(td).find('input').first().val(v);
+        searchColumn(i, v);
+      });
+      table.draw();
+    }
+
+    methods.hideCols = function(hide, reset) {
+      if (reset) table.columns().visible(true, false);
+      table.columns(hide).visible(false);
+    }
+
+    methods.showCols = function(show, reset) {
+      if (reset) table.columns().visible(false, false);
+      table.columns(show).visible(true);
+    }
+
+    methods.colReorder = function(order, origOrder) {
+      table.colReorder.order(order, origOrder);
+    }
+
+    methods.selectPage = function(page) {
+      if (table.page.info().pages < page || page < 1) {
+        throw 'Selected page is out of range';
+      };
+      table.page(page - 1).draw(false);
+    }
+
+    methods.reloadData = function(resetPaging, clearSelection) {
+      // empty selections first if necessary
+      if (methods.selectRows && inArray('row', clearSelection)) methods.selectRows([]);
+      if (methods.selectColumns && inArray('column', clearSelection)) methods.selectColumns([]);
+      if (methods.selectCells && inArray('cell', clearSelection)) methods.selectCells([]);
+      table.ajax.reload(null, resetPaging);
+    }
+
+    // update table filters (set new limits of sliders)
+    methods.updateFilters = function(newProps) {
+      // loop through each filter in the filter row
+      filterRow.each(function(i, td) {
+        var k = i;
+        if (filterRow.length > newProps.length) {
+          if (i === 0) return;  // first column is row names
+          k = i - 1;
+        }
+        // Update the filters to reflect the updated data.
+        // Allow "falsy" (e.g. NULL) to signify a no-op.
+        if (newProps[k]) {
+          setFilterProps(td, newProps[k]);
+        }
+      });
+    };
+
+    table.shinyMethods = methods;
+  },
+  resize: function(el, width, height, instance) {
+    if (instance.data) this.renderValue(el, instance.data, instance);
+
+    // dynamically adjust height if fillContainer = TRUE
+    if (instance.fillContainer)
+      this.fillAvailableHeight(el, height);
+
+    this.adjustWidth(el);
+  },
+
+  // dynamically set the scroll body to fill available height
+  // (used with fillContainer = TRUE)
+  fillAvailableHeight: function(el, availableHeight) {
+
+    // see how much of the table is occupied by header/footer elements
+    // and use that to compute a target scroll body height
+    var dtWrapper = $(el).find('div.dataTables_wrapper');
+    var dtScrollBody = $(el).find($('div.dataTables_scrollBody'));
+    var framingHeight = dtWrapper.innerHeight() - dtScrollBody.innerHeight();
+    var scrollBodyHeight = availableHeight - framingHeight;
+
+    // we need to set `max-height` to none as datatables library now sets this
+    // to a fixed height, disabling the ability to resize to fill the window,
+    // as it will be set to a fixed 100px under such circumstances, e.g., RStudio IDE,
+    // or FlexDashboard
+    // see https://github.com/rstudio/DT/issues/951#issuecomment-1026464509
+    dtScrollBody.css('max-height', 'none');
+    // set the height
+    dtScrollBody.height(scrollBodyHeight + 'px');
+  },
+
+  // adjust the width of columns; remove the hard-coded widths on table and the
+  // scroll header when scrollX/Y are enabled
+  adjustWidth: function(el) {
+    var $el = $(el), table = $el.data('datatable');
+    if (table) table.columns.adjust();
+    $el.find('.dataTables_scrollHeadInner').css('width', '')
+        .children('table').css('margin-left', '');
+  }
+});
+
+  if (!HTMLWidgets.shinyMode) return;
+
+  Shiny.addCustomMessageHandler('datatable-calls', function(data) {
+    var id = data.id;
+    var el = document.getElementById(id);
+    var table = el ? $(el).data('datatable') : null;
+    if (!table) {
+      console.log("Couldn't find table with id " + id);
+      return;
+    }
+
+    var methods = table.shinyMethods, call = data.call;
+    if (methods[call.method]) {
+      methods[call.method].apply(table, call.args);
+    } else {
+      console.log("Unknown method " + call.method);
+    }
+  });
+
+})();

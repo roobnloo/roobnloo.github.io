@@ -1,1 +1,141 @@
-var counters={timer:{}},update_timer=function(e,t=!1){var n=e.value;if(noup=e.div.className.match(/noupdate-\d+/),t||null==noup||(noup=parseInt(noup[0].match(/\d+$/)),!(n>2*noup&&n%noup>0))){warnwhen=e.div.dataset.warnwhen,warnwhen&&warnwhen>0&&(n<=warnwhen&&!e.div.classList.contains("warning")?e.div.classList.add("warning"):n>warnwhen&&e.div.classList.contains("warning")&&e.div.classList.remove("warning"));var r=Math.floor(n/60);n-=60*r,e.min.innerHTML=String(r).padStart(2,0),e.sec.innerHTML=String(n).padStart(2,0)}},countdown=function(e){target=e.target,target.classList.contains("countdown-digits")&&(target=target.parentElement),"CODE"==target.tagName&&(target=target.parentElement),counters.timer.hasOwnProperty(target.id)||(counters.timer[target.id]={},counters.timer[target.id].min=target.getElementsByClassName("minutes")[0],counters.timer[target.id].sec=target.getElementsByClassName("seconds")[0],counters.timer[target.id].div=target),counters.timer[target.id].running?(counters.timer[target.id].value+=counter_bump_increment(counters.timer[target.id].end),update_timer(counters.timer[target.id],force=!0),counters.timer[target.id].value+=1):(counters.timer[target.id].end||(counters.timer[target.id].end=60*parseInt(counters.timer[target.id].min.innerHTML),counters.timer[target.id].end+=parseInt(counters.timer[target.id].sec.innerHTML)),counters.timer[target.id].value=counters.timer[target.id].end,update_timer(counters.timer[target.id]),counters.ticker&&(counters.timer[target.id].value+=1),counters.timer[target.id].value>0&&(base_class=target.className.replace(/\s?(running|finished)/,""),target.className=base_class+" running",counters.timer[target.id].running=!0,counters.ticker||(counters.ticker=setInterval(counter_update_all,1e3))))},counter_bump_increment=function(e){return e<=30?5:e<=300?15:e<=3e3?30:60},counter_update_all=function(){for(var e in counters.timer)if(console.log(counters.timer[e].id),counters.timer[e].value--,counters.timer[e].value<=0)counters.timer[e].min.innerHTML="00",counters.timer[e].sec.innerHTML="00",counters.timer[e].div.className=counters.timer[e].div.className.replace("running","finished"),counters.timer[e].running=!1;else{update_timer(counters.timer[e]);let t=counters.timer[e].div.dataset.audio;t&&5==counters.timer[e].value&&counter_play_sound(t)}var t=!1;for(var n in counters.timer)t=t||counters.timer[n].running;t||(clearInterval(counters.ticker),counters.ticker=null)},counter_play_sound=function(e){"boolean"==typeof e&&(e="libs/countdown/smb_stage_clear.mp3"),sound=new Audio(e),sound.play()},counter_addEventListener=function(){if(document.getElementsByClassName("countdown").length){var e=document.getElementsByClassName("countdown");console.log(e);for(var t=0;t<e.length;t++)e[t].addEventListener("click",countdown,!1)}else setTimeout(counter_addEventListener,2)};counter_addEventListener();
+var counters = {timer: {}};
+var update_timer = function(timer, force = false) {
+	var secs = timer.value;
+
+	// check if we should update timer or not
+	noup = timer.div.className.match(/noupdate-\d+/);
+	if (!force && noup != null) {
+	  noup = parseInt(noup[0].match(/\d+$/));
+	  if (secs > noup * 2 && secs % noup > 0) { return; }
+	}
+
+	// should we apply or remove warning class?
+	warnwhen = timer.div.dataset.warnwhen;
+	if (warnwhen && warnwhen > 0) {
+	  if (secs <= warnwhen && !timer.div.classList.contains("warning")) {
+	    timer.div.classList.add("warning");
+	  } else if (secs > warnwhen && timer.div.classList.contains("warning")) {
+	    timer.div.classList.remove("warning");
+	  }
+	}
+
+  var mins = Math.floor(secs / 60); // 1 min = 60 secs
+  secs -= mins * 60;
+
+  // Update HTML
+  timer.min.innerHTML = String(mins).padStart(2, 0);
+  timer.sec.innerHTML = String(secs).padStart(2, 0);
+}
+var countdown = function (e) {
+  target = e.target;
+  if (target.classList.contains("countdown-digits")) {
+    target = target.parentElement;
+  }
+  if (target.tagName == "CODE") {
+    target = target.parentElement;
+  }
+
+  // Init counter
+  if (!counters.timer.hasOwnProperty(target.id)) {
+    counters.timer[target.id] = {};
+    // Set the containers
+	  counters.timer[target.id].min = target.getElementsByClassName("minutes")[0];
+  	counters.timer[target.id].sec = target.getElementsByClassName("seconds")[0];
+  	counters.timer[target.id].div = target;
+  }
+
+  if (!counters.timer[target.id].running) {
+    if (!counters.timer[target.id].end) {
+      counters.timer[target.id].end   = parseInt(counters.timer[target.id].min.innerHTML) * 60;
+		  counters.timer[target.id].end  += parseInt(counters.timer[target.id].sec.innerHTML);
+    }
+
+    counters.timer[target.id].value = counters.timer[target.id].end;
+    update_timer(counters.timer[target.id]);
+    if (counters.ticker) counters.timer[target.id].value += 1;
+
+    // Start if not past end date
+    if (counters.timer[target.id].value > 0) {
+      base_class = target.className.replace(/\s?(running|finished)/, "")
+      target.className = base_class + " running";
+      counters.timer[target.id].running = true;
+
+      if (!counters.ticker) {
+        counters.ticker = setInterval(counter_update_all, 1000);
+      }
+    }
+  } else {
+    // Bump timer value if running & clicked
+    counters.timer[target.id].value += counter_bump_increment(counters.timer[target.id].end);
+    update_timer(counters.timer[target.id], force = true);
+    counters.timer[target.id].value += 1;
+  }
+};
+
+var counter_bump_increment = function(val) {
+  if (val <= 30) {
+    return 5;
+  } else if (val <= 300) {
+    return 15;
+  } else if (val <= 3000) {
+    return 30;
+  } else {
+    return 60;
+  }
+}
+
+var counter_update_all = function() {
+  // Iterate over all running timers
+  for (var i in counters.timer) {
+    // Stop if passed end time
+    console.log(counters.timer[i].id)
+    counters.timer[i].value--;
+    if (counters.timer[i].value <= 0) {
+      counters.timer[i].min.innerHTML = "00";
+      counters.timer[i].sec.innerHTML = "00";
+      counters.timer[i].div.className = counters.timer[i].div.className.replace("running", "finished");
+      counters.timer[i].running = false;
+    } else {
+      // Update
+      update_timer(counters.timer[i]);
+
+      // Play countdown sound if data-audio=true on container div
+      let audio = counters.timer[i].div.dataset.audio
+      if (audio && counters.timer[i].value == 5) {
+        counter_play_sound(audio);
+      }
+    }
+  }
+
+  // If no more running timers, then clear ticker
+  var timerIsRunning = false;
+  for (var t in counters.timer) {
+    timerIsRunning = timerIsRunning || counters.timer[t].running
+  }
+  if (!timerIsRunning) {
+    clearInterval(counters.ticker);
+    counters.ticker = null;
+  }
+}
+
+var counter_play_sound = function(url) {
+  if (typeof url === 'boolean') {
+    url = 'libs/countdown/smb_stage_clear.mp3';
+  }
+  sound = new Audio(url);
+  sound.play();
+}
+
+var counter_addEventListener = function() {
+  if (!document.getElementsByClassName("countdown").length) {
+    setTimeout(counter_addEventListener, 2);
+    return;
+  }
+  var counter_divs = document.getElementsByClassName("countdown");
+  console.log(counter_divs);
+  for (var i = 0; i < counter_divs.length; i++) {
+    counter_divs[i].addEventListener("click", countdown, false);
+  }
+};
+
+counter_addEventListener();

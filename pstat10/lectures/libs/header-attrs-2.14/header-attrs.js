@@ -1,1 +1,12 @@
-document.addEventListener("DOMContentLoaded",function(){var e,t,n,i=document.querySelectorAll("div.section[class*='level'] > :first-child");for(e=0;e<i.length;e++)if(t=i[e],/^h[1-6]$/i.test(t.tagName))for(n=t.attributes;n.length>0;)t.removeAttribute(n[0].name)});
+// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
