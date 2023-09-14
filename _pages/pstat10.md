@@ -1,13 +1,15 @@
 ---
 layout: page
 permalink: /pstat10/
-title: PSTAT 10 Principles of Data Science with R 
-nav: false 
+title: PSTAT 10 Principles of Data Science with R
+nav: false
 ---
+
+<span style="color: red;">This is the website of an intro data science class I taught the summer of 2022. I largely developed all of the material on my own. You are free to use it, just credit me if your use is significant.</span>
 
 ## Welcome to PSTAT 10
 
-I will post all course material on this page including slides, worksheets, homework, 
+I will post all course material on this page including slides, worksheets, homework,
 worksheet and homework solutions.
 
 Worksheets and homework are released at the beginning of the week and are due the following Tuesday evening.

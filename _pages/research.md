@@ -1,14 +1,14 @@
 ---
 layout: page
 permalink: /research/
-title: research 
+title: research
 description:
 nav: true
 nav_order: 3
 ---
 
 I am broadly interested in statistical learning with high-dimensional data.
-I am particularly interested in developing convex optimization methods for LASSO-type problems where $$p \gg n$$.
+I am particularly interested sparse covariance matrix and precision matrix estimation, with applications ranging from genomics and neuroscience to finance.
 
 I also like to think about issues with reproducibility, statistical power, and causal inference in the social sciences and enjoy reproducing results from old sociology papers on the side.
 
