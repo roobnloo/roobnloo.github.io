@@ -11,6 +11,10 @@ nav_order: 2
 
 
 **Teaching Assistant**
+- PSTAT 135/235. Big Data Analytics
+  - Winter 2024
+- PSTAT 232. Computational Techniques in Statistics
+  - Winter 2024
 - PSTAT 134/234. Statistical Data Science
   - Fall 2022, Winter 2023
 - PSTAT 120B. Probability and Statistics II
