@@ -11,6 +11,8 @@ nav_order: 2
 
 
 **Teaching Assistant**
+- PSTAT 131/231. Statistical Machine Learning
+  - Fall 2024
 - PSTAT 135/235. Big Data Analytics
   - Winter 2024
 - PSTAT 232. Computational Techniques in Statistics

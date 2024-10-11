@@ -21,6 +21,26 @@
       institution: University of Michigan, Ann Arbor
       year: 2013
 
+- title: Academic Interests
+  type: nested_list
+  contents:
+    - title: Statistical Methods
+      items: 
+        - High-dimensional statistics
+        - Convex optimization
+        - Covariance estimation
+        - Graphical models
+    - title: Data Applications
+      items:
+        - genomics
+        - functional magnetic resonance imaging (fMRI)
+        - financial time series
+
+- title: Awards
+  type: list
+  contents:
+    - <a href="https://wnar.org/news/13381008">2024 WNAR Most Outstanding Paper Award</a>
+
 - title: Experience
   type: time_table
   contents:
@@ -37,18 +57,3 @@
       description:
         - Implemented adapter to execute trades on the Boston Options Exchange
         - Contributed to risk assessment infrastructure
-
-- title: Academic Interests
-  type: nested_list
-  contents:
-    - title: Statistical Methods
-      items: 
-        - High-dimensional statistics
-        - Convex optimization
-        - Covariance estimation
-        - Graphical models
-    - title: Data Science
-      items:
-        - Survey data
-        - Visualization
-        - tidyverse workflow

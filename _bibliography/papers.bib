@@ -1,6 +1,32 @@
 ---
 ---
 
+
+@article{liu_convex_2024,
+	author = {Liu, Ruobin and Yu, Guo},
+	title = {A convex formulation of covariate-adjusted {Gaussian} graphical models via natural parametrization},
+	journal = "in preparation",
+	year = {2024},
+    notes = {in preparation},
+	html = {https://arxiv.org/abs/2410.06326},
+	abstract = {Gaussian graphical models (GGMs) are widely used for recovering the conditional independence structure among random variables. Recently, several key advances have been made to exploit an additional set of variables for better estimating the GGMs of the variables of interest. For example, in co-expression quantitative trait locus (eQTL) studies, both the mean expression level of genes as well as their pairwise conditional independence structure may be adjusted by genetic variants local to those genes. Existing methods to estimate covariate-adjusted GGMs either allow only the mean to depend on covariates or suffer from poor scaling assumptions due to the inherent non-convexity of simultaneously estimating the mean and precision matrix. In this paper, we propose a convex formulation that jointly estimates the covariate-adjusted mean and precision matrix by utilizing the natural parametrization of the multivariate Gaussian likelihood. This convexity yields theoretically better performance as the sparsity and dimension of the covariates grow large relative to the number of samples. We verify our theoretical results with numerical simulations and perform a reanalysis of an eQTL study of glioblastoma multiforme (GBM), an aggressive form of brain cancer.},
+    preview={cspine_pop_network.png},
+    selected={true}
+}
+
+
+@article{Liu:multireg_err,
+author = "Liu, Ruobin and Yu, Guo",
+title = "{Estimation of the error structure in multivariate response linear regression models}",
+journal = "submitted",
+year = "2024",
+notes = {submitted},
+abstract = {Multivariate response linear regression model considers how a set of covariates affects multiple responses.  In contrast to separately running univariate regression for each response, multivariate response regression can better estimate the coefficient matrix by exploiting shared information among the responses. A key to effectively borrowing strength across different responses is to estimate and utilize the structure among random errors in responses. Moreover, certain applications seek to understand the interrelationships of the responses, which are directly encoded in the error structure. These observations call for the development of methods for estimating the error structure in multivariate response linear regression models. This article aims at providing a review of recent progress in this challenging and important problem. We also provide simulation studies demonstrating the emprical performance of recently developed methods for error structure estimation, as well as the benefit by exploiting these estimates for regression coefficients estimation.},
+keywords = {multivariate response linear regression, error structure, covariance estimation, precision matrix, graphical models},
+selected={true},
+preview={multireg-err.png}
+}
+
 @article{Mendez:qi5003,
 author = "Mendez, Derek and Holton, James M. and Lyubimov, Artem Y. and Hollatz, Sabine and Mathews, Irimpan I. and Cichosz, Aleksander and Martirosyan, Vardan and Zeng, Teo and Stofer, Ryan and Liu, Ruobin and Song, Jinhu and McPhillips, Scott and Soltis, Mike and Cohen, Aina E.",
 title = "{Deep residual networks for crystallography trained on synthetic data}",
@@ -18,4 +44,3 @@ selected={true},
 preview={diffraction.png},
 html={https://scripts.iucr.org/cgi-bin/paper?S2059798323010586}
 }
-
