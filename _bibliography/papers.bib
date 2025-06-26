@@ -1,115 +1,53 @@
 ---
 ---
 
-@string{aps = {American Physical Society,}}
 
-@book{einstein1920relativity,
-  title={Relativity: the Special and General Theory},
-  author={Einstein, Albert},
-  year={1920},
-  publisher={Methuen & Co Ltd},
-  html={relativity.html}
+@article{liu_convex_2024,
+  author   = {Liu, Ruobin and Yu, Guo},
+  title    = {A convex formulation of covariate-adjusted {Gaussian} graphical models via natural parametrization},
+  journal  = {in preparation},
+  year     = {2024},
+  notes    = {in preparation},
+  arxiv    = {2410.06326},
+  abstract = {Gaussian graphical models (GGMs) are widely used for recovering the conditional independence structure among random variables. Recently, several key advances have been made to exploit an additional set of variables for better estimating the GGMs of the variables of interest. For example, in co-expression quantitative trait locus (eQTL) studies, both the mean expression level of genes as well as their pairwise conditional independence structure may be adjusted by genetic variants local to those genes. Existing methods to estimate covariate-adjusted GGMs either allow only the mean to depend on covariates or suffer from poor scaling assumptions due to the inherent non-convexity of simultaneously estimating the mean and precision matrix. In this paper, we propose a convex formulation that jointly estimates the covariate-adjusted mean and precision matrix by utilizing the natural parametrization of the multivariate Gaussian likelihood. This convexity yields theoretically better performance as the sparsity and dimension of the covariates grow large relative to the number of samples. We verify our theoretical results with numerical simulations and perform a reanalysis of an eQTL study of glioblastoma multiforme (GBM), an aggressive form of brain cancer.},
+  preview  = {cspine_pop_network.png},
+  selected = {true}
 }
 
-@book{einstein1956investigations,
-  bibtex_show={true},
-  title={Investigations on the Theory of the Brownian Movement},
-  author={Einstein, Albert},
-  year={1956},
-  publisher={Courier Corporation},
-  preview={brownian-motion.gif}
+
+@article{Liu:multireg_err,
+  author   = {Liu, Ruobin and Yu, Guo},
+  selected = {true},
+  title    = {Estimation of the Error Structure in Multivariate Response Linear Regression Models},
+  journal  = {WIREs Computational Statistics},
+  volume   = {17},
+  number   = {2},
+  pages    = {e70021},
+  keywords = {covariance estimation, error structure, graphical models, high-dimensional statistics, multivariate response linear regression, precision matrix},
+  html     = {https://wires.onlinelibrary.wiley.com/doi/abs/10.1002/wics.70021},
+  doi      = {https://doi.org/10.1002/wics.70021},
+  note     = {e70021 EOCS-730.R1},
+  abstract = {Multivariate response linear regression model considers how a set of covariates affects multiple responses. In contrast to separately running univariate regression for each response, multivariate response regression can better estimate the coefficient matrix by exploiting shared information among the responses. A key to effectively borrowing strength across different responses is to estimate and utilize the structure among random errors in responses. Moreover, certain applications seek to understand the interrelationships of the responses, which are directly encoded in the error structure. These observations call for the development of methods for estimating the error structure in multivariate response linear regression models. This article aims at providing a review of recent progress in this challenging and important problem. We also provide simulation studies demonstrating the empirical performance of recently developed methods for error structure estimation, as well as the benefit by exploiting these estimates for regression coefficients estimation.},
+  year     = {2025},
+  preview  = {multireg-err.png}
 }
 
-@article{einstein1950meaning,
-  abbr={AJP},
-  bibtex_show={true},
-  title={The meaning of relativity},
-  author={Einstein, Albert and Taub, AH},
-  journal={American Journal of Physics},
-  volume={18},
-  number={6},
-  pages={403--404},
-  year={1950},
-  publisher={American Association of Physics Teachers}
-}
 
-@article{PhysRev.47.777,
-  abbr={PhysRev},
-  title={Can Quantum-Mechanical Description of Physical Reality Be Considered Complete?},
-  author={Einstein*†, A. and Podolsky*, B. and Rosen*, N.},
-  abstract={In a complete theory there is an element corresponding to each element of reality. A sufficient condition for the reality of a physical quantity is the possibility of predicting it with certainty, without disturbing the system. In quantum mechanics in the case of two physical quantities described by non-commuting operators, the knowledge of one precludes the knowledge of the other. Then either (1) the description of reality given by the wave function in quantum mechanics is not complete or (2) these two quantities cannot have simultaneous reality. Consideration of the problem of making predictions concerning a system on the basis of measurements made on another system that had previously interacted with it leads to the result that if (1) is false then (2) is also false. One is thus led to conclude that the description of reality as given by a wave function is not complete.},
-  journal={Phys. Rev.},
-  location={New Jersey},
-  volume={47},
-  issue={10},
-  pages={777--780},
-  numpages={0},
-  year={1935},
-  month={May},
-  publisher=aps,
-  doi={10.1103/PhysRev.47.777},
-  url={http://link.aps.org/doi/10.1103/PhysRev.47.777},
-  html={https://journals.aps.org/pr/abstract/10.1103/PhysRev.47.777},
-  pdf={example_pdf.pdf},
-  altmetric={248277},
-  dimensions={true},
-  google_scholar_id={qyhmnyLat1gC},
-  video={https://www.youtube-nocookie.com/embed/aqz-KE-bpKQ},
-  additional_info={. *More Information* can be [found here](https://github.com/alshedivat/al-folio/)},
-  annotation={* Example use of superscripts<br>† Albert Einstein},
-  selected={true},
-  inspirehep_id = {3255}
-}
 
-@article{einstein1905molekularkinetischen,
-  title={{\"U}ber die von der molekularkinetischen Theorie der W{\"a}rme geforderte Bewegung von in ruhenden Fl{\"u}ssigkeiten suspendierten Teilchen},
-  author={Einstein, A.},
-  journal={Annalen der physik},
-  volume={322},
-  number={8},
-  pages={549--560},
-  year={1905},
-  publisher={Wiley Online Library}
-}
-
-@article{einstein1905movement,
-  abbr={Ann. Phys.},
-  title={Un the movement of small particles suspended in statiunary liquids required by the molecular-kinetic theory 0f heat},
-  author={Einstein, A.},
-  journal={Ann. Phys.},
-  volume={17},
-  pages={549--560},
-  year={1905}
-}
-
-@article{einstein1905electrodynamics,
-  title={On the electrodynamics of moving bodies},
-  author={Einstein, A.},
-  year={1905}
-}
-
-@Article{einstein1905photoelectriceffect,
-  bibtex_show={true},
-  abbr={Ann. Phys.},
-  title="{{\"U}ber einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt}",
-  author={Albert Einstein},
-  abstract={This is the abstract text.},
-  journal={Ann. Phys.},
-  volume={322},
-  number={6},
-  pages={132--148},
-  year={1905},
-  doi={10.1002/andp.19053220607},
-  award={Albert Einstein receveid the **Nobel Prize in Physics** 1921 *for his services to Theoretical Physics, and especially for his discovery of the law of the photoelectric effect*},
-  award_name={Nobel Prize}
-}
-
-@book{przibram1967letters,
-  bibtex_show={true},
-  title={Letters on wave mechanics},
-  author={Einstein, Albert and Schrödinger, Erwin and Planck, Max and Lorentz, Hendrik Antoon and Przibram, Karl},
-  year={1967},
-  publisher={Vision},
-  preview={wave-mechanics.gif},
-  abbr={Vision}
+@article{Mendez:qi5003,
+  author   = {Mendez, Derek and Holton, James M. and Lyubimov, Artem Y. and Hollatz, Sabine and Mathews, Irimpan I. and Cichosz, Aleksander and Martirosyan, Vardan and Zeng, Teo and Stofer, Ryan and Liu, Ruobin and Song, Jinhu and McPhillips, Scott and Soltis, Mike and Cohen, Aina E.},
+  title    = {{Deep residual networks for crystallography trained on synthetic data}},
+  journal  = {Acta Crystallographica Section D},
+  year     = {2024},
+  volume   = {80},
+  number   = {1},
+  pages    = {},
+  month    = {Jan},
+  doi      = {10.1107/S2059798323010586},
+  url      = {https://doi.org/10.1107/S2059798323010586},
+  abstract = {The use of artificial intelligence to process diffraction images is challenged by the need to assemble large and precisely designed training data sets. To address this, a codebase called {\it Resonet} was developed for synthesizing diffraction data and training residual neural networks on these data. Here, two per-pattern capabilities of {\it Resonet} are demonstrated: (i) interpretation of crystal resolution and (ii) identification of overlapping lattices. {\it Resonet} was tested across a compilation of diffraction images from synchrotron experiments and X-ray free-electron laser experiments. Crucially, these models readily execute on graphics processing units and can thus significantly outperform conventional algorithms. While {\it Resonet} is currently utilized to provide real-time feedback for macromolecular crystallography users at the Stanford Synchrotron Radiation Lightsource, its simple Python-based interface makes it easy to embed in other processing frameworks. This work highlights the utility of physics-based simulation for training deep neural networks and lays the groundwork for the development of additional models to enhance diffraction collection and analysis.},
+  keywords = {artificial intelligence, serial crystallography, rotation crystallography, synchrotrons, XFELs},
+  selected = {true},
+  preview  = {diffraction.png},
+  html     = {https://scripts.iucr.org/cgi-bin/paper?S2059798323010586}
 }
