@@ -424,7 +424,7 @@ library(datasets)</code></pre>
 <pre><code>## # A tibble: 2 × 3
 ##   country  year lifeExp
 ##   &lt;fct&gt;   &lt;int&gt;   &lt;dbl&gt;
-## 1 Rwanda   1962    43  
+## 1 Rwanda   1962    43
 ## 2 Rwanda   1967    44.1</code></pre>
 </div>
 <div id="dplyr-approach" class="section level4">
@@ -434,13 +434,13 @@ library(datasets)</code></pre>
 <pre><code>## # A tibble: 2 × 3
 ##   country  year lifeExp
 ##   &lt;fct&gt;   &lt;int&gt;   &lt;dbl&gt;
-## 1 Rwanda   1962    43  
+## 1 Rwanda   1962    43
 ## 2 Rwanda   1967    44.1</code></pre>
 </div>
 </div>
 <div id="the-pipe-slide-13" class="section level2">
 <h2>The Pipe (slide 13)</h2>
-<pre class="r"><code>gapminder |&gt; 
+<pre class="r"><code>gapminder |&gt;
   filter(country == &quot;Chile&quot;) |&gt;
   select(continent, year, lifeExp) |&gt;
   head(3)</code></pre>

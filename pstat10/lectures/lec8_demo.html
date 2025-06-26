@@ -405,7 +405,7 @@ between 4 and 0 is 4 and the distance between 10 and 4 is 6.</p>
 <pre class="r"><code>diff(c(0, 4, 10))</code></pre>
 <pre><code>## [1] 4 6</code></pre>
 <p>We can use this to construct a one-liner:</p>
-<pre class="r"><code>replicate(10000, diff(sample(1:6, 2, replace = T)) &gt; 0) |&gt; 
+<pre class="r"><code>replicate(10000, diff(sample(1:6, 2, replace = T)) &gt; 0) |&gt;
   mean()</code></pre>
 <pre><code>## [1] 0.4135</code></pre>
 <p>I don’t expect you to remember the <code>diff</code> function; just

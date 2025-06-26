@@ -399,7 +399,7 @@ p + geom_bar() +
                                       donors_sd = sd(donors, na.rm = T))</code></pre>
 <pre><code>## `summarise()` has grouped output by &#39;consent_law&#39;. You can override using the
 ## `.groups` argument.</code></pre>
-<pre class="r"><code>p &lt;- ggplot(by_country, mapping = aes(y = reorder(country, donors_mean), 
+<pre class="r"><code>p &lt;- ggplot(by_country, mapping = aes(y = reorder(country, donors_mean),
                                       x = donors_mean,
                                       color = consent_law))
 p + geom_point() +
@@ -409,9 +409,9 @@ p + geom_point() +
 </div>
 <div id="organ-data-pointrange-plot-demo-slide-30" class="section level2">
 <h2>Organ data pointrange plot demo (slide 30)</h2>
-<pre class="r"><code>p &lt;- ggplot(by_country, mapping = aes(y = reorder(country, donors_mean), 
+<pre class="r"><code>p &lt;- ggplot(by_country, mapping = aes(y = reorder(country, donors_mean),
                                       x = donors_mean,
-                                      xmin = donors_mean - donors_sd, 
+                                      xmin = donors_mean - donors_sd,
                                       xmax = donors_mean + donors_sd,
                                       color = consent_law))
 p + geom_pointrange() +

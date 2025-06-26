@@ -438,25 +438,25 @@ frobenius_norm(matrix(1:4, nrow = 2, ncol = 2))</code></pre>
     print(&quot;Both vectors must be numeric!&quot;)
     return()
   }
-  
+
   if (length(x) != length(y)){
     print(&quot;Both vectors must have the same length!&quot;)
     return()
   }
-  
+
   if (!(comp %in% c(&#39;&gt;&#39;, &#39;&lt;&#39;, &#39;=&#39;))) {
     print(&quot;Unrecognized compare operator!&quot;)
     return()
   }
-  
+
   if (comp == &#39;&gt;&#39;) {
     return(sum(x &gt; y))
   }
-  
+
   if (comp == &#39;&lt;&#39;) {
     return(sum(x &lt; y))
   }
-  
+
   if (comp == &#39;=&#39;) {
     return(sum(x == y))
   }

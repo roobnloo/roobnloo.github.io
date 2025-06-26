@@ -188,7 +188,7 @@ Return the `country`, `year`, and `lifeExp` for Rwanda in years between 1960 and
 ## # A tibble: 2 x 3
 ##   country  year lifeExp
 ##   &lt;fct&gt;   &lt;int&gt;   &lt;dbl&gt;
-## 1 Rwanda   1962    43  
+## 1 Rwanda   1962    43
 ## 2 Rwanda   1967    44.1
 ```
 
@@ -239,7 +239,7 @@ select(filter(gapminder, country == "Rwanda", year &gt; 1960, year &lt; 1970),
 ## # A tibble: 2 x 3
 ##   country  year lifeExp
 ##   &lt;fct&gt;   &lt;int&gt;   &lt;dbl&gt;
-## 1 Rwanda   1962    43  
+## 1 Rwanda   1962    43
 ## 2 Rwanda   1967    44.1
 ```
 
@@ -253,7 +253,7 @@ gapminder |&gt;
 ## # A tibble: 2 x 3
 ##   country  year lifeExp
 ##   &lt;fct&gt;   &lt;int&gt;   &lt;dbl&gt;
-## 1 Rwanda   1962    43  
+## 1 Rwanda   1962    43
 ## 2 Rwanda   1967    44.1
 ```
 ---
@@ -269,7 +269,7 @@ select(filtered_gap, country, year, lifeExp)
 ## # A tibble: 2 x 3
 ##   country  year lifeExp
 ##   &lt;fct&gt;   &lt;int&gt;   &lt;dbl&gt;
-## 1 Rwanda   1962    43  
+## 1 Rwanda   1962    43
 ## 2 Rwanda   1967    44.1
 ```
 
@@ -283,7 +283,7 @@ gapminder |&gt;
 ## # A tibble: 2 x 3
 ##   country  year lifeExp
 ##   &lt;fct&gt;   &lt;int&gt;   &lt;dbl&gt;
-## 1 Rwanda   1962    43  
+## 1 Rwanda   1962    43
 ## 2 Rwanda   1967    44.1
 ```
 ---
@@ -299,7 +299,7 @@ gapminder |&gt;
 ## # A tibble: 2 x 3
 ##   country  year lifeExp
 ##   &lt;fct&gt;   &lt;int&gt;   &lt;dbl&gt;
-## 1 Rwanda   1962    43  
+## 1 Rwanda   1962    43
 ## 2 Rwanda   1967    44.1
 ```
 .center[![:scale 70%](Lec6_files/plumbing.png)]
@@ -442,9 +442,9 @@ is_rescue &lt;- c(F, F, T)
 ```
 ## # A tibble: 3 x 3
 ##   name      age rescue
-##   &lt;chr&gt;   &lt;dbl&gt; &lt;lgl&gt; 
-## 1 Ralph       3 FALSE 
-## 2 Sully      12 FALSE 
+##   &lt;chr&gt;   &lt;dbl&gt; &lt;lgl&gt;
+## 1 Ralph       3 FALSE
+## 2 Sully      12 FALSE
 ## 3 Capsule     1 TRUE
 ```
 ---
@@ -473,9 +473,9 @@ dogs
 ```
 ## # A tibble: 3 x 3
 ##   name      age rescue
-##   &lt;chr&gt;   &lt;dbl&gt; &lt;lgl&gt; 
-## 1 Ralph       3 FALSE 
-## 2 Sully      12 FALSE 
+##   &lt;chr&gt;   &lt;dbl&gt; &lt;lgl&gt;
+## 1 Ralph       3 FALSE
+## 2 Sully      12 FALSE
 ## 3 Capsule     1 TRUE
 ```
 ---
@@ -536,9 +536,9 @@ dogs &lt;- tibble(name = c("Ralph", "Sully", "Capsule"),
 ```
 ## # A tibble: 3 x 3
 ##   name      age rescue
-##   &lt;chr&gt;   &lt;dbl&gt; &lt;lgl&gt; 
-## 1 Ralph       3 FALSE 
-## 2 Sully      12 FALSE 
+##   &lt;chr&gt;   &lt;dbl&gt; &lt;lgl&gt;
+## 1 Ralph       3 FALSE
+## 2 Sully      12 FALSE
 ## 3 Capsule     1 TRUE
 ```
 ---
@@ -576,7 +576,7 @@ head(gapminder, 1) # Remember the original tibble is unmodified!!
 # Saving the result to a new tibble
 
 ```r
-my_gap &lt;- gapminder |&gt; 
+my_gap &lt;- gapminder |&gt;
             mutate(totalGdp = pop * gdpPercap) |&gt;
             filter(gdpPercap &lt; 300, year &lt; 2007) |&gt;
             select(country, year, totalGdp)

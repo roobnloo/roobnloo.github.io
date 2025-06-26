@@ -50,7 +50,7 @@ A simulation-based answer.
 
 --
 
-2. Sum up the two numbers. 
+2. Sum up the two numbers.
 
 --
 
@@ -104,7 +104,7 @@ We imagine performing the experiment a **huge** number of times.
 
 An **event** is a logical (TRUE or FALSE) outcome of an experiment.
   - Does the sum equal 6? Either TRUE or FALSE.
-  
+
 --
 
 The **probability** of an event is the proportion of TRUE outcomes after a
@@ -140,7 +140,7 @@ The `sample` function returns a vector of random elements from an input vector.
 
 ```r
 # the second argument is the number of elements to return.
-sample(c("cat", "fish", "llama", "hedgehog"), 1) 
+sample(c("cat", "fish", "llama", "hedgehog"), 1)
 ```
 
 ```
@@ -148,7 +148,7 @@ sample(c("cat", "fish", "llama", "hedgehog"), 1)
 ```
 
 ```r
-sample(c("cat", "fish", "llama", "hedgehog"), 2) 
+sample(c("cat", "fish", "llama", "hedgehog"), 2)
 ```
 
 ```
@@ -312,7 +312,7 @@ Then we used recycling and vectorization to find the desired proportion.
 
 --
 
-**The key idea:** create a logical vector containing, for each replication, TRUE 
+**The key idea:** create a logical vector containing, for each replication, TRUE
 if the event occurs and FALSE if the event does not occur.
 Then take the mean of this vector. This estimates the probability of the event.
 
@@ -350,7 +350,7 @@ What is the probability that the second die lands on a higher value than the fir
 A **derangement** is a permutation of of numbers `\(1, 2, \dotsc, n\)` such that
 no number is in its original position.
 
-Example: if `\(n=5\)`, 
+Example: if `\(n=5\)`,
 - 2, 1, 5, 3, 4 is a derangement
 - 2, 1, 5, 4, 3 is not a derangement; 4 is in the 4th position.
 

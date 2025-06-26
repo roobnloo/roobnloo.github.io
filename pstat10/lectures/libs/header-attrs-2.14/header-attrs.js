@@ -1,1 +1,1 @@
-document.addEventListener("DOMContentLoaded",function(){var e,t,n,i=document.querySelectorAll("div.section[class*='level'] > :first-child");for(e=0;e<i.length;e++)if(t=i[e],/^h[1-6]$/i.test(t.tagName))for(n=t.attributes;n.length>0;)t.removeAttribute(n[0].name)});
+document.addEventListener("DOMContentLoaded",(function(){var e,t,n,i=document.querySelectorAll("div.section[class*='level'] > :first-child");for(e=0;e<i.length;e++)if(t=i[e],/^h[1-6]$/i.test(t.tagName))for(n=t.attributes;n.length>0;)t.removeAttribute(n[0].name)}));

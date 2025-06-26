@@ -253,7 +253,7 @@ logical_exp1 &lt;- TRUE
 logical_exp2 &lt;- TRUE
 if (logical_exp1) {
   print("A")
-} 
+}
 if (logical_exp2) {
   print("B")
 } else {
@@ -356,7 +356,7 @@ noise("capybara")
 Create a function `parity` that takes a number and returns whether its even or odd.
 If neither even or odd (e.g. input is a decimal), return "Not an integer!".
 
-*Hint*: the `%%` operator is the **modulus** operator. 
+*Hint*: the `%%` operator is the **modulus** operator.
 `x %% y` gives the remainder when `x` is divided by `y`.
 
 
@@ -491,7 +491,7 @@ ifelse(c(T, F, T, T), "hello", "goodbye")
 ```
 
 Here is an example of when a vectorized solution beats using a loop.
-Rewrite `parity_vec` to use the vectorized `ifelse`. 
+Rewrite `parity_vec` to use the vectorized `ifelse`.
 
 *Hint*: The modulus operator `%%` is vectorized: run `1:10 %% 2` in the console.
 
@@ -539,7 +539,7 @@ sapply(c("cow", "owl"), noise)
 ```
 
 ```
-##    cow    owl 
+##    cow    owl
 ##  "moo" "hoot"
 ```
 Behind the scenes `sapply` creates a loop and applies `noise` to each element of
@@ -566,7 +566,7 @@ sapply(animals, noise)
 ```
 
 ```
-##    cow    pig    dog    owl 
+##    cow    pig    dog    owl
 ##  "moo" "oink" "woof" "hoot"
 ```
 ---

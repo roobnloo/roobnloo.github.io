@@ -415,8 +415,8 @@ that only contains petal widths greater than the median.</li>
 <pre class="r"><code>iris_tbl |&gt;
   filter(Petal.Width &gt; median(iris_tbl$Petal.Width))</code></pre>
 <pre><code>## # A tibble: 72 x 5
-##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species   
-##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;     
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;
 ##  1          7           3.2          4.7         1.4 versicolor
 ##  2          6.4         3.2          4.5         1.5 versicolor
 ##  3          6.9         3.1          4.9         1.5 versicolor
@@ -445,10 +445,10 @@ greater than the median.</li>
 ##  1          7           3.2 versicolor       6.58
 ##  2          6.4         3.2 versicolor       6.75
 ##  3          6.9         3.1 versicolor       7.35
-##  4          6.5         2.8 versicolor       6.9 
+##  4          6.5         2.8 versicolor       6.9
 ##  5          6.3         3.3 versicolor       7.52
 ##  6          5.2         2.7 versicolor       5.46
-##  7          5.9         3   versicolor       6.3 
+##  7          5.9         3   versicolor       6.3
 ##  8          6.1         2.9 versicolor       6.58
 ##  9          6.7         3.1 versicolor       6.16
 ## 10          5.6         3   versicolor       6.75
@@ -469,17 +469,17 @@ variable <code>height_ft_in</code> in place of <code>height</code>.</p>
   select(-height)</code></pre>
 <pre><code>## # A tibble: 506 x 4
 ##     id_. gender   age height_ft_in
-##    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;chr&gt;       
-##  1     1 Female    19 5 2         
-##  2     2 Female    19 5 7         
-##  3     3 Female    22 5 6         
-##  4     4 Male      19 5 11        
-##  5     5 Female    21 5 8         
-##  6     6 Male      19 6 2         
-##  7     7 Female    21 5 1         
-##  8     8 Female    21 5 5         
-##  9     9 Male      18 6 4         
-## 10    10 Female    18 5 4         
+##    &lt;int&gt; &lt;chr&gt;  &lt;int&gt; &lt;chr&gt;
+##  1     1 Female    19 5 2
+##  2     2 Female    19 5 7
+##  3     3 Female    22 5 6
+##  4     4 Male      19 5 11
+##  5     5 Female    21 5 8
+##  6     6 Male      19 6 2
+##  7     7 Female    21 5 1
+##  8     8 Female    21 5 5
+##  9     9 Male      18 6 4
+## 10    10 Female    18 5 4
 ## # ... with 496 more rows</code></pre>
 </div>
 

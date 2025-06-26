@@ -421,7 +421,7 @@ TB. Put the result into a tibble with 4 columns.</p>
 <pre class="r"><code>ggplot(who_total, mapping = aes(x = year, y = total_cases)) +
     geom_jitter(alpha = 0.4, width = 0.3) +
     ggrepel::geom_text_repel(
-      data = filter(who_total, (total_cases &gt; 7e5 &amp; sex == &quot;m&quot;) | 
+      data = filter(who_total, (total_cases &gt; 7e5 &amp; sex == &quot;m&quot;) |
                                (total_cases &gt; 4e5 &amp; sex == &quot;f&quot;)),
       mapping = aes(label = paste(country, year)),
       color = &quot;red&quot;) +

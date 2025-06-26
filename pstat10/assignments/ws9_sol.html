@@ -417,7 +417,7 @@ head(robin, 4)</code></pre>
 <pre class="r"><code>library(babynames)
 babynames |&gt;
   filter(name == &quot;Robin&quot;) |&gt;
-  ggplot(mapping = aes(x = year, y = n, group = sex, color = sex)) + 
+  ggplot(mapping = aes(x = year, y = n, group = sex, color = sex)) +
     geom_line() +
     labs(x = &quot;Year&quot;, y = &quot;Number&quot;,
          title = &quot;Number of babies named Robin&quot;,

@@ -395,9 +395,9 @@ chinook_db &lt;- dbConnect(SQLite(), &quot;Chinook_Sqlite.sqlite&quot;)</code></
 </div>
 <div id="joins-slide-17" class="section level2">
 <h2>Joins (slide 17)</h2>
-<pre class="r"><code>dbGetQuery(chinook_db, &quot;select TrackId, Track.Name, AlbumId, Track.MediaTypeId, 
+<pre class="r"><code>dbGetQuery(chinook_db, &quot;select TrackId, Track.Name, AlbumId, Track.MediaTypeId,
                           MediaType.Name
-                        from Track inner join MediaType 
+                        from Track inner join MediaType
                             on Track.MediaTypeId = MediaType.MediaTypeId
                         where AlbumId = 10&quot;)</code></pre>
 <pre><code>##    TrackId                     Name AlbumId MediaTypeId            Name
@@ -474,7 +474,7 @@ chinook_db &lt;- dbConnect(SQLite(), &quot;Chinook_Sqlite.sqlite&quot;)</code></
 <div id="aggregation-with-join-slide-23" class="section level2">
 <h2>Aggregation with Join (Slide 23)</h2>
 <pre class="r"><code>dbGetQuery(chinook_db, &quot;select avg(Bytes) / power(2, 20) as AvgSizeMB, t.genreid,
-                        g.name as GenreName from track t 
+                        g.name as GenreName from track t
                           inner join genre g on t.genreid = g.genreid
                           group by t.genreid&quot;)</code></pre>
 <pre><code>##     AvgSizeMB GenreId          GenreName

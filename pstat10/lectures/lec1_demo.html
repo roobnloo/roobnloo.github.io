@@ -374,26 +374,26 @@ pre code {
 <p>Use <code>::</code> to access the <code>say</code> function in the
 <code>cowsay</code> package.</p>
 <pre class="r"><code>cowsay::say(&quot;Welcome to PSTAT 10!&quot;, by = &quot;cow&quot;)</code></pre>
-<pre><code>## 
-##  ----- 
-## Welcome to PSTAT 10! 
-##  ------ 
-##     \   ^__^ 
-##      \  (oo)\ ________ 
-##         (__)\         )\ /\ 
+<pre><code>##
+##  -----
+## Welcome to PSTAT 10!
+##  ------
+##     \   ^__^
+##      \  (oo)\ ________
+##         (__)\         )\ /\
 ##              ||------w|
 ##              ||      ||</code></pre>
 <p>Or load the <code>cowsay</code> package so that all functions are
 available.</p>
 <pre class="r"><code>library(cowsay)
 say(&quot;Now we don&#39;t need the double colon operator&quot;, by = &quot;cow&quot;)</code></pre>
-<pre><code>## 
-##  ----- 
-## Now we don&#39;t need the double colon operator 
-##  ------ 
-##     \   ^__^ 
-##      \  (oo)\ ________ 
-##         (__)\         )\ /\ 
+<pre><code>##
+##  -----
+## Now we don&#39;t need the double colon operator
+##  ------
+##     \   ^__^
+##      \  (oo)\ ________
+##         (__)\         )\ /\
 ##              ||------w|
 ##              ||      ||</code></pre>
 <p>Uninstall a package:</p>
@@ -431,28 +431,28 @@ denominator would still be right.</p>
 </ol>
 <pre class="r"><code>names(scores) &lt;- c(&quot;Bob&quot;, &quot;Alice&quot;, &quot;Alex&quot;, &quot;Juan&quot;, &quot;Amy&quot;)
 scores</code></pre>
-<pre><code>##   Bob Alice  Alex  Juan   Amy 
+<pre><code>##   Bob Alice  Alex  Juan   Amy
 ##     8     7     8    10     5</code></pre>
 <ol start="5" style="list-style-type: decimal">
 <li></li>
 </ol>
 <pre class="r"><code>scores[2]</code></pre>
-<pre><code>## Alice 
+<pre><code>## Alice
 ##     7</code></pre>
 <pre class="r"><code>scores[&quot;Alice&quot;]</code></pre>
-<pre><code>## Alice 
+<pre><code>## Alice
 ##     7</code></pre>
 <ol start="6" style="list-style-type: decimal">
 <li></li>
 </ol>
 <pre class="r"><code>scores[c(&quot;Amy&quot;, &quot;Alice&quot;)]</code></pre>
-<pre><code>##   Amy Alice 
+<pre><code>##   Amy Alice
 ##     5     7</code></pre>
 <ol start="7" style="list-style-type: decimal">
 <li></li>
 </ol>
 <pre class="r"><code>scores[-5]</code></pre>
-<pre><code>##   Bob Alice  Alex  Juan 
+<pre><code>##   Bob Alice  Alex  Juan
 ##     8     7     8    10</code></pre>
 </div>
 

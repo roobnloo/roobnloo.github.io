@@ -130,10 +130,10 @@ Before introducing `ggplot2`, we look at some examples of plots and their data.
 ```
 ## # A tibble: 4 x 2
 ##   alg_prog hw_length
-##      &lt;dbl&gt; &lt;fct&gt;    
-## 1     0.6  0        
-## 2     1.1  50       
-## 3     1.25 100      
+##      &lt;dbl&gt; &lt;fct&gt;
+## 1     0.6  0
+## 2     1.1  50
+## 3     1.25 100
 ## 4     1.3  150
 ```
 ]
@@ -161,11 +161,11 @@ Before introducing `ggplot2`, we look at some examples of plots and their data.
 ```
 ## # A tibble: 5 x 3
 ##    year budget funding_plan
-##   &lt;dbl&gt;  &lt;dbl&gt; &lt;fct&gt;       
-## 1  1976    0.7 A           
-## 2  1976    0.7 B           
-## 3  1976    0.7 C           
-## 4  1976    0.7 D           
+##   &lt;dbl&gt;  &lt;dbl&gt; &lt;fct&gt;
+## 1  1976    0.7 A
+## 2  1976    0.7 B
+## 3  1976    0.7 C
+## 4  1976    0.7 D
 ## 5  1977    1   A
 ```
 ]
@@ -331,7 +331,7 @@ The specific visual elements are not decided yet; nothing is plotted.
 
 ```r
 p &lt;- ggplot(gap_avglife, mapping = aes(x = avgLifeExp, y = continent))
-* p + geom_col() 
+* p + geom_col()
 ```
 
 &lt;img src="Lec16_files/figure-html/unnamed-chunk-10-1.png" style="display: block; margin: auto;" /&gt;
@@ -346,7 +346,7 @@ and the `y` aesthetic as the category.
 
 ```r
 p &lt;- ggplot(gap_avglife, mapping = aes(x = avgLifeExp, y = continent))
-* p + geom_point() 
+* p + geom_point()
 ```
 
 &lt;img src="Lec16_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" /&gt;
@@ -390,7 +390,7 @@ Adding a new aesthetic mapping, the continent factor now maps to fill color.
 ```r
 p &lt;- ggplot(gap_avglife, mapping = aes(x = avgLifeExp, y = continent, fill = continent))
 p + geom_col() +
-*  guides(fill = "none") 
+*  guides(fill = "none")
 ```
 
 &lt;img src="Lec16_files/figure-html/unnamed-chunk-14-1.png" style="display: block; margin: auto;" /&gt;
@@ -423,7 +423,7 @@ p + geom_col() +
     labs(x = "Years", y = "Continent",
          title = "Average Life Expectancy (2007)",
          caption = "Source: Gapminder.") +
-*  theme_bw() 
+*  theme_bw()
 ```
 
 &lt;img src="Lec16_files/figure-html/unnamed-chunk-16-1.png" style="display: block; margin: auto;" /&gt;
@@ -529,11 +529,11 @@ Behind the scenes, `ggplot` created a new categorical variable with "purple" for
 ```
 ## # A tibble: 5 x 7
 ##   country     continent  year lifeExp      pop gdpPercap new_var
-##   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;  
-## 1 Afghanistan Asia       1952    28.8  8425333      779. purple 
-## 2 Afghanistan Asia       1957    30.3  9240934      821. purple 
-## 3 Afghanistan Asia       1962    32.0 10267083      853. purple 
-## 4 Afghanistan Asia       1967    34.0 11537966      836. purple 
+##   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt; &lt;chr&gt;
+## 1 Afghanistan Asia       1952    28.8  8425333      779. purple
+## 2 Afghanistan Asia       1957    30.3  9240934      821. purple
+## 3 Afghanistan Asia       1962    32.0 10267083      853. purple
+## 4 Afghanistan Asia       1967    34.0 11537966      836. purple
 ## 5 Afghanistan Asia       1972    36.1 13079460      740. purple
 ```
 
@@ -541,7 +541,7 @@ Hence every row with value "purple" is mapped to the same color, which by defaul
 
 --
 
-In short: `aes()` is for **mappings only**. 
+In short: `aes()` is for **mappings only**.
 ---
 # Mapping vs Setting Aesthetics
 Setting an attribute outside of `aes()` does what we want.

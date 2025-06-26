@@ -196,7 +196,7 @@ Let's further split up the countries by continent.
 ```r
 p &lt;- ggplot(gapminder, mapping = aes(x = year, y = gdpPercap))
 p + geom_line(aes(group = country)) +
-*  facet_wrap(~ continent) 
+*  facet_wrap(~ continent)
 ```
 
 &lt;img src="Lec17_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
@@ -222,7 +222,7 @@ gss_sm
 ```
 ## # A tibble: 2,867 x 32
 ##     year    id ballot       age childs sibs   degree race  sex   region income16
-##    &lt;dbl&gt; &lt;dbl&gt; &lt;labelled&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;labe&gt; &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;  &lt;fct&gt;   
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;labelled&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;labe&gt; &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt; &lt;fct&gt;  &lt;fct&gt;
 ##  1  2016     1 1             47      3 2      Bache~ White Male  New E~ $170000~
 ##  2  2016     2 2             61      0 3      High ~ White Male  New E~ $50000 ~
 ##  3  2016     3 3             72      2 3      Bache~ White Male  New E~ $75000 ~
@@ -256,7 +256,7 @@ p + geom_bar()
 ```r
 p &lt;- ggplot(data = gss_sm, mapping = aes(y = degree))
 p + geom_bar() +
-*  facet_wrap(~ race) 
+*  facet_wrap(~ race)
 ```
 
 &lt;img src="Lec17_files/figure-html/unnamed-chunk-16-1.png" style="display: block; margin: auto;" /&gt;
@@ -267,7 +267,7 @@ p + geom_bar() +
 ```r
 p &lt;- ggplot(data = gss_sm, mapping = aes(y = degree))
 p + geom_bar() +
-*  facet_grid(sex ~ race) 
+*  facet_grid(sex ~ race)
 ```
 
 &lt;img src="Lec17_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" /&gt;
@@ -285,7 +285,7 @@ p + geom_bar() +
 ```r
 gss_sm |&gt;
   ggplot(gss_sm, mapping = aes(y = fct_infreq(degree))) +
-*  geom_bar() 
+*  geom_bar()
 ```
 
 &lt;img src="Lec17_files/figure-html/unnamed-chunk-19-1.png" style="display: block; margin: auto;" /&gt;
@@ -298,7 +298,7 @@ gss_sm |&gt;
   group_by(degree) |&gt;
   summarize(count = n()) |&gt;
   ggplot(mapping = aes(x = count, y = reorder(degree, count, decreasing = T))) +
-*  geom_col() 
+*  geom_col()
 ```
 
 &lt;img src="Lec17_files/figure-html/unnamed-chunk-20-1.png" style="display: block; margin: auto;" /&gt;
@@ -420,22 +420,22 @@ p + geom_line(aes(group = country)) + facet_wrap(~ country)
 ## # Groups:   consent_law [2]
 ##    consent_law country        donors_mean donors_sd
 ##    &lt;chr&gt;       &lt;chr&gt;                &lt;dbl&gt;     &lt;dbl&gt;
-##  1 Informed    Australia             10.6     1.14 
+##  1 Informed    Australia             10.6     1.14
 ##  2 Informed    Canada                14.0     0.751
-##  3 Informed    Denmark               13.1     1.47 
+##  3 Informed    Denmark               13.1     1.47
 ##  4 Informed    Germany               13.0     0.611
-##  5 Informed    Ireland               19.8     2.48 
-##  6 Informed    Netherlands           13.7     1.55 
+##  5 Informed    Ireland               19.8     2.48
+##  6 Informed    Netherlands           13.7     1.55
 ##  7 Informed    United Kingdom        13.5     0.775
-##  8 Informed    United States         20.0     1.33 
-##  9 Presumed    Austria               23.5     2.42 
-## 10 Presumed    Belgium               21.9     1.94 
-## 11 Presumed    Finland               18.4     1.53 
-## 12 Presumed    France                16.8     1.60 
-## 13 Presumed    Italy                 11.1     4.28 
-## 14 Presumed    Norway                15.4     1.11 
-## 15 Presumed    Spain                 28.1     4.96 
-## 16 Presumed    Sweden                13.1     1.75 
+##  8 Informed    United States         20.0     1.33
+##  9 Presumed    Austria               23.5     2.42
+## 10 Presumed    Belgium               21.9     1.94
+## 11 Presumed    Finland               18.4     1.53
+## 12 Presumed    France                16.8     1.60
+## 13 Presumed    Italy                 11.1     4.28
+## 14 Presumed    Norway                15.4     1.11
+## 15 Presumed    Spain                 28.1     4.96
+## 16 Presumed    Sweden                13.1     1.75
 ## 17 Presumed    Switzerland           14.2     1.71
 ```
 
@@ -463,21 +463,21 @@ p + geom_line(aes(group = country)) + facet_wrap(~ country)
 ## # Groups:   consent_law [2]
 ##    consent_law country        donors_mean roads_mean
 ##    &lt;chr&gt;       &lt;chr&gt;                &lt;dbl&gt;      &lt;dbl&gt;
-##  1 Informed    Australia             10.6      105. 
-##  2 Informed    Canada                14.0      109. 
-##  3 Informed    Denmark               13.1      102. 
-##  4 Informed    Germany               13.0      113. 
-##  5 Informed    Ireland               19.8      118. 
+##  1 Informed    Australia             10.6      105.
+##  2 Informed    Canada                14.0      109.
+##  3 Informed    Denmark               13.1      102.
+##  4 Informed    Germany               13.0      113.
+##  5 Informed    Ireland               19.8      118.
 ##  6 Informed    Netherlands           13.7       76.1
 ##  7 Informed    United Kingdom        13.5       67.9
-##  8 Informed    United States         20.0      155. 
-##  9 Presumed    Austria               23.5      150. 
-## 10 Presumed    Belgium               21.9      155. 
+##  8 Informed    United States         20.0      155.
+##  9 Presumed    Austria               23.5      150.
+## 10 Presumed    Belgium               21.9      155.
 ## 11 Presumed    Finland               18.4       93.6
-## 12 Presumed    France                16.8      156. 
-## 13 Presumed    Italy                 11.1      122. 
+## 12 Presumed    France                16.8      156.
+## 13 Presumed    Italy                 11.1      122.
 ## 14 Presumed    Norway                15.4       70.0
-## 15 Presumed    Spain                 28.1      161. 
+## 15 Presumed    Spain                 28.1      161.
 ## 16 Presumed    Sweden                13.1       72.3
 ## 17 Presumed    Switzerland           14.2       96.4
 ```
@@ -537,14 +537,14 @@ class: inverse, middle, center
 ## # Groups:   consent_law [2]
 ##    consent_law country        donors_mean roads_mean pop_mean external_mean
 ##    &lt;chr&gt;       &lt;chr&gt;                &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt;
-##  1 Informed    Australia             10.6      105.    18318.          393 
+##  1 Informed    Australia             10.6      105.    18318.          393
 ##  2 Informed    Canada                14.0      109.    29608.          411.
 ##  3 Informed    Denmark               13.1      102.     5257.          532.
 ##  4 Informed    Germany               13.0      113.    80255.          391.
-##  5 Informed    Ireland               19.8      118.     3674.          394 
+##  5 Informed    Ireland               19.8      118.     3674.          394
 ##  6 Informed    Netherlands           13.7       76.1   15548.          286.
 ##  7 Informed    United Kingdom        13.5       67.9   58187.          288.
-##  8 Informed    United States         20.0      155.   269330.          530 
+##  8 Informed    United States         20.0      155.   269330.          530
 ##  9 Presumed    Austria               23.5      150.     7927.          507.
 ## 10 Presumed    Belgium               21.9      155.    10153.          542.
 ## 11 Presumed    Finland               18.4       93.6    5112.          722.

@@ -414,9 +414,9 @@ your field names match mine by using aliases.</p>
                                e.FirstName as RepFirstName,
                                e.LastName as RepLastName,
                                c.CustomerId,
-                               c.FirstName as CustFirstName, 
+                               c.FirstName as CustFirstName,
                                c.LastName as CustLastName
-                        from customer c inner join employee e 
+                        from customer c inner join employee e
                             on c.supportrepid = e.employeeid
                         where customerid = 22&quot;)</code></pre>
 <pre><code>##   RepId RepFirstName RepLastName CustomerId CustFirstName CustLastName

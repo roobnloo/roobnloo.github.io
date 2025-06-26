@@ -151,8 +151,8 @@ dbListTables(chinook_db)
 ```
 
 ```
-##  [1] "Album"         "Artist"        "Customer"      "Employee"     
-##  [5] "Genre"         "Invoice"       "InvoiceLine"   "MediaType"    
+##  [1] "Album"         "Artist"        "Customer"      "Employee"
+##  [5] "Genre"         "Invoice"       "InvoiceLine"   "MediaType"
 ##  [9] "Playlist"      "PlaylistTrack" "Track"
 ```
 
@@ -165,8 +165,8 @@ dbListFields(chinook_db, "Customer")
 ```
 
 ```
-##  [1] "CustomerId"   "FirstName"    "LastName"     "Company"      "Address"     
-##  [6] "City"         "State"        "Country"      "PostalCode"   "Phone"       
+##  [1] "CustomerId"   "FirstName"    "LastName"     "Company"      "Address"
+##  [6] "City"         "State"        "Country"      "PostalCode"   "Phone"
 ## [11] "Fax"          "Email"        "SupportRepId"
 ```
 
@@ -293,15 +293,15 @@ A foreign key field *points to* the primary key of another table.
 --
 
   - Each customer in the store can be assigned a support representative
-  
+
 --
 
   - The support rep is an employee at the store and therefore has a unique id
-  
+
 --
 
   - This unique id, EmployeeId, is the primary key of the employee table
-  
+
 --
 
 This real-world relationship is encoded by the relational model
@@ -382,7 +382,7 @@ dbGetQuery(chinook_db, "pragma table_info(customer)")
 ```
 ---
 # SQL
-*Structured Query Language* (SQL) is a language designed to 
+*Structured Query Language* (SQL) is a language designed to
 create, read data from, and write data to relational databases.
 
 There are many different implementations of SQL, each with unique features.
