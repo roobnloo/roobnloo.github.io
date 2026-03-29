@@ -24,6 +24,11 @@
 - title: Experience
   type: time_table
   contents:
+    - title: PhD Research Fellow
+      institution: Uniswap Labs
+      year: 2025 - 2026
+      description:
+        - Statistical analysis of transaction data and A/B tests
     - title: Research Engineer
       institution: Inria Centre
       year: Summer 2024

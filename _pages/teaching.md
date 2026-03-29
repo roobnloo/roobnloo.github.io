@@ -14,7 +14,7 @@ nav_order: 2
 - PSTAT 131/231. Statistical Machine Learning
   - Fall 2024
 - PSTAT 135/235. Big Data Analytics
-  - Winter 2024, Spring 2025
+  - Winter 2024, Spring 2025, Spring 2026
 - PSTAT 232. Computational Techniques in Statistics
   - Winter 2024, Spring 2025
 - PSTAT 134/234. Statistical Data Science
