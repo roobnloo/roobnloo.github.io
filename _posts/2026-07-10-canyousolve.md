@@ -4,7 +4,7 @@ title: Can you solve our problem?
 date: 2026-07-10
 description: An interview problem from a prop trading firm
 tags: statistics regression
-thumbnail: assets/img/canyousolve/five-rings-problem.png
+thumbnail: assets/img/canyousolve/problem-card.png
 ---
 
 I received this card from the recruitment table of Five Rings, a proprietary trading firm, at JSM 2024.
@@ -104,7 +104,7 @@ $$
 
 which evaluates to $1/6$ with $\gamma = 1/2$, $\eta = 9$.
 
-The regression function along with the best linear approximation is plotted in Figure 1 above. Since $f(z)$ depends on both $\gamma$ (the mixture weight) and $\eta$ (the noise variance ratio), it's instructive to see how the shape of the regression function changes as these parameters vary. Drag the sliders below to see $f(z)$ morph from the LMMSE line at $\gamma \in \{0,1\}$, where the true regression function is linear, to a strongly non-linear curve as $\gamma$ approaches values where both regimes compete, and to see how larger $\eta$ sharpens this effect.
+The regression function along with the best linear approximation is plotted in Figure 1 above. Since $f(z)$ depends on both $\gamma$ (the mixture weight) and $\eta$ (the noise variance ratio), it's instructive to see how the shape of the regression function changes as these parameters vary. Drag the sliders below to see $f(z)$ morph from the LMMSE line at $\gamma \in \{0,1\}$, where the true regression function is linear, to a strongly non-linear curve as $\gamma$ approaches values where both regimes compete, and to see how larger $\eta$ sharpens this effect. The LMMSE line and $f(z)$ coincide when $\gamma \in \{0,1\}$ or $\eta = 1$, since in these cases the joint distribution of $(X, Z)$ is Gaussian.
 
 # Relevance to trading
 
