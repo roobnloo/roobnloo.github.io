@@ -1,79 +1,77 @@
-- title: General Information
-  type: map
-  contents:
-    - name: Full Name
-      value: Ruobin Liu
-    - name: Location
-      value: Goleta, CA 93117
-    - name: Website
-      value: roobnloo.github.io
+cv:
+  name: Ruobin Liu
+  website: roobnloo.github.io
+  address:
+    city: Goleta
+    region: CA
+    postalCode: "93117"
 
-- title: Education
-  type: time_table
-  contents:
-    - title: PhD, Statistics
-      institution: University of California, Santa Barbara
-      year: 2020 - 2026
-    - title: MA, Statistics
-      institution: University of California, Santa Barbara
-      year: 2022
-    - title: BS, Honors Mathematics, Computer Science
-      institution: University of Michigan, Ann Arbor
-      year: 2013
+  sections:
+    Education:
+      - institution: University of California, Santa Barbara
+        studyType: PhD, Statistics
+        start_date: "2020"
+        end_date: "2026"
+      - institution: University of California, Santa Barbara
+        studyType: MA, Statistics
+        start_date: "2022"
+        end_date: "2022"
+      - institution: University of Michigan, Ann Arbor
+        studyType: BS, Honors Mathematics, Computer Science
+        start_date: "2013"
+        end_date: "2013"
 
-- title: Experience
-  type: time_table
-  contents:
-    - title: PhD Research Fellow
-      institution: Uniswap Labs
-      year: 2025 - 2026
-      description:
-        - Statistical analysis of transaction data and A/B tests
-    - title: Research Engineer
-      institution: Inria Centre
-      year: Summer 2024
-      description:
-        - Developed scalable tools for fitting statistical mixed-effects models to high-resolution fMRI data
-    - title: Software Developer
-      institution: Quantitative Risk Management, Inc.
-      year: 2013 - 2020
-      description:
-        - Developed the software framework for assessing interest rate, liquidity, and other risks associated with asset and liability management
-    - title: Software Development Intern
-      institution: Spot Trading LLC
-      year: Summer 2012
-      description:
-        - Developed the trade management system of a proprietary options trading firm
+    Experience:
+      - company: Uniswap Labs
+        position: PhD Research Fellow
+        start_date: "2025"
+        end_date: "2026"
+        highlights:
+          - Statistical analysis of transaction data and A/B tests
+      - company: Inria Centre
+        position: Research Engineer
+        start_date: "2024"
+        end_date: "2024"
+        highlights:
+          - Developed scalable tools for fitting statistical mixed-effects models to high-resolution fMRI data
+      - company: Quantitative Risk Management, Inc.
+        position: Software Developer
+        start_date: "2013"
+        end_date: "2020"
+        highlights:
+          - Developed the software framework for assessing interest rate, liquidity, and other risks associated with asset and liability management
+      - company: Spot Trading LLC
+        position: Software Development Intern
+        start_date: "2012"
+        end_date: "2012"
+        highlights:
+          - Developed the trade management system of a proprietary options trading firm
 
-- title: Presentations
-  type: nested_list
-  contents:
-    - title: 'A mixed model of regional functional connectivity from voxel-level BOLD signals'
-      items:
-      - WNAR/IMS Annual Meeting 2025; Whistler, BC
-    - title: 'Covariate-adjusted Gaussian graphical models via natural parametrization'
-      items:
-      - WNAR/IMS/Graybill Annual Meeting 2024; Fort Collins, CO
-      - Joint Statistical Meetings 2024; Portland, OR
-      - CFE-CMStatistics 2024; London, UK
-      - Inria statistical research seminar 2024; Grenoble, FR
+    Presentations:
+      - label: "A mixed model of regional functional connectivity from voxel-level BOLD signals"
+        details: "WNAR/IMS Annual Meeting 2025; Whistler, BC"
+      - label: "Covariate-adjusted Gaussian graphical models via natural parametrization"
+        details: "WNAR/IMS/Graybill Annual Meeting 2024; Fort Collins, CO"
+      - label: "Covariate-adjusted Gaussian graphical models via natural parametrization"
+        details: "Joint Statistical Meetings 2024; Portland, OR"
+      - label: "Covariate-adjusted Gaussian graphical models via natural parametrization"
+        details: "CFE-CMStatistics 2024; London, UK"
+      - label: "Covariate-adjusted Gaussian graphical models via natural parametrization"
+        details: "Inria statistical research seminar 2024; Grenoble, FR"
 
-- title: Awards
-  type: list
-  contents:
-    - <a href="https://wnar.org/news/13381008">2024 WNAR Most Outstanding Paper Award</a>
+    Awards:
+      - title: 2024 WNAR Most Outstanding Paper Award
+        url: https://wnar.org/news/13381008
 
-- title: Academic Interests
-  type: nested_list
-  contents:
-    - title: Statistical Methods
-      items: 
-        - High-dimensional statistics
-        - Multivariate statistics
-        - Covariance estimation
-        - Graphical models
-    - title: Data Applications
-      items:
-        - genomics
-        - functional magnetic resonance imaging (fMRI)
-        - econometric time series
+    Academic Interests:
+      - name: Statistical Methods
+        keywords:
+          - High-dimensional statistics
+          - Multivariate statistics
+          - Covariance estimation
+          - Graphical models
+      - name: Data Applications
+        keywords:
+          - genomics
+          - functional magnetic resonance imaging (fMRI)
+          - econometric time series
