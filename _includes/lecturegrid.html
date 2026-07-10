@@ -1,0 +1,35 @@
+ <div class = "grid-item">
+  <a href="/pstat10/lectures/Lec{{ include.lecnum }}.html" style="text-decoration: none">
+    <div class="card hoverable">
+      <div class="row g-0">
+        <div class="col-md-12">
+          <div class="card-body">
+            {% assign lecnum = include.lecnum | plus: 0%}
+            {%- if lecnum >= 10 -%}
+              <h2 class="card-title">Lectr. {{ include.lecnum }}</h2>
+            {% else %}
+              <h2 class="card-title">Lecture {{ include.lecnum }}</h2>
+            {%- endif %}
+            <p class="card-text">{{ include.descr }}</p>
+            <div class="row ml-1 mr-1 p-0">
+              {% capture demopath %}/pstat10/lectures/lec{{ include.lecnum }}_demo.html{% endcapture %}
+              {% assign ctr = 0 %}
+              {%- for sf in site.static_files -%}
+                {%- if sf.path == demopath-%}
+                  {% assign ctr = ctr | plus: 1 %}
+                {%- endif %}
+              {%- endfor %}
+              {% if ctr == 0 %}
+                <p style="margin-bottom: 8px;"></p>
+              {% else %}
+                <div class="icon" data-toggle="tooltip" title="Demo code">
+                  <a href="/pstat10/lectures/lec{{ include.lecnum }}_demo.html"><i class="fab fa-brands fa-r-project"></i></a>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
