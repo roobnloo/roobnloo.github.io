@@ -34,9 +34,9 @@ cv:
           - Developed and deployed the competitiveness index to compare DeFi protocols
           - Drew insights from large databases of transactions and A/B test results
           - Created shareable software and data resources used by data scientists and researchers
-      - company: Inria Centre
+      - company: Inria Grenoble
         position: Research Engineer
-        location: University Grenoble Alpes
+        location: Grenoble, FR
         start_date: "2024-06"
         end_date: "2024-08"
         highlights:
