@@ -29,7 +29,7 @@ Assignments should be submitted on Gradescope.
 [Worksheet 2](/pstat10/assignments/ws2.pdf) \| [Solutions](/pstat10/assignments/ws2_sol.html) \|
 [Homework 1](/pstat10/assignments/hw1.pdf) \| [Solutions](/pstat10/assignments/hw1_sol.html)
 
-<div class="grid">
+<div class="lecture-grid">
   {% include lecturegrid.html lecnum='1' descr='Introduction' %}
   {% include lecturegrid.html lecnum='2' descr='Vector Operations' %}
   {% include lecturegrid.html lecnum='3' descr='Functions' %}
@@ -42,7 +42,7 @@ Assignments should be submitted on Gradescope.
 [Worksheet 3](/pstat10/assignments/ws3.pdf) \| [Solutions](/pstat10/assignments/ws3_sol.html) \|
 [Worksheet 4](/pstat10/assignments/ws4.pdf) \| [Solutions](/pstat10/assignments/ws4_sol.html) \|
 [Homework 2](/pstat10/assignments/hw2.pdf) \| [Solutions](/pstat10/assignments/hw2_sol.html)
-<div class="grid">
+<div class="lecture-grid">
   {% include lecturegrid.html lecnum='4' descr='Problem Solving' %}
   {% include lecturegrid.html lecnum='5' descr='Data Frames/Tibbles' %}
   {% include lecturegrid.html lecnum='6' descr='Working with Tibbles' %}
@@ -53,7 +53,7 @@ Assignments should be submitted on Gradescope.
 [Worksheet 5](/pstat10/assignments/ws5.pdf) \| [Solutions](/pstat10/assignments/ws5_sol.html) \|
 [Worksheet 6](/pstat10/assignments/ws6.pdf) \| [Solutions](/pstat10/assignments/ws6_sol.html) \|
 [Homework 3](/pstat10/assignments/hw3.pdf) \| [Solutions](/pstat10/assignments/hw3_sol.html)
-<div class="grid">
+<div class="lecture-grid">
   {% include lecturegrid.html lecnum='8' descr='Simulation' %}
   {% include lecturegrid.html lecnum='9' descr='Discrete RVs' %}
   {% include lecturegrid.html lecnum='10' descr='Continuous RVs' %}
@@ -63,7 +63,7 @@ Assignments should be submitted on Gradescope.
 [Worksheet 7](/pstat10/assignments/ws7.pdf) \| [Solutions](/pstat10/assignments/ws7_sol.html) \|
 [Worksheet 8](/pstat10/assignments/ws8.pdf) \| [Solutions](/pstat10/assignments/ws8_sol.html) \|
 [Homework 4](/pstat10/assignments/hw4.pdf) \| [Solutions](/pstat10/assignments/hw4_sol.html)
-<div class="grid">
+<div class="lecture-grid">
   {% include lecturegrid.html lecnum='11' descr='More Simulation' %}
   {% include lecturegrid.html lecnum='12' descr='Relational DBs' %}
   {% include lecturegrid.html lecnum='13' descr='SQL Queries' %}
@@ -77,7 +77,7 @@ Assignments should be submitted on Gradescope.
 [Worksheet 9](/pstat10/assignments/ws9.pdf) \| [Solutions](/pstat10/assignments/ws9_sol.html) \|
 [Worksheet 10](/pstat10/assignments/ws10.pdf) \| [Solutions](/pstat10/assignments/ws10_sol.html) \|
 [Homework 5](/pstat10/assignments/hw5.pdf) \| [Solutions](/pstat10/assignments/hw5_sol.html)
-<div class="grid">
+<div class="lecture-grid">
   {% include lecturegrid.html lecnum='15' descr='More DBs' %}
   {% include lecturegrid.html lecnum='16' descr='Intro ggplot' %}
   {% include lecturegrid.html lecnum='17' descr='More ggplot' %}

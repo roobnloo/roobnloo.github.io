@@ -12,6 +12,20 @@
   visibility: visible !important;
 }
 
+// pstat10 lecture grid (see _includes/lecturegrid.html): each week's row of
+// lecture cards shares the row width equally, so any number of lectures in
+// a week stays on one row instead of wrapping/spanning full width.
+.lecture-grid {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.lecture-grid-item {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
 // Checklist
 
 ul.task-list {
