@@ -1,58 +1,107 @@
 cv:
-  name: Ruobin Liu
+  name: Robin Liu
+  email: robin28liu@gmail.com
   website: https://roobnloo.github.io
   address:
-    city: Goleta
+    city: Santa Barbara
     region: CA
-    postalCode: "93117"
 
   sections:
     Education:
       - institution: University of California, Santa Barbara
         location: Santa Barbara, CA
-        studyType: PhD, Statistics
+        area: Statistics
+        studyType: Ph.D.
         start_date: "2020"
         end_date: "2026"
-      - institution: University of California, Santa Barbara
-        location: Santa Barbara, CA
-        studyType: MA, Statistics
-        start_date: "2022"
-        end_date: "2022"
-      - institution: University of Michigan, Ann Arbor
+        highlights:
+          - "Topics in joint estimation of the mean and covariance structure in high-dimensional data"
+          - "Advisor: Prof. Guo Yu"
+      - institution: University of Michigan
         location: Ann Arbor, MI
-        studyType: BS, Honors Mathematics, Computer Science
+        area: Honors Mathematics, Computer Science
+        studyType: BS
         start_date: "2013"
         end_date: "2013"
 
     Experience:
       - company: Uniswap Labs
-        position: PhD Research Fellow
-        location: NYC
-        start_date: "2025"
-        end_date: "2026"
+        position: Ph.D. Research Fellow
+        location: New York City
+        start_date: "2025-08"
+        end_date: "2026-02"
         highlights:
-          - Statistical analysis of transaction data and A/B tests
+          - Developed and deployed the competitiveness index to compare DeFi protocols
+          - Drew insights from large databases of transactions and A/B test results
+          - Created shareable software and data resources used by data scientists and researchers
       - company: Inria Centre
-        location: Grenoble, FR
         position: Research Engineer
-        start_date: "2024"
-        end_date: "2024"
+        location: University Grenoble Alpes
+        start_date: "2024-06"
+        end_date: "2024-08"
         highlights:
-          - Developed scalable tools for fitting statistical mixed-effects models to high-resolution fMRI data
-      - company: Quantitative Risk Management, Inc.
-        location: Chicago, IL
+          - Developed scalable tools for fitting statistical mixed-effects models to brain imaging data
+          - Leveraged distributed high-performance computing clusters to analyze large datasets
+          - Accelerated computations by 300% through detailed analysis and simplification of numerical operations
+      - company: Quantitative Risk Management Inc.
         position: Software Developer
+        location: Chicago
         start_date: "2013"
         end_date: "2020"
         highlights:
           - Developed the software framework for assessing interest rate, liquidity, and other risks associated with asset and liability management
+          - Designed and maintained database systems for complex financial products
+          - Built a system for cleaning and aggregating financial transaction data using K-means clustering
+          - Enhanced the portfolio optimization engine to support haircut modeling
       - company: Spot Trading LLC
-        location: Chicago, IL
         position: Software Development Intern
-        start_date: "2012"
-        end_date: "2012"
+        location: Chicago
+        start_date: "2012-06"
+        end_date: "2012-08"
         highlights:
           - Developed the trade management system of a proprietary options trading firm
+          - Implemented low-latency trade execution on the Boston Options Exchange
+
+    Projects:
+      - name: Deep residual networks for crystallography
+        highlights:
+          - Developed a deep learning model in PyTorch for X-ray crystallography experiments
+          - Trained CNNs for regression and classification of experimental results
+          - Implemented transfer learning with ImageNet to improve prediction accuracy by 10%
+
+    Publications:
+      - title: Estimation of the error structure in multivariate response linear regression models
+        publisher: "Liu, R., Yu, G. — WIREs Comput Stat, 17: e70021"
+        date: "2025"
+        url: https://doi.org/10.1002/wics.70021
+      - title: Deep residual networks for crystallography trained on synthetic data
+        publisher: "Mendez, D., Holton, J.M., Lyubimov, A.Y., Hollatz, S., Mathews, I.I., Cichosz, A., Martirosyan, V., Zeng, T., Stofer, R., Liu, R. — Acta Crystallographica Section D: Structural Biology"
+        date: "2024"
+        url: https://doi.org/10.1107/S2059798323010586
+      - title: Convex estimation of Gaussian graphical regression models with covariates
+        publisher: "Liu, R., Yu, G. — Submitted"
+        date: "2026"
+      - title: A mixed model approach for estimating regional functional connectivity from voxel-level BOLD signals
+        publisher: "Liu, R., Zhang, C., Tran, C., Achard, S., Meiring, W., Petersen, A. — Submitted"
+        date: "2026"
+
+    Selected Honors:
+      - bullet: "[2024 WNAR Most Outstanding Paper Award](https://wnar.org/news/13381008)"
+      - bullet: "2024 UCSB PSTAT Departmental Travel Grant"
+      - bullet: "2024-25 UCSB Doctoral Student Travel Grant"
+
+    Technical Skills:
+      - label: Languages
+        details: Python, R, Julia, C++, C#, SQL
+      - label: Packages
+        details: PyTorch, Jupyter, SciPy, tidyverse
+      - label: Technologies
+        details: .NET, Linux, Docker, BigQuery, Google Cloud Platform, Apache Spark, Databricks
+      - label: Statistical and machine learning
+        details: Proficiency with deep learning, xgboost, and other nonlinear prediction methods. Proficiency with classical methods such as OLS, LASSO, multivariate statistics, covariance estimation, time series analysis.
+
+    Service:
+      - bullet: "Reviewer for *Nature Scientific Reports*"
 
     Presentations:
       - label: "A mixed model of regional functional connectivity from voxel-level BOLD signals"
@@ -66,19 +115,8 @@ cv:
       - label: "Covariate-adjusted Gaussian graphical models via natural parametrization"
         details: "Inria statistical research seminar 2024; Grenoble, FR"
 
-    Awards:
-      - title: 2024 WNAR Most Outstanding Paper Award
-        url: https://wnar.org/news/13381008
-
-    Academic Interests:
-      - name: Statistical Methods
-        keywords:
-          - High-dimensional statistics
-          - Multivariate statistics
-          - Covariance estimation
-          - Graphical models
-      - name: Data Applications
-        keywords:
-          - genomics
-          - functional magnetic resonance imaging (fMRI)
-          - econometric time series
+    Teaching:
+      - label: Lead instructor
+        details: "(PSTAT 10) Principles of Data Science"
+      - label: Teaching assistant
+        details: "(PSTAT 232) Computational Statistics, (PSTAT 231) Statistical Machine Learning, (PSTAT 234) Statistical Data Science, (PSTAT 235) Big Data Analytics, (PSTAT 120B) Probability and Statistics II"
