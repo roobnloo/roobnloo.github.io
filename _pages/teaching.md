@@ -2,26 +2,14 @@
 layout: page
 permalink: /teaching/
 title: teaching
+description: Course materials, schedules, and resources for classes taught.
 nav: true
-nav_order: 2
+nav_order: 6
+calendar: true
 ---
-**Instructor**
-- PSTAT 10. Principles of Data Science with R
-  - [Summer 2022 Session A](/pstat10/)
 
+This page displays a collection of courses with detailed schedules, materials, and resources. You can organize your courses by years, terms, or topics.
 
-**Teaching Assistant**
-- PSTAT 131/231. Statistical Machine Learning
-  - Fall 2024
-- PSTAT 135/235. Big Data Analytics
-  - Winter 2024, Spring 2025, Spring 2026
-- PSTAT 232. Computational Techniques in Statistics
-  - Winter 2024, Spring 2025
-- PSTAT 134/234. Statistical Data Science
-  - Fall 2022, Winter 2023
-- PSTAT 120B. Probability and Statistics II
-  - Spring 2022
-- PSTAT 10. Principles of Data Science with R (head TA)
-  - Winter 2021 thru Winter 2022
-- PSTAT 10. Principles of Data Science with R
-  - Fall 2020
+{% include calendar.liquid calendar_id='test@gmail.com' timezone='Asia/Shanghai' %}
+
+{% include courses.liquid %}
