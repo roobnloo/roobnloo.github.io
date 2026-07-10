@@ -2,6 +2,16 @@
  * Reusable component styles: Cards, captions, profiles, etc.
  ******************************************************************************/
 
+// al_folio_bootstrap_compat v1.0.0 ships an unlayered "collapse visibility
+// contract" rule (.collapse{display:none;visibility:hidden}) that the
+// layered !important responsive rule only overrides for `display`, not
+// `visibility` -- leaving .navbar-collapse permanently invisible even when
+// displayed. Force it back to visible; harmless when display:none applies,
+// since a display:none element isn't rendered regardless of visibility.
+.navbar-collapse {
+  visibility: visible !important;
+}
+
 // Checklist
 
 ul.task-list {
