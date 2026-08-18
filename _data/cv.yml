@@ -26,6 +26,11 @@ cv:
 
     Experience:
       - company: Uniswap Labs
+        position: Research Scientist
+        location: New York City
+        start_date: "2026-08"
+        end_date: "present"
+      - company: Uniswap Labs
         position: Ph.D. Research Fellow
         location: New York City
         start_date: "2025-08"

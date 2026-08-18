@@ -22,12 +22,10 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am a fifth year PhD candidate at UC Santa Barbara in the department of [Statistics and Applied Probability](https://www.pstat.ucsb.edu/){:target="\_blank"}.
+I hold a PhD from UC Santa Barbara's department of [Statistics and Applied Probability](https://www.pstat.ucsb.edu/){:target="\_blank"}.
+My academic work involves developing statistical methods for high-dimensional multivariate data. I have worked on covariance estimation, graphical models, and change point detection with applications ranging from genomics and neuroscience to econometrics.
 
-My research involves developing statistical methods for high-dimensional multivariate data. I have worked on covariance estimation, graphical models, and change point detection with applications ranging from genomics and neuroscience to econometrics.
-
-Before joining UCSB in Fall 2020, I worked as a software developer in financial services.
-Before that, I got my Bachelor's degrees from the University of Michigan where I double-majored in computer science and honors mathematics ([295-396 series](https://lsa.umich.edu/math/undergraduates/undergraduate-math-courses/300-level-math-courses.html)).
+I currently work as a research scientist in industry. I have also previously worked as a software developer in financial services.
 
 My legal name is spelled with a "u" as in "Ruobin", but it is still pronounced "Robin".
 
